@@ -1,0 +1,410 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/fragment2"
+    android:tag="f1"
+    android:layout_height="match_parent"
+    tools:context="com.example.hosen.myapplication.DetailsFragmetn">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.snap.DetailsActivity">
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignEnd="@+id/linearLayout"
+            android:layout_alignRight="@+id/linearLayout"
+            android:layout_marginTop="11dp"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignStart="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout2"
+            android:text="EL-AL"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_toLeftOf="@+id/mapTv"
+            android:layout_toStartOf="@+id/mapTv"
+            android:text="8+ Place"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_toEndOf="@+id/snapGroupTitle"
+            android:layout_toRightOf="@+id/snapGroupTitle"
+            android:text="YBB"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:text="resturants"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/linearLayout5"
+            android:layout_marginLeft="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_toEndOf="@+id/textView24"
+            android:layout_toRightOf="@+id/textView24"
+            android:text="1280" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="Reviews" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="50dp"
+            android:layout_height="15dp"
+            android:layout_alignEnd="@+id/textView7"
+            android:layout_alignRight="@+id/textView7"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_toEndOf="@+id/textView19"
+            android:layout_toRightOf="@+id/textView19"
+            android:background="@drawable/four_star" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_toLeftOf="@+id/textView4"
+            android:layout_toStartOf="@+id/textView4"
+            android:background="@drawable/clock" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/mapTv"
+            android:layout_alignBottom="@+id/mapTv"
+            android:layout_toLeftOf="@+id/button4"
+            android:layout_toStartOf="@+id/button4"
+            android:text="Days" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="08:14:23"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/mapTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/button3"
+            android:layout_toLeftOf="@+id/textView3"
+            android:layout_toStartOf="@+id/textView3"
+            android:text="12" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/church"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/textView24"
+            android:layout_alignStart="@+id/textView24" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView11"
+            android:layout_alignLeft="@+id/textView7"
+            android:layout_alignRight="@+id/textView11"
+            android:layout_alignStart="@+id/textView7"
+            android:layout_alignTop="@+id/button5"
+            android:text="Saint Zohar Group"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView10"
+            android:layout_alignStart="@+id/textView10"
+            android:layout_below="@+id/textView6"
+            android:layout_marginTop="18dp"
+            android:text="Source"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/planTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView7"
+            android:layout_alignBottom="@+id/textView7"
+            android:layout_alignEnd="@+id/textView10"
+            android:layout_alignRight="@+id/textView10"
+            android:text="To" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/planTv"
+            android:layout_alignBottom="@+id/planTv"
+            android:layout_alignLeft="@+id/textView11"
+            android:layout_alignStart="@+id/textView11"
+            android:text="Distance"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView14"
+            android:layout_marginBottom="13dp"
+            android:layout_toEndOf="@+id/textView14"
+            android:layout_toRightOf="@+id/textView14"
+            android:text="Starging At" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView10"
+            android:layout_alignBottom="@+id/textView10"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/textView10"
+            android:layout_toRightOf="@+id/textView10"
+            android:text="02/08"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView11"
+            android:layout_alignEnd="@+id/textView24"
+            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignRight="@+id/textView24"
+            android:layout_alignStart="@+id/textView3"
+            android:text="10" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView12"
+            android:layout_alignBottom="@+id/textView12"
+            android:layout_alignLeft="@+id/button4"
+            android:layout_alignStart="@+id/button4"
+            android:text="Days Trip" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/button5"
+            android:layout_alignStart="@+id/button5"
+            android:layout_below="@+id/button5"
+            android:layout_marginTop="11dp"
+            android:text="Trip Descreption"
+            android:textColor="@color/green"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/textView14"
+            android:layout_alignRight="@+id/textView14"
+            android:layout_below="@+id/textView15"
+            android:layout_marginTop="12dp"
+            android:text="Trip Latest News"
+            android:textColor="@color/green"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout"
+            android:layout_alignStart="@+id/linearLayout"
+            android:layout_below="@+id/linearLayout"
+            android:layout_marginTop="12dp"
+            android:text="Trip Services"
+            android:textColor="@color/green"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView14"
+            android:layout_alignStart="@+id/textView14"
+            android:layout_below="@+id/textView14"
+            android:layout_marginTop="13dp"
+            android:text="We will travel the Holy Land and visit the sites where Jesus walked and look for hot girls on the way to God and all other bullshit!! " />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="370dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@+id/textView15"
+            android:layout_alignStart="@+id/textView15"
+            android:layout_below="@+id/textView16"
+            android:background="@drawable/linear_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="We will travel the Holy Land and visit the sites where" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@+id/textView16"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignStart="@+id/textView16"
+            android:layout_below="@+id/textView19"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/flyBtt"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:layout_margin="2dp"
+                android:layout_weight="1.00"
+                android:background="@drawable/aireplane_logo" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bed" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bus" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/location" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/guide" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="20dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/resturant" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_toLeftOf="@+id/textView10"
+            android:layout_toStartOf="@+id/textView10"
+            android:text="Dan Hotel"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_toLeftOf="@+id/planTv"
+            android:layout_toStartOf="@+id/planTv"
+            android:text="Egged"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/linearLayout5"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
