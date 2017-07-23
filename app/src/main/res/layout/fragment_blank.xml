@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.snapgroup.PaymentsActivity">>
+        tools:context="com.snapgroup.PaymentsActivity">
 
         <Button
             android:id="@+id/button14"
@@ -20,50 +20,6 @@
             android:layout_below="@+id/paymentsLv"
             android:layout_marginTop="12dp"
             android:background="#000" />
-
-        <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="450$"
-            android:textColor="@color/orange"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_alignRight="@+id/textView17"
-            android:layout_alignEnd="@+id/textView17"
-            android:layout_alignBottom="@+id/totalTv"
-            android:layout_alignTop="@+id/totalTv" />
-
-        <ListView
-            android:id="@+id/paymentsLv"
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView17"
-            android:layout_marginTop="19dp" />
-
-        <TextView
-            android:id="@+id/totalTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView17"
-            android:layout_alignStart="@+id/textView17"
-            android:layout_centerVertical="true"
-            android:text="Total"
-            android:textColor="@color/orange"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="250dp"
-            android:layout_height="130dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/linear_border">
-
-        </RelativeLayout>
 
         <TextView
             android:id="@+id/textView17"
@@ -78,6 +34,72 @@
             android:text="Name Of Group"
             android:textSize="20sp"
             android:textStyle="bold" />
-    </RelativeLayout>
 
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payments"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_above="@+id/paymentsLv"
+            android:layout_toRightOf="@+id/textView17"
+            android:layout_toEndOf="@+id/textView17"
+            android:layout_marginLeft="13dp"
+            android:layout_marginStart="13dp" />
+
+        <ListView
+            android:id="@+id/paymentsLv"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView17"
+            android:layout_marginTop="19dp" />
+
+        <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Total"
+            android:textColor="@color/orange"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/button14"
+            android:layout_alignLeft="@+id/textView17"
+            android:layout_alignStart="@+id/textView17" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="450$"
+            android:textColor="@color/orange"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginRight="11dp"
+            android:layout_marginEnd="11dp"
+            android:layout_above="@+id/relativeLayout"
+            android:layout_toLeftOf="@+id/textView38"
+            android:layout_toStartOf="@+id/textView38" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="360dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/textView26"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/linear_border">
+
+            <com.jjoe64.graphview.GraphView
+                android:id="@+id/graph"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp" />
+        </RelativeLayout>
+    </RelativeLayout>
 </FrameLayout>

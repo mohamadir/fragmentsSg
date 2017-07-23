@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/left_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl">
+
+    <com.github.siyamed.shapeimageview.RoundedImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chat_profile"
+        app:siRadius="3dp"
+        app:siSquare="true"/>
+
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginRight="35dp"
+        android:gravity="end"
+        android:text="Shira Rabina"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/chat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/chat_bubble_right"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="25dp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/username"
+        android:text="hello every body"
+        android:textColor="#ffffff"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/seen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chat_text"
+        android:layout_alignLeft="@+id/chat_text"
+        android:layout_marginTop="2dp"
+        android:textSize="10dp"
+        android:text="Seen 16:45" />
+
+</RelativeLayout>

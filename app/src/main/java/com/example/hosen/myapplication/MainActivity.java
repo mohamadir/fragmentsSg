@@ -1,7 +1,5 @@
 package com.example.hosen.myapplication;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import  android.app.Fragment;
@@ -11,14 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
     Fragment frt;
     TextView mapTv,planTv;
     Fragment blankFt;
-    Button bt,bt2,bt3,flyBt,docsBt,memberBt
-            ;
+    Button payBt,bt2,bt3,flyBt,docsBt,memberBt,votesBt,chatBt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +22,30 @@ public class MainActivity extends AppCompatActivity {
         mapTv=(TextView)findViewById(R.id.mapTv);
         planTv=(TextView)findViewById(R.id.planTv);
         getFragmentManager().beginTransaction().replace(R.id.fragment1,new PlanFragment()).addToBackStack(null).commit();
-         bt =(Button)findViewById(R.id.mButton);
+        // bt =(Button)findViewById(R.id.mButton);
+        getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragmetn()).addToBackStack(null).commit();
+         payBt =(Button)findViewById(R.id.payBt);
          bt2 =(Button)findViewById(R.id.button15);
          bt3 =(Button)findViewById(R.id.docsBt);
          docsBt=(Button)findViewById(R.id.docsBt);
+         votesBt=(Button)findViewById(R.id.votesBt);
+         chatBt=(Button)findViewById(R.id.chatBt);
+        chatBt.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  getFragmentManager().beginTransaction().replace(R.id.fragment1,new ChatFragment()).addToBackStack(null).commit();
+
+              }
+          }
+        );
+        votesBt.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               getFragmentManager().beginTransaction().replace(R.id.fragment1,new VotesFragment()).addToBackStack(null).commit();
+
+           }
+       }
+        );
         memberBt=(Button)findViewById(R.id.memberBt);
         memberBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        bt.setOnClickListener(new View.OnClickListener() {
+        payBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("Fragment-i","im in listener2");

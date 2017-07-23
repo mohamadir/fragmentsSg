@@ -7,10 +7,17 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 
 public class BlankFragment extends Fragment {
@@ -18,6 +25,11 @@ public class BlankFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    ListView paymentsLv;
+    ArrayList<paymentItem> paymentArray = new ArrayList<paymentItem>();
+    LineGraphSeries<DataPoint> series;
+
+
     TextView tv;
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -64,7 +76,34 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        // Inflate the layout for this fragment
+        View  view= inflater.inflate(R.layout.fragment_blank, container, false);
+
+        // what should be in onCreate
+        paymentsLv=(ListView)view.findViewById(R.id.paymentsLv);
+        //String type, String price, String cardStatus, String cardNumber
+        paymentArray.add(new paymentItem("Flight","550","Card","**4522"));
+        paymentArray.add(new paymentItem("Hotels","360","Card","**4522"));
+        paymentArray.add(new paymentItem("Tour Guide","80","None",""));
+        paymentArray.add(new paymentItem("Tranpotations","55","None",""));
+        paymentArray.add(new paymentItem("Resturants","110","None",""));
+        paymentArray.add(new paymentItem("PLaces","45","None",""));
+        PaymentsAdapter adapter = new PaymentsAdapter(getActivity(), paymentArray);
+        paymentsLv.setAdapter(adapter);
+        double x,y;
+        x=-5.0;
+        GraphView graphView = (GraphView)view.findViewById(R.id.graph);
+        series= new LineGraphSeries<DataPoint>();
+        for(int i=0;i<1000;i++)
+        {
+            x+=0.01;
+            y=Math.pow(x,2);
+            series.appendData(new DataPoint(x,y),true,500);
+
+        }
+
+        graphView.addSeries(series);
+        return view;
     }
 
 
