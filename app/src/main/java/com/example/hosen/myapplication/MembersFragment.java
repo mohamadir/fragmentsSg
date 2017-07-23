@@ -17,6 +17,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 
 public class MembersFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -27,7 +29,10 @@ public class MembersFragment extends Fragment {
     ListView list;
     GridView androidGridView;
     // set the images on the gradview for the members
-    Integer[] imageIDs = {
+    Integer[] randImg={R.drawable.person1,R.drawable.person2,R.drawable.person3,R.drawable.person4,R.drawable.person5};
+    Integer[] imageIDs=new Integer[31];
+
+   /* Integer[] imageIDs2 = {
             R.drawable.a11, R.drawable.a11, R.drawable.a11,
             R.drawable.a11, R.drawable.a11, R.drawable.a11,
             R.drawable.a11, R.drawable.a11, R.drawable.a11,
@@ -41,26 +46,23 @@ public class MembersFragment extends Fragment {
             R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
             R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
             R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-    };
+    };*/
     //here what the kind of tthe memebrr
     String[] itemname ={
             "    Group Assistant",
             "    Group Assistant",
             "    Group Assistant",
-            "    Group Assistant"
     };
     String[] lastName ={
             "    Anglena",
             "   David",
             "    Yossi",
-            "    Assistant"
     };
     // the photos of the memebes assistant
     Integer[] imgid={
-            R.drawable.a11,
-            R.drawable.a11,
-            R.drawable.a11,
-            R.drawable.a11,
+            R.drawable.person3,
+            R.drawable.girl1,
+            R.drawable.person1,
     };
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -109,6 +111,15 @@ public class MembersFragment extends Fragment {
 
             }
         });
+        Random r = new Random();
+        int Low = 0;
+        int High = 4;
+
+        for(int i=0;i<31;i++)
+        {
+            int Result = r.nextInt(High-Low) + Low;
+            imageIDs[i]=randImg[Result];
+        }
         return view;
     }
 
@@ -140,7 +151,9 @@ public class MembersFragment extends Fragment {
                 mImageView = new ImageView(mContext);
                 mImageView.setLayoutParams(new GridView.LayoutParams(130, 130));
                 mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                mImageView.setPadding(16, 16, 16, 16);
+
+
+                mImageView.setPadding(5,5, 5, 5);
             } else {
                 mImageView = (ImageView) convertView; // set the photo to the xml.
             }

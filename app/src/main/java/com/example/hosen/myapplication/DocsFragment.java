@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,32 @@ public class DocsFragment extends Fragment {
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listDataChild);
 
         // setting list adapter
+        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View view, int groupPosition, long l) {
+                // on click, check if the group list is expanded
+                if(expListView.isGroupExpanded(groupPosition)){
+                    // if the group list expanded, collapse it
+                    expListView.collapseGroup(groupPosition);
+                    Log.d("ExpdList", "Exit");
+                } else {
+                    // if the group list collapse, first collapse all the expanded group list if there any
+                    int count = expListView.getCount();
+                    Log.d("ExpdList", "Count: " + count);
+                    for(int i = 0; i < count; i++){
+                        if(i!=groupPosition)
+                            expListView.collapseGroup(i);
+                        else {
+                            if(expListView.getChildAt(0)!=null)
+                                expListView.expandGroup(i);
+                        }
+                    }
+                    // then expand the this one
+                    Log.d("ExpdList", "Open");
+                }
+                return true;
+            }
+        });
         expListView.setAdapter(listAdapter);
         return view;
 
