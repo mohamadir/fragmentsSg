@@ -4,14 +4,17 @@
     android:id="@+id/left_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layoutDirection="rtl">
+    android:layoutDirection="ltr">
 
     <com.github.siyamed.shapeimageview.RoundedImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/chat_profile"
         app:siRadius="3dp"
-        app:siSquare="true"/>
+        app:siSquare="true"
+        android:id="@+id/roundedImageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
     <TextView
@@ -27,15 +30,15 @@
         android:id="@+id/chat_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="5dp"
+        android:layout_alignEnd="@+id/username"
+        android:layout_alignRight="@+id/username"
+        android:layout_below="@+id/roundedImageView"
         android:background="@drawable/chat_bubble_right"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="25dp"
         android:paddingTop="5dp"
-        android:layout_below="@+id/username"
-        android:text="hello every body"
+        android:text="hello :p"
         android:textColor="#ffffff"
         android:textSize="16dp" />
 
