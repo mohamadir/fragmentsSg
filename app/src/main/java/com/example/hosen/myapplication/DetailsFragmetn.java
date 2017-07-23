@@ -47,13 +47,13 @@ public class DetailsFragmetn extends Fragment {
         // Inflate the layout for this fragment4
 
         View view= inflater.inflate(R.layout.fragment_details_fragmetn, container, false);
-        flyBt=(Button)view.findViewById(R.id.flyBtt);
+       /* flyBt=(Button)view.findViewById(R.id.flyBtt);
         flyBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.i("hello","hello");
             }
-        });
+        });*/
         return view;
 
     }

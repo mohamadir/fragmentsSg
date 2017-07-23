@@ -6,4 +6,10 @@
     <color name="accent_color">#FF5722</color>
     <color name="green">#019a01</color>
     <color name="orange">#ff6600</color>
+    <color name="colorOrange">#fc8130
+    </color>
+    <color name="colorGreen">#009900
+    </color>
+    <color name="colorWhite">#ffffff
+    </color>
 </resources>

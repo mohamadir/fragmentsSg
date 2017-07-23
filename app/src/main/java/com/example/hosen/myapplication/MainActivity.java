@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     Fragment frt;
     TextView mapTv,planTv;
     Fragment blankFt;
-    Button bt,bt2,bt3,flyBt;
+    Button bt,bt2,bt3,flyBt,docsBt,memberBt
+            ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,21 @@ public class MainActivity extends AppCompatActivity {
         getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragmetn()).addToBackStack(null).commit();
          bt =(Button)findViewById(R.id.mButton);
          bt2 =(Button)findViewById(R.id.button15);
-         bt3 =(Button)findViewById(R.id.mButton2);
+         bt3 =(Button)findViewById(R.id.docsBt);
+         docsBt=(Button)findViewById(R.id.docsBt);
+        memberBt=(Button)findViewById(R.id.memberBt);
+        memberBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment1,new MembersFragment()).addToBackStack(null).commit();
+
+            }
+        });
+
+
+
+
+
 
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 android.support.v4.app.Fragment fragment = getSupportFragmentManager().findFragmentByTag(f1);
                 getSupportFragmentManager().beginTransaction().remove(fragment).commit();
              */
-                getFragmentManager().beginTransaction().replace(R.id.fragment1,new PaymentFragment()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.fragment1,new DocsFragment()).addToBackStack(null).commit();
 
             }
         });
