@@ -5,10 +5,13 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import static android.R.attr.defaultValue;
 
 public class ChatFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -49,16 +52,22 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+    /*    Bundle arguments = getArguments();
+        String desired_string = arguments.getString("aaa");
+        Log.i("hihihi",desired_string);*/
         View view= inflater.inflate(R.layout.fragment_chat, container, false);
         // Create the Group List Adapter
         ChatListAdapter chatListAdapter = new ChatListAdapter(getActivity(), chat_array);
-
+       /* if(getArguments().getString("CID222")!=null){
+          String strtext = getArguments().getString("CID222");
+            Log.i("CID222",strtext);
+        }*/
         // Get list view
+
         ListView chatListView = (ListView) view.findViewById(R.id.chat_list);
 
         // Set the adapter to the list
         chatListView.setAdapter(chatListAdapter);
         return view;
     }
-
 }

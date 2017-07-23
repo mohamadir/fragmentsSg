@@ -1,7 +1,10 @@
 package com.example.hosen.myapplication;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,6 +25,8 @@ import java.util.Random;
 
 
 public class MembersFragment extends Fragment {
+    ImageView imageButton;
+    Intent intent;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,21 +38,6 @@ public class MembersFragment extends Fragment {
     Integer[] randImg={R.drawable.person1,R.drawable.person2,R.drawable.person3,R.drawable.person4,R.drawable.person5};
     Integer[] imageIDs=new Integer[31];
 
-   /* Integer[] imageIDs2 = {
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-            R.drawable.a11, R.drawable.a11, R.drawable.a11, R.drawable.a11,
-    };*/
     //here what the kind of tthe memebrr
     String[] itemname ={
             "    Group Assistant",
@@ -99,6 +90,26 @@ public class MembersFragment extends Fragment {
         CustomListAdapter adapter=new CustomListAdapter(getActivity(), itemname,lastName, imgid);
         list=(ListView)view.findViewById(R.id.list); // her i use list view for the gruop leader and grop assistant
         list.setAdapter(adapter);
+        imageButton = (ImageView) view.findViewById(R.id.imageButton);
+        imageButton.setClickable(true);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getFragmentManager().beginTransaction().replace(R.id.fragment1,new UserTeamLeader()).commit();
+
+
+                Fragment fr=new UserTeamLeader();
+                FragmentManager fm=getFragmentManager();
+                android.app.FragmentTransaction ft=fm.beginTransaction();
+                Bundle args = new Bundle();
+                args.putString("CID222", "im vlaue from fragment");
+                fr.setArguments(args);
+                ft.replace(R.id.fragment1, fr);
+                ft.commit();
+
+            }
+        });
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
