@@ -17,33 +17,36 @@
 
         <TextView
             android:id="@+id/t2"
-            android:layout_width="5dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.43"
-            android:gravity="center"
+            android:layout_weight="1"
+            android:gravity="left"
             android:padding="5dp"
             android:text="policy"
             android:textSize="10dp" />
 
         <Button
             android:id="@+id/button6"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_alignParentRight="true"
-            android:layout_height="wrap_content"
+            android:layout_height="23dp"
+            android:layout_weight="1"
             android:layout_marginRight="15dp"
-            android:background="@drawable/buttonshape"
-            android:backgroundTint="@color/colorGreen"
+            android:width="1dp"
+            android:background="@drawable/buttongreen"
             android:padding="6dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
             android:text="Download"
             android:textColor="@color/colorWhite"
             android:textSize="10dp" />
 
         <TextView
             android:id="@+id/t1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_weight="1"
+            android:layout_marginLeft="15dp"
             android:gravity="center"
             android:padding="5dp"
             android:text="Passport Photo"
@@ -52,11 +55,11 @@
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="23dp"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:background="@drawable/buttonshape"
-            android:backgroundTint="@color/colorOrange"
             android:padding="6dp"
             android:text="Upload"
             android:textColor="@color/colorWhite"

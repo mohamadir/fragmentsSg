@@ -2,56 +2,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DocsFragment">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    tools:context="com.example.hosen.myapplication.PlanFragment">
+
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
         android:background="#f4f4f4"
+        android:layout_margin="5dp"
         android:layoutDirection="ltr">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="3"
-            android:padding="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sani zohar"
-                android:textSize="14dp" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Sani zohar Group"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Docs"
-                android:gravity="left"
-                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:text="Trip Plan"
                 android:textColor="@color/colorOrange"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <ExpandableListView
-            android:layout_marginTop="10dp"
-            android:id="@+id/lvExp"
+            android:id="@+id/lvExp1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:groupIndicator="@null"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/button2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView2" />
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="10dp" />
 
-    </LinearLayout>
-
-</RelativeLayout>
-
-</FrameLayout>
+    </LinearLayout></FrameLayout>

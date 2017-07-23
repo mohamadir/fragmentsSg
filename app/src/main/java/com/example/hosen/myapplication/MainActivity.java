@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mapTv=(TextView)findViewById(R.id.mapTv);
         planTv=(TextView)findViewById(R.id.planTv);
+        getFragmentManager().beginTransaction().replace(R.id.fragment1,new PlanFragment()).addToBackStack(null).commit();
+        // bt =(Button)findViewById(R.id.mButton);
         getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragmetn()).addToBackStack(null).commit();
          payBt =(Button)findViewById(R.id.payBt);
          bt2 =(Button)findViewById(R.id.button15);
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
               FragmentTransaction ft=fm.beginTransaction();
               ft.replace(R.id.fragment1,frt);
               ft.commit();*/
-              getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragmetn()).addToBackStack(null).commit();
+              getFragmentManager().beginTransaction().replace(R.id.fragment1,new PlanFragment()).addToBackStack(null).commit();
 
           }
       }
