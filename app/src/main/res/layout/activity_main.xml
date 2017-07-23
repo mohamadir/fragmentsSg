@@ -53,7 +53,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_weight="0.89"></fragment>
+        android:layout_weight="0.89"
+        tools:layout="@layout/fragment_background"></fragment>
 
     <LinearLayout
         android:layout_width="match_parent"
