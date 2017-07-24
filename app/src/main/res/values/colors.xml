@@ -9,6 +9,8 @@
     <color name="orange">#ff6600</color>
     <color name="colorOrange">#fc8130
     </color>
+    <color name="colorDark">#111111
+    </color>
     <color name="colorWhite">#ffffff
     </color>
     <color name="colorGray">#dddddd</color>

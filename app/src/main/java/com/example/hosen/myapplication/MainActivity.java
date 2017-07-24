@@ -15,6 +15,8 @@ import java.security.acl.Group;
 public class MainActivity extends AppCompatActivity {
     Fragment frt;
     TextView mapTv,planTv;
+    Intent intent;
+    Bundle bundle;
     Fragment blankFt;
     Button payBt,bt2,bt3,flyBt,docsBt,memberBt,votesBt,chatBt;
 
@@ -24,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mapTv=(TextView)findViewById(R.id.mapTv);
         planTv=(TextView)findViewById(R.id.planTv);
-        getFragmentManager().beginTransaction().replace(R.id.fragment1,new PlanFragment()).addToBackStack(null).commit();
         // bt =(Button)findViewById(R.id.mButton);
         getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragmetn()).addToBackStack(null).commit();
          payBt =(Button)findViewById(R.id.payBt);
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
          chatBt=(Button)findViewById(R.id.chatBt);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
+        intent = getIntent();
         chatBt.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
