@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+
+import java.security.acl.Group;
 
 public class GroupListActivity extends AppCompatActivity {
     // Array of strings...
     String[] title = {"Saint Zohar Group", "West School", "University college of London", "Famillies and Children","Saint Zohar Group"};
-
+    Button signBt;
     String[] reviews = {"12", "56", "78", "89","98"};
     String[] rating = {"4", "5", "2", "3","4"};
     Integer[] imageId = {R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img};
@@ -26,7 +29,14 @@ public class GroupListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_list);
-
+        signBt=(Button )findViewById(R.id.groupLIstSignInBt);
+        signBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent (GroupListActivity.this,SignInActivity.class);
+                startActivity(i);
+            }
+        });
         // Create the Group List Adapter
         CustomGroupList adapter = new CustomGroupList(this,
                 title,

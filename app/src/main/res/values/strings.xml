@@ -37,4 +37,5 @@ needed"
         <item>Ratings</item>
         <item>Cost</item>
     </string-array>
+    <string name="title_activity_register">RegisterActivity</string>
 </resources>
