@@ -2,15 +2,19 @@ package com.example.hosen.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -43,6 +47,7 @@ public class PlanFragment extends Fragment {
     List<HeaderData> listDataHeader;
     DayPlanInfo daysArray;
     HeaderData headersArr;
+    Button mapBt;
 
     public   HashMap<String,DayPlanInfo> listDataChild= new HashMap<String, DayPlanInfo>();
 
@@ -81,7 +86,39 @@ public class PlanFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_plan, container, false);        // Inflate the layout for this fragment
         expListView = (ExpandableListView)view.findViewById(R.id.lvExp1);
         listDataHeader=new ArrayList<HeaderData>();
+        mapBt=(Button)view.findViewById(R.id.showMapBT);
+        mapBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view != null) {
+                    ViewGroup parent = (ViewGroup) view.getParent();
 
+                }
+                try {
+                    View view2 = LayoutInflater.from(getActivity()).inflate(R.layout.activity_maps, null);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("Map       ");
+                    builder.setView(view2);
+                    builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                        }
+                    });
+                    builder.setNegativeButton("בטל", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } catch (InflateException e) {
+        /* map is already there, just return view as it is */
+                }
+
+            }
+        });
+        //TODO
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,

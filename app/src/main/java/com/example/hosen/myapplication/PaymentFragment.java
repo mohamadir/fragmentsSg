@@ -1,12 +1,15 @@
 package com.example.hosen.myapplication;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.jjoe64.graphview.GraphView;
@@ -58,6 +61,21 @@ public class PaymentFragment extends Fragment {
         paymentArray.add(new paymentItem("Hotels","360","Card","**4522"));
         paymentArray.add(new paymentItem("Tour Guide","80","None",""));
         paymentArray.add(new paymentItem("Tranpotations","55","None",""));
+        paymentsLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("PayFragment","im in payment fragment");
+
+                Fragment fr=new PaymentsCreditFragemnt();
+                FragmentManager fm=getFragmentManager();
+                android.app.FragmentTransaction ft=fm.beginTransaction();
+                Bundle args = new Bundle();
+                args.putString("CID222", "im vlaue from fragment");
+                fr.setArguments(args);
+                ft.replace(R.id.fragment1, fr);
+                ft.commit();
+            }
+        });
         paymentArray.add(new paymentItem("Resturants","110","None",""));
         paymentArray.add(new paymentItem("PLaces","45","None",""));
         PaymentsAdapter adapter = new PaymentsAdapter(getActivity(), paymentArray);

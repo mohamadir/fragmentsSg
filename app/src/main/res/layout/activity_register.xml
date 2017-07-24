@@ -143,13 +143,13 @@
 
     <TextView
         android:id="@+id/textView28"
-        android:gravity="center"
-        android:layout_width="332dp"
-        android:textColor="#fff"
+        android:layout_width="376dp"
         android:layout_height="wrap_content"
+        android:layout_weight="0.06"
+        android:gravity="center"
         android:text="Sign in Now  "
-        android:textStyle="bold"
+        android:textColor="#fff"
         android:textSize="17dp"
-        android:layout_weight="0.08" />
+        android:textStyle="bold" />
 
 </LinearLayout>

@@ -21,9 +21,18 @@ public class GroupListActivity extends AppCompatActivity {
     String[] description = {"Visit the new land", "Visit the new land", "Visit the new land", "Visit the new land","Visit the new land"};
     String[] strating_date = {"02/09", "07/08", "02/10", "06/02", "06/02"};
     String[] trip_duration = {"5", "6", "7", "10", "10"};
+
     String[] member_count = {"80", "70" ,"60", "95", "95"};
-    String[][] services = {{"true", "true", "true", "false", "false", "false"}, {"true", "true", "true", "false", "false", "false"}, {"true", "true", "true", "false", "false"}, {"true", "true", "true", "false", "false", "false"}};
-    String[] time_left = {"12 Days 08:14", "12 Days 08:14", "12 Days 08:14", "12 Days 08:14", "12 Days 08:14"};
+
+    String[][] services = {{"true", "true", "true", "false", "false", "false"},
+                           {"true", "true", "true", "false", "false", "false"},
+                           {"true", "true", "true", "false", "false"},
+                           {"true", "true", "true", "false", "false", "false"}};
+
+    String[] time_left = {"12 Days 08:14", "12 Days 08:14",
+                          "12 Days 08:14", "12 Days 08:14",
+                          "12 Days 08:14"};
+
     String[] price = {"500", "250", "190", "560", "560"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {

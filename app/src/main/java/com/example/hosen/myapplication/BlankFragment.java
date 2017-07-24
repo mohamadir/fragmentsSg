@@ -1,12 +1,15 @@
 package com.example.hosen.myapplication;
 
+import android.app.FragmentManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,6 +91,21 @@ public class BlankFragment extends Fragment {
         paymentArray.add(new paymentItem("Tranpotations","55","None",""));
         paymentArray.add(new paymentItem("Resturants","110","None",""));
         paymentArray.add(new paymentItem("PLaces","45","None",""));
+        paymentsLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("PayFragment","im in payment fragment");
+
+                Fragment fr=new PaymentsCreditFragemnt();
+                FragmentManager fm=getFragmentManager();
+                android.app.FragmentTransaction ft=fm.beginTransaction();
+                Bundle args = new Bundle();
+                args.putString("CID222", "im vlaue from fragment");
+                fr.setArguments(args);
+                ft.replace(R.id.fragment1, fr);
+                ft.commit();
+            }
+        });
         PaymentsAdapter adapter = new PaymentsAdapter(getActivity(), paymentArray);
         paymentsLv.setAdapter(adapter);
         double x,y;

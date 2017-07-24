@@ -45,12 +45,18 @@
         <ExpandableListView
             android:id="@+id/lvExp1"
             android:layout_width="match_parent"
-            android:groupIndicator="@null"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:layout_above="@+id/button2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView2"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:groupIndicator="@null" />
+
+        <Button
+            android:id="@+id/showMapBT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show in map " />
 
     </LinearLayout></FrameLayout>
