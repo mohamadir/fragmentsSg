@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hosen.myapplication.UserTeamLeader">
+    tools:context="com.example.hosen.myapplication.Fragments.UserTeamLeaderFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -190,7 +190,6 @@
                 android:layout_height="1dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/snapGroupTitle"
                 android:background="#b1bbcc"
                 tools:layout_editor_absoluteX="64dp"
                 tools:layout_editor_absoluteY="16dp" />

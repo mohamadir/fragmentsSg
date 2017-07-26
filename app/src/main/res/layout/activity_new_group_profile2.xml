@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activities.NewGroupProfile2Activity">
+
+    <Spinner
+        android:id="@+id/spinner6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView24"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:layout_margin="5dp"
+        android:layout_toRightOf="@+id/spinner7"
+        android:entries="@array/hours" />
+
+    <Spinner
+        android:id="@+id/spinner7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:entries="@array/days"
+        android:layout_alignBaseline="@+id/spinner6"
+        android:verticalScrollbarPosition="left"
+        android:layout_alignBottom="@+id/spinner6"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:background="@color/colorOrange"
+        android:orientation="horizontal"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout3">
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Group"
+            android:textColor="@android:color/white"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="227dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="  Profile"
+            android:textColor="@color/colorWhite"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Next"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_marginTop="45dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.13"
+            android:paddingLeft="20dp"
+            android:text="JOin the Group Will End at"
+            />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="43dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.89"
+            android:text="00/00/00"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="26dp"
+            android:layout_height="20dp"
+            android:background="@drawable/celndr"
+            android:onClick="showDatePickerDialog2"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:id="@+id/linearLayout4"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView17"
+            android:text="Group Starting At "
+            android:layout_width="212dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:layout_weight="0.55" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="43dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.41"
+            android:text="00/00/00"
+            android:textAlignment="center" />
+
+        <Button
+            android:id="@+id/button7"
+            android:layout_width="26dp"
+            android:onClick="showDatePickerDialog"
+            android:layout_height="20dp"
+            android:layout_weight="0.18"
+            android:background="@drawable/celndr" />
+
+    </LinearLayout>
+
+    <TextView
+
+        android:paddingLeft="20dp"
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="22dp"
+        android:text="Group Trip/Activity will last"
+        android:layout_below="@+id/linearLayout5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinner6"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="229dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:text="Number Of Group members" />
+
+        <Spinner
+            android:id="@+id/spinner8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:entries="@array/unlimted"
+            android:paddingTop="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinner6"
+        android:layout_marginTop="59dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout8">
+
+        <TextView
+            android:id="@+id/textView26"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.51"
+            android:text="Set Group leaders" />
+
+        <Button
+
+            android:id="@+id/button8"
+            android:layout_width="81dp"
+            android:layout_height="17dp"
+            android:background="@color/colorWhite"
+            android:textColor="@color/colorGreen"
+            android:text="Add more" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout8"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout9">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:padding="5dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/hosen_profile"
+            android:layout_weight="0.10" />
+
+        <TextView
+            android:paddingTop="25dp"
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/linearLayout8"
+            android:layout_marginLeft="7dp"
+            android:layout_toEndOf="@+id/snapGroupTitle"
+            android:layout_toRightOf="@+id/snapGroupTitle"
+            android:layout_weight="0.78"
+            android:text="David Marcus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout9"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout10">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="62dp"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="0.07"
+            android:padding="5dp"
+            app:srcCompat="@drawable/hosen_profile" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_marginLeft="7dp"
+            android:paddingTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.56"
+            android:text="Hosen Jaber" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="10dp"
+        android:text="Set Group Ass"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/linearLayout10"
+        android:layout_alignLeft="@+id/spinner7"
+        android:layout_alignStart="@+id/spinner7" />
+
+    <ListView
+        android:id="@+id/listAssistants"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView30"
+        android:layout_alignLeft="@+id/textView30"
+        android:layout_alignStart="@+id/textView30"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="23dp"
+        android:layout_above="@+id/textView9"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+       />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        android:text="Help me to promote my group"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/textView30"
+        android:layout_alignStart="@+id/textView30" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="81dp"
+        android:layout_height="17dp"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorGreen"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView9"
+        android:text="Select" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="81dp"
+        android:background="@color/colorWhite"
+        android:textColor="@color/colorGreen"
+        android:layout_height="17dp"
+        android:text="Add more"
+        android:layout_above="@+id/listAssistants"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

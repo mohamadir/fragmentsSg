@@ -17,4 +17,5 @@
         <item name="colorControlActivated">#fff</item> <!-- activated color change as you wish -->
         <item name="android:textColor">#FFFF3F3C</item> <!-- checkbox text color -->
     </style>
+
 </resources>

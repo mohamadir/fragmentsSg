@@ -8,8 +8,8 @@
     android:orientation="vertical"
 
 
-    tools:context="com.example.hosen.myapplication.MainActivity"
-    android:weightSum="1">
+    tools:context="com.example.hosen.myapplication.Activities.MainActivity"
+    android:weightSum="7">
 
     <RelativeLayout
         android:id="@+id/linearLayout4"
@@ -18,7 +18,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_weight="0.20"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <Button
@@ -47,21 +47,22 @@
 
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.example.hosen.myapplication.BackgroundFragment"
+        android:name="com.example.hosen.myapplication.Fragments.BackgroundFragment"
         android:layout_width="match_parent"
         android:layout_height="469dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_weight="0.88"
+        android:layout_weight="5"
         tools:layout="@layout/fragment_background"></fragment>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="#ff6600"
         android:orientation="horizontal"
-        android:weightSum="5">
+        android:layout_weight="0.1"
+        android:weightSum="7">
 
         <Button
             android:id="@+id/button15"

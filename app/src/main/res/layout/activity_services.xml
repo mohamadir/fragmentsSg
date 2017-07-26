@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hosen.myapplication.ServicesActivity">
+    tools:context="com.example.hosen.myapplication.Activities.ServicesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -154,7 +154,7 @@
                 android:layout_weight="2.69">
 
                 <Button
-                    android:id="@+id/button18"
+                    android:id="@+id/createNewGroupBt"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_marginLeft="10dp"

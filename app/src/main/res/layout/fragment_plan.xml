@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hosen.myapplication.PlanFragment">
+    tools:context="Fragments.PlanFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -26,7 +26,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Sani zohar Group"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,25 +38,17 @@
                 android:layout_weight="1"
                 android:text="Trip Plan"
                 android:textColor="@color/colorOrange"
-                android:textSize="14dp"
+                android:textSize="16dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
         <ExpandableListView
             android:id="@+id/lvExp1"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:layout_above="@+id/button2"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/textView2"
-            android:layout_marginTop="10dp"
-            android:groupIndicator="@null" />
-
-        <Button
-            android:id="@+id/showMapBT"
-            android:layout_width="match_parent"
+            android:groupIndicator="@null"
             android:layout_height="wrap_content"
-            android:text="show in map " />
+            android:layout_above="@+id/button2"
+            android:layout_below="@+id/textView2"
+            android:layout_marginTop="10dp" />
 
     </LinearLayout></FrameLayout>

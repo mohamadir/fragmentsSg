@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:background="@color/colorOrange">
+        android:background="@drawable/layout_border">
 
         <LinearLayout
             android:id="@+id/group_name_layout"

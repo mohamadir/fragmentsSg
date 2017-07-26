@@ -1,9 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Snap Group</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -11,6 +10,8 @@
         Create or join group
 with all the services
 needed"
+
+
     </string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -36,6 +37,53 @@ needed"
         <item>Duration</item>
         <item>Ratings</item>
         <item>Cost</item>
+    </string-array>
+
+    <string-array name="tourguide">
+        <item>Local origin</item>
+        <item>Destination</item>
+    </string-array>
+
+    <string-array name="education">
+        <item>Uneducated</item>
+        <item>profession</item>
+        <item>BA</item>
+        <item>Master</item>
+        <item>Doctor</item>
+    </string-array>
+
+    <!-- Flights Array -->
+    <string-array name="aaa">
+        <item>London</item>
+        <item>United State</item>
+        <item>Japan</item>
+        <item>Marroco</item>
+    </string-array>
+
+    <string-array name="days">
+        <item>Zero Days</item>
+        <item>1day</item>
+        <item>2day</item>
+        <item>3day</item>
+        <item>4day</item>
+    </string-array>
+
+
+    <string-array name="unlimted">
+        <item>Unlimted</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+
+    </string-array>
+    <string-array name="hours">
+        <item>1 Hours</item>
+        <item>">2 Hours</item>
+        <item>3 Hours</item>
+        <item>4 Hours</item>
+        <item>5 Hours</item>
+        <item>6 Hours</item>
     </string-array>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_maps">Map</string>

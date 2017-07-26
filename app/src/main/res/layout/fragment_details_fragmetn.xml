@@ -5,7 +5,10 @@
     android:id="@+id/fragment2"
     android:tag="f1"
     android:layout_height="match_parent"
-    tools:context="com.example.hosen.myapplication.DetailsFragmetn">
+    tools:context="com.example.hosen.myapplication.Fragments.DetailsFragment">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -682,5 +685,5 @@
         </LinearLayout>
 
     </RelativeLayout>
-
+</ScrollView>
 </FrameLayout>

@@ -10,7 +10,7 @@
         android:id="@+id/login_title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="105dp"
         android:gravity="center_horizontal"
         android:text="SnapGroup User Login"
         android:textColor="@color/colorWhite"
@@ -24,13 +24,13 @@
         android:id="@+id/relativeLayout2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/user_profile_photo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="34dp"
         android:background="@drawable/login_boarder"
         android:elevation="4dp"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="20dp"
+        android:layout_below="@+id/login_title"
+        android:layout_centerHorizontal="true">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/userNameEt"
+                    android:id="@+id/signInUsernameEt"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/lock"
@@ -58,14 +58,14 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/passwordEt"
+                    android:id="@+id/signInPasswordEt"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:drawableLeft="@drawable/lock"
                     android:drawableTint="@color/green"
                     android:hint=" Password"
-                    android:inputType="numberPassword"
+                    android:inputType="textPassword"
                     android:singleLine="true" />
             </android.support.design.widget.TextInputLayout>
 
@@ -78,7 +78,7 @@
 
 
             <Button
-                android:id="@+id/signInBt"
+                android:id="@+id/signInVolleyBt"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="22dp"
@@ -100,16 +100,5 @@
         </LinearLayout>
 
     </RelativeLayout>
-
-    <ImageButton
-        android:id="@+id/user_profile_photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/user_profile_image_background"
-        android:elevation="4dp"
-        android:src="@drawable/businessman"
-        android:layout_below="@+id/login_title"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
