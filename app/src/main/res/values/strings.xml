@@ -32,6 +32,47 @@ needed"
         <item>Tourist Agency</item>
     </string-array>
 
+
+    <string-array name="spiner_visabl">
+        <item>Hidden</item>
+        <item>Visible</item>
+    </string-array>
+
+    <string-array name="evreone">
+        <item>EveryOne</item>
+        <item>Spesific perople</item>
+    </string-array>
+
+
+    <string-array name="multi">
+        <item> Multi-origins </item>
+        <item>London</item>
+        <item>Berlin</item>
+        <item>Rome</item>
+    </string-array>
+
+    <string-array name="phiscal">
+        <item> Oldes </item>
+        <item>Disabled</item>
+        <item>children</item>
+        <item>Parents</item>
+    </string-array>
+    <string-array name="nature">
+        <item> Pleasure </item>
+        <item>Religion</item>
+        <item>Bussines</item>
+        <item>whatever</item>
+    </string-array>
+    <string-array name="languag">
+        <item> Multi-Language </item>
+        <item>Heberew</item>
+        <item>Arabic</item>
+        <item>English</item>
+        <item>Franch</item>
+    </string-array>
+
+
+
     <string-array name="sort_arrays">
         <item>Sort by</item>
         <item>Duration</item>

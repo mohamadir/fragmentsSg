@@ -6,6 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Activities.NewGroupServicesActivity">
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -70,19 +73,16 @@
             android:progress="60" />
 
 
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="508dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
+                android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/linearLayout3"
-                android:layout_marginBottom="487dp"
+                android:layout_alignParentTop="true"
                 android:orientation="horizontal">
 
                 <TextView
@@ -94,6 +94,7 @@
                     android:layout_weight="1"
                     android:text="Select Services"
                     android:textAllCaps="false"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -105,7 +106,8 @@
                     android:layout_weight="0.64"
                     android:gravity="right"
                     android:text="Select All"
-                    android:textColor="@color/colorGreen" />
+                    android:textColor="@color/colorGreen"
+                    android:textSize="16dp" />
             </LinearLayout>
 
 
@@ -115,9 +117,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/linearLayout3"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="40dp"
                 android:orientation="vertical"
                 android:weightSum="7">
 
@@ -157,6 +158,7 @@
                         android:text="Select"
 
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -197,6 +199,7 @@
                         android:text="Select"
 
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -236,6 +239,7 @@
                         android:gravity="right"
                         android:text="Select"
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -275,6 +279,7 @@
                         android:gravity="right"
                         android:text="Select"
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -314,6 +319,7 @@
                         android:gravity="right"
                         android:text="Select"
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -353,6 +359,7 @@
                         android:gravity="right"
                         android:text="Select"
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -391,6 +398,7 @@
                         android:gravity="right"
                         android:text="Select"
                         android:textColor="@color/colorGreen"
+                        android:textSize="16dp"
                         android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
@@ -399,17 +407,21 @@
                 android:id="@+id/linearLayout18"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/linearLayout15"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="34dp"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:weightSum="2"
+                android:layout_alignParentBottom="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/linearLayout23"
+                    android:layout_marginTop="17dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="horizontal">
@@ -457,6 +469,7 @@
                     android:layout_height="0dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
+
                     android:orientation="horizontal">
 
                     <TextView
@@ -496,17 +509,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/linearLayout18"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/linearLayout15"
-                android:layout_toStartOf="@+id/snapGroupTitle"
-                android:orientation="horizontal">
-
-            </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
+    </ScrollView>>
 </RelativeLayout>

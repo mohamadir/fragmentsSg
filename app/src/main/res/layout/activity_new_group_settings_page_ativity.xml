@@ -8,15 +8,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:layout_weight="2" />
+
+    </LinearLayout>
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="7"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="7dp">
+        android:layout_marginBottom="7dp"
+        android:orientation="vertical"
+        android:weightSum="7"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <LinearLayout
             android:id="@+id/ln2"
@@ -70,20 +90,20 @@
         <ProgressBar
             android:id="@+id/progressBar4"
 
-            android:progressDrawable="@drawable/custom_progressbar"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-            android:progress="10" />
+
+            android:progress="10"
+            android:progressDrawable="@drawable/custom_progressbar" />
 
         <LinearLayout
             android:id="@+id/ln1"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_marginLeft="20dp"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:weightSum="3">
 
@@ -92,55 +112,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:weightSum="2"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/textView53"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
                     android:layout_weight="1"
-                    android:typeface="sans"
+                    android:gravity="bottom"
+                    android:text="Group InApp Privacy"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:gravity="bottom"
-                    android:layout_marginLeft="2dp"
-                    android:text="Group InApp Privacy" />
+                    android:typeface="sans" />
 
                 <TextView
                     android:id="@+id/textView44"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
                     android:gravity="bottom"
-                    android:textSize="10sp"
+                    android:text="Group listed on SnapGroup search result"
 
-                    android:text="Group listed on SnapGroup search result" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinner_visablty"
+                android:entries="@array/spiner_visabl"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
-                android:layout_weight="2"
-                />
+                android:layout_weight="2" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
-            android:weightSum="3"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
 
             <LinearLayout
-                android:layout_marginLeft="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
 
@@ -169,10 +189,10 @@
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/spiner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
+                android:entries="@array/spiner_visabl"
                 android:layout_marginTop="15dp"
                 android:layout_weight="2" />
 
@@ -180,12 +200,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_marginBottom="10dp"
             android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="262dp"
+                android:layout_width="246dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
@@ -214,14 +234,218 @@
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spinner8"
+                android:id="@+id/spinner_Join"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
+                android:entries="@array/evreone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/subjectsTv"
+                android:layout_width="239dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:gravity="bottom"
+                    android:text="Members Languages"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Select main members language"
+
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_language"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:entries="@array/languag" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/subjectsTv"
+                android:layout_width="224dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Members Origin"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Select members origin"
+
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spiner_orign"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="2"
+                android:entries="@array/multi" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/subjectsTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Members Physical"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Select members limitations"
+
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_physical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:entries="@array/phiscal"
+                android:layout_weight="2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/subjectsTv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textView53"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Group Nature"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:typeface="sans" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="Group listed on SnapGroup search result"
+
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spinner_nature"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:entries="@array/nature"
                 android:layout_weight="2" />
 
         </LinearLayout>
 
     </LinearLayout>
-
+</ScrollView>
 </RelativeLayout>
