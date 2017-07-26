@@ -53,7 +53,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_weight="5"
+        android:layout_weight="5.9"
         android:layout_marginBottom="2dp"
         tools:layout="@layout/fragment_background"></fragment>
 
@@ -61,13 +61,13 @@
         android:id="@+id/hSv"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
+        android:layout_weight="0.58"
         android:background="@color/orange"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="700dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
             android:background="#ff6600"
             android:orientation="horizontal"
             android:weightSum="7">
