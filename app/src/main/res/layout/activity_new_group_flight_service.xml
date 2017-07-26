@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activities.NewGroupFlightServiceActivity">
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -60,6 +64,7 @@
                 android:textColor="#fff"
                 android:textSize="20sp" />
         </LinearLayout>
+
         <ProgressBar
             android:id="@+id/progressBar6"
             style="?android:attr/progressBarStyleHorizontal"
@@ -68,10 +73,13 @@
             android:progressDrawable="@drawable/custom_progressbar"
             android:progress="30" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="185dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.57"
             android:layout_marginBottom="20dp"
             android:orientation="vertical"
@@ -207,8 +215,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="350dp"
                     android:orientation="horizontal">
 
                     <LinearLayout
@@ -280,5 +287,9 @@
 
             </LinearLayout>
         </LinearLayout>
+        </ScrollView>
+        <!--sdfsdf-->
     </LinearLayout>
+    </RelativeLayout>
+
 </RelativeLayout>

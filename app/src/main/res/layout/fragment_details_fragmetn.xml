@@ -167,81 +167,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView16"
-            android:weightSum="6"
-            android:gravity="center"
-            android:layout_alignStart="@+id/textView16"
-            android:layout_below="@+id/textView19"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true">
-
-            <Button
-                android:id="@+id/flyBtt"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="10dp"
-                android:layout_weight="0.30"
-                android:background="@drawable/aireplane_logo" />
-
-            <Button
-                android:id="@+id/button12"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-
-                android:layout_margin="20dp"
-
-                android:layout_weight="0"
-                android:background="@drawable/bed" />
-
-            <Button
-                android:id="@+id/button11"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="20dp"
-
-                android:layout_weight="0"
-                android:background="@drawable/bus1" />
-
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_margin="20dp"
-
-                android:layout_weight="0"
-                android:background="@drawable/location" />
-
-            <Button
-                android:id="@+id/button9"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-
-                android:layout_margin="20dp"
-
-
-                android:layout_weight="0"
-                android:background="@drawable/guide1" />
-
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="5dp"
-                android:padding="10dp"
-
-                android:layout_marginRight="10dp"
-                android:layout_weight="0"
-                android:background="@drawable/resturant" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -262,8 +187,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_height="86dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -311,7 +235,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="38dp"
+                    android:layout_height="54dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -323,7 +247,6 @@
                         android:layout_marginLeft="5dp"
                         android:layout_toEndOf="@+id/textView14"
                         android:layout_toRightOf="@+id/textView14"
-                        android:layout_weight="1"
 
                         android:text="Starging At" />
 
@@ -372,14 +295,82 @@
 
         </LinearLayout>
 
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:weightSum="6"
+            android:gravity="center"
+            android:layout_below="@+id/textView19"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+           >
+
+            <Button
+                android:id="@+id/flyBtt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/aireplane_logo" />
+
+            <Button
+                android:id="@+id/button12"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:layout_margin="20dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/bed" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/bus1" />
+
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="20dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/location" />
+
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+
+                android:layout_margin="20dp"
+
+
+                android:layout_weight="1"
+                android:background="@drawable/guide1" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+
+                android:layout_weight="1"
+                android:background="@drawable/resturant"
+                android:padding="10dp" />
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/linearLayout12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_below="@+id/linearLayout2"
-            android:layout_marginLeft="10dp"
             android:orientation="horizontal"
             android:weightSum="6">
 
@@ -587,19 +578,19 @@
                 android:id="@+id/graph3"
                 android:layout_marginTop="10dp"
                 android:layout_width="0dp"
-                android:layout_height="135dp"
+                android:layout_height="183dp"
                 android:layout_weight="1.06" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="0.94"
                 android:orientation="vertical"
                 android:weightSum="1">
 
                 <LinearLayout
                     android:layout_marginTop="10dp"
-                    android:layout_width="165dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="37dp"
                     android:layout_marginLeft="5dp"
                     android:orientation="horizontal"
@@ -635,11 +626,12 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="163dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="37dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
                     android:orientation="horizontal"
-                    android:weightSum="4"
-                    android:layout_marginLeft="5dp">
+                    android:weightSum="4">
 
                     <Button
                         android:id="@+id/button32"
@@ -672,13 +664,14 @@
 
                 <Button
                     android:id="@+id/button40"
-                    android:layout_width="162dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="34dp"
-                    android:textColor="@color/colorWhite"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/buttongreen"
-                    android:text="Join Group" />
+                    android:gravity="center"
+                    android:text="Join Group"
+                    android:textColor="@color/colorWhite" />
 
             </LinearLayout>
 
