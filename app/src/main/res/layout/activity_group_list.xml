@@ -67,13 +67,20 @@
             android:entries="@array/sort_arrays" />
     </LinearLayout>
 
-    <ListView
+    <com.twotoasters.jazzylistview.JazzyListView
         android:id="@+id/grouoLv"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:divider="@null"
+        android:dividerHeight="5dp"
+        android:scrollingCache="true"
+        app:effect="reverse_fly"
+        app:only_animate_new_items="false"
+        app:only_animate_fling="false"
+        app:max_velocity="0"
         android:layout_below="@+id/linearLayout" />
 
     <Button

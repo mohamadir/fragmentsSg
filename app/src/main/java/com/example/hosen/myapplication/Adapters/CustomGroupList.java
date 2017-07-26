@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +15,7 @@ import com.example.hosen.myapplication.R;
  * Created by snapgroup3 on 11/07/17.
  */
 
-public class CustomGroupList extends ArrayAdapter<String> {
+public class CustomGroupList extends  ArrayAdapter<String> {
 
     private final Activity context;
     private final String[] titleArray;

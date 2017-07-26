@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         docsBt=(Button)findViewById(R.id.docsBt);
         votesBt=(Button)findViewById(R.id.votesBt);
         chatBt=(Button)findViewById(R.id.chatBt);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
 
         intent = getIntent();

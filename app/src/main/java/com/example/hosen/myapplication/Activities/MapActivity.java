@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import Models.DayPLan;
+import com.example.hosen.myapplication.Models.DayPLan;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
      public  List<DayPLan> dayPlans=new ArrayList<DayPLan>();

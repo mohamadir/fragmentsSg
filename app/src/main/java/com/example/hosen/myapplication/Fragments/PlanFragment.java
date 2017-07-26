@@ -1,6 +1,8 @@
 package com.example.hosen.myapplication.Fragments;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
@@ -40,6 +42,7 @@ public class PlanFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     public String[] names;
     String st = " ";
+    public ProgressDialog pd;
     public static ArrayList<DayPlanInfo> dayPlanInfos;
     private String mJSONURLString = " http://www.mocky.io/v2/59704b73100000b90371d8c5";
     ExpandableListAdapter listAdapter;
@@ -86,6 +89,7 @@ public class PlanFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_plan, container, false);        // Inflate the layout for this fragment
         expListView = (ExpandableListView)view.findViewById(R.id.lvExp1);
         listDataHeader=new ArrayList<HeaderData>();
+        pd=new ProgressDialog(getActivity());
         /*mapBt=(Button)view.findViewById(R.id.showMapBT);
         mapBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +124,8 @@ public class PlanFragment extends Fragment {
         });*/
         //TODO
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        pd.setMessage("Just A while ...auto ");
+        pd.show();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 mJSONURLString,
@@ -146,11 +152,13 @@ public class PlanFragment extends Fragment {
                             }
                             Log.i("Hash",listDataHeader.size()+"");
                             //Log.i("aray",names.toString());
+                            pd.hide();
 
 
                         }catch (JSONException e){
                             e.printStackTrace();
                             Log.i("catch",e.getMessage().toString());
+                            pd.hide();
                         }
                         listAdapter.notifyDataSetChanged();
                     }
@@ -160,6 +168,7 @@ public class PlanFragment extends Fragment {
                     public void onErrorResponse(VolleyError error){
                         Log.i("listener",error.getMessage().toString());
                         // Do something when error occurred
+                        pd.hide();
                     }
                 }
         );

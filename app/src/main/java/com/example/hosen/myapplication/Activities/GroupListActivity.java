@@ -10,33 +10,45 @@ import android.widget.ListView;
 
 import com.example.hosen.myapplication.Adapters.CustomGroupList;
 import com.example.hosen.myapplication.R;
+import com.twotoasters.jazzylistview.JazzyHelper;
+import com.twotoasters.jazzylistview.JazzyListView;
 
 import java.security.acl.Group;
 
 public class GroupListActivity extends AppCompatActivity {
     // Array of strings...
-    String[] title = {"Saint Zohar Group", "West School", "University college of London", "Famillies and Children","Saint Zohar Group"};
+    String[] title = {"Saint Zohar Group", "West School", "University college of London", "Famillies and Children","Saint Zohar Group", "Famillies and Children","Saint Zohar Group","Saint Zohar Group", "Famillies and Children","Saint Zohar Group","Saint Zohar Group", "Famillies and Children","Saint Zohar Group"};
     Button signBt;
-    String[] reviews = {"12", "56", "78", "89","98"};
-    String[] rating = {"4", "5", "2", "3","4"};
-    Integer[] imageId = {R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img};
-    String[] destination = {"London to Israel", "London to Israel", "London to Israel", "London to Israel","London to Israel",};
-    String[] description = {"Visit the new land", "Visit the new land", "Visit the new land", "Visit the new land","Visit the new land"};
-    String[] strating_date = {"02/09", "07/08", "02/10", "06/02", "06/02"};
-    String[] trip_duration = {"5", "6", "7", "10", "10"};
+    String[] reviews = { "78", "89","98", "89","98", "89","98", "89","98", "89","98", "89","98"};
+    String[] rating = {"4", "5", "2", "3","4", "3","4", "3","4", "3","4", "3","4"};
+    Integer[] imageId = {R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img};
+    String[] destination = {"London to Israel", "London to Israel", "London to Israel", "London to Israel","London to Israel", "London to Israel","London to Israel", "London to Israel","London to Israel", "London to Israel","London to Israel","London to Israel","London to Israel"};
+    String[] description = {"Visit the new land", "Visit the new land", "Visit the new land", "Visit the new land","Visit the new land", "Visit the new land","Visit the new land", "Visit the new land","Visit the new land", "Visit the new land","Visit the new land","Visit the new land","Visit the new land"};
+    String[] strating_date = {"02/09", "07/08", "02/10", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02"};
+    String[] trip_duration = {"5", "6", "7", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"};
 
-    String[] member_count = {"80", "70" ,"60", "95", "95"};
+    String[] member_count = {"80", "70" ,"60", "95", "95", "95", "95", "95", "95", "95", "95", "95", "95"};
 
     String[][] services = {{"true", "true", "true", "false", "false", "false"},
                            {"true", "true", "true", "false", "false", "false"},
-                           {"true", "true", "true", "fale", "false"},
-                           {"true", "true", "true", "false", "false", "false"}};
+            {"true", "true", "true", "fale", "false"},
+            {"true", "true", "true", "false", "false", "false"},
+            {"true", "true", "true", "fale", "false"},
+            {"true", "true", "true", "false", "false", "false"},
+            {"true", "true", "true", "fale", "false"},
+            {"true", "true", "true", "false", "false", "false"},
+            {"true", "true", "true", "fale", "false"},
+            {"true", "true", "true", "false", "false", "false"}};
 
     String[] time_left = {"12 Days 08:14", "12 Days 08:14",
                           "12 Days 08:14", "12 Days 08:14",
-                          "12 Days 08:14"};
+            "12 Days 08:14", "12 Days 08:14",
+            "12 Days 08:14", "12 Days 08:14",
+            "12 Days 08:14", "12 Days 08:14",
+            "12 Days 08:14", "12 Days 08:14",
+            "12 Days 08:14"};
 
-    String[] price = {"500", "250", "190", "560", "560"};
+    String[] price = {"500", "250", "190", "560", "560", "560", "560", "560", "560", "560", "560", "560", "560"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +77,7 @@ public class GroupListActivity extends AppCompatActivity {
                 price
         );
         // Get the List View form the layout
-        ListView listView = (ListView) findViewById(R.id.grouoLv);
+        JazzyListView listView = (JazzyListView) findViewById(R.id.grouoLv);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -75,7 +87,11 @@ public class GroupListActivity extends AppCompatActivity {
         });
         // Set the adapter to the list
         listView.setAdapter(adapter);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        /*listView.setTransitionEffect(JazzyHelper.TWIRL);
+        listView.setTranscriptMode(JazzyHelper.CARDS);*/
+        listView.setTransitionEffect(JazzyHelper.ZIPPER);
+        listView.setScrollBarFadeDuration(100);
+        //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
     }
 

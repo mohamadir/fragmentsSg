@@ -53,7 +53,8 @@
         <activity android:name=".Activities.NewGroupTourGuideActivity" />
         <activity android:name=".Activities.NewGroupProfile2Activity" />
         <activity android:name=".Activities.NewGroupServicesActivity" />
-        <activity android:name=".Activities.NewGroupTransportationActivity"></activity>
+        <activity android:name=".Activities.NewGroupTransportationActivity" />
+        <activity android:name=".Activities.AutoCompleteActivity"></activity>
     </application>
 
 </manifest>

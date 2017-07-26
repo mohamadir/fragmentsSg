@@ -60,6 +60,22 @@ needed"
         <item>Marroco</item>
     </string-array>
 
+    <string-array name="countries">
+        <item>London</item>
+        <item>United State</item>
+        <item>Japan</item>
+        <item>Marroco</item>
+        <item>Israel</item>
+        <item>New York</item>
+        <item>Narwege</item>
+        <item>Netherlands</item>
+        <item>Hon kong</item>
+        <item>Hawai</item>
+        <item>Hamalay</item>
+        <item>Italy</item>
+    </string-array>
+
+
     <string-array name="days">
         <item>Zero Days</item>
         <item>1day</item>

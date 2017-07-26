@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 import com.example.hosen.myapplication.Adapters.PaymentsAdapter;
 import com.example.hosen.myapplication.R;
-import Models.paymentItem;
+import com.example.hosen.myapplication.Models.paymentItem;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;

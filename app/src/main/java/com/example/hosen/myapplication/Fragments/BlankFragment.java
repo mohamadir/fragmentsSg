@@ -8,17 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.hosen.myapplication.Adapters.PaymentsAdapter;
 import com.example.hosen.myapplication.R;
-import Models.paymentItem;
+import com.example.hosen.myapplication.Models.paymentItem;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.twotoasters.jazzylistview.JazzyHelper;
+import com.twotoasters.jazzylistview.JazzyListView;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class BlankFragment extends Fragment {
@@ -26,7 +28,7 @@ public class BlankFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    ListView paymentsLv;
+    JazzyListView paymentsLv;
     ArrayList<paymentItem> paymentArray = new ArrayList<paymentItem>();
     LineGraphSeries<DataPoint> series;
 
@@ -35,8 +37,9 @@ public class BlankFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-
+    private static final String KEY_TRANSITION_EFFECT = "transition_effect";
+    private Map<String, Integer> mEffectMap;
+    private int mCurrentTransitionEffect = JazzyHelper.HELIX;
     public BlankFragment() {
         super();
         // Required empty public constructor
@@ -81,9 +84,19 @@ public class BlankFragment extends Fragment {
         View  view= inflater.inflate(R.layout.fragment_blank, container, false);
 
         // what should be in onCreate
-        paymentsLv=(ListView)view.findViewById(R.id.paymentsLv);
+        paymentsLv=(JazzyListView) view.findViewById(R.id.paymentsLv);
         //String type, String price, String cardStatus, String cardNumber
         paymentArray.add(new paymentItem("Flight","550","Card","**4522"));
+        paymentArray.add(new paymentItem("Hotels","360","Card","**4522"));
+        paymentArray.add(new paymentItem("Tour Guide","80","None",""));
+        paymentArray.add(new paymentItem("Tranpotations","55","None",""));
+        paymentArray.add(new paymentItem("Resturants","110","None",""));
+        paymentArray.add(new paymentItem("PLaces","45","None",""));
+        paymentArray.add(new paymentItem("Hotels","360","Card","**4522"));
+        paymentArray.add(new paymentItem("Tour Guide","80","None",""));
+        paymentArray.add(new paymentItem("Tranpotations","55","None",""));
+        paymentArray.add(new paymentItem("Resturants","110","None",""));
+        paymentArray.add(new paymentItem("PLaces","45","None",""));
         paymentArray.add(new paymentItem("Hotels","360","Card","**4522"));
         paymentArray.add(new paymentItem("Tour Guide","80","None",""));
         paymentArray.add(new paymentItem("Tranpotations","55","None",""));
@@ -105,7 +118,19 @@ public class BlankFragment extends Fragment {
             }
         });
         PaymentsAdapter adapter = new PaymentsAdapter(getActivity(), paymentArray);
+
+        if (savedInstanceState != null) {
+            mCurrentTransitionEffect = savedInstanceState.getInt(KEY_TRANSITION_EFFECT, JazzyHelper.HELIX);
+            setupJazziness(mCurrentTransitionEffect);
+            Log.i("jazzz","im here");
+        }
+       /// mCurrentTransitionEffect = savedInstanceState.getInt(KEY_TRANSITION_EFFECT, JazzyHelper.HELIX);
+
+        Log.i("jazzz","im here2");
+
         paymentsLv.setAdapter(adapter);
+        setupJazziness(JazzyHelper.WAVE);
+
         double x,y;
         x=-5.0;
         GraphView graphView = (GraphView)view.findViewById(R.id.graph);
@@ -122,5 +147,8 @@ public class BlankFragment extends Fragment {
         return view;
     }
 
-
+    private void setupJazziness(int effect) {
+        mCurrentTransitionEffect = effect;
+        paymentsLv.setTransitionEffect(effect);
+    }
 }

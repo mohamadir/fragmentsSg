@@ -13,7 +13,7 @@ import com.example.hosen.myapplication.R;
 
 import java.util.ArrayList;
 
-import Models.paymentItem;
+import com.example.hosen.myapplication.Models.paymentItem;
 
 /**
  * Created by snapgroup2 on 19/07/17.
