@@ -43,7 +43,7 @@ public class VoteExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int i, int i1) {
-        return listHashMap.get(listDataHeader.get(i)).get(i1); // i == Group item, i1 == Child item
+        return listHashMap.get(listDataHeader.get(i)).get(i1); // i == GroupInList item, i1 == Child item
     }
 
     @Override

@@ -39,9 +39,9 @@ public class MembersFragment extends Fragment {
 
     //here what the kind of tthe memebrr
     String[] itemname ={
-            "    Group Assistant",
-            "    Group Assistant",
-            "    Group Assistant",
+            "    GroupInList Assistant",
+            "    GroupInList Assistant",
+            "    GroupInList Assistant",
     };
     String[] lastName ={
             "    Anglena",

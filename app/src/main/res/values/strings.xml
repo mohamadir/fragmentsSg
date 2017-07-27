@@ -24,7 +24,7 @@ needed"
         completions."
     </string>
 
-    <!-- Strings related to Group List -->
+    <!-- Strings related to GroupInList List -->
     <string-array name="created_arrays">
         <item>Create by</item>
         <item>Groups Leaders</item>

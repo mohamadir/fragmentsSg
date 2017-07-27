@@ -53,7 +53,7 @@ public class ChatFragment extends Fragment {
         String desired_string = arguments.getString("aaa");
         Log.i("hihihi",desired_string);*/
         View view= inflater.inflate(R.layout.fragment_chat, container, false);
-        // Create the Group List Adapter
+        // Create the GroupInList List Adapter
         ChatListAdapter chatListAdapter = new ChatListAdapter(getActivity(), chat_array);
        /* if(getArguments().getString("CID222")!=null){
           String strtext = getArguments().getString("CID222");

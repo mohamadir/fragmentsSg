@@ -1,4 +1,4 @@
-package com.example.hosen.myapplication.Models;
+package com.example.hosen.myapplication.Classes;
 
 /**
  * Created by snapgroup2 on 18/07/17.

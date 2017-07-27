@@ -3,21 +3,38 @@ package com.example.hosen.myapplication.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.hosen.myapplication.Adapters.CustomGroupList;
+import com.example.hosen.myapplication.Classes.DayPLan;
+import com.example.hosen.myapplication.Classes.MySingleton;
+import com.example.hosen.myapplication.Models.GroupInList;
 import com.example.hosen.myapplication.R;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.security.acl.Group;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupListActivity extends AppCompatActivity {
     // Array of strings...
-    String[] title = {"Saint Zohar Group", "West School", "University college of London", "Famillies and Children","Saint Zohar Group", "Famillies and Children","Saint Zohar Group","Saint Zohar Group", "Famillies and Children","Saint Zohar Group","Saint Zohar Group", "Famillies and Children","Saint Zohar Group"};
+
+    public List<GroupInList> groupList;
+
+    String[] title = {"Saint Zohar GroupInList", "West School", "University college of London", "Famillies and Children","Saint Zohar GroupInList", "Famillies and Children","Saint Zohar GroupInList","Saint Zohar GroupInList", "Famillies and Children","Saint Zohar GroupInList","Saint Zohar GroupInList", "Famillies and Children","Saint Zohar GroupInList"};
     Button signBt;
     String[] reviews = { "78", "89","98", "89","98", "89","98", "89","98", "89","98", "89","98"};
     String[] rating = {"4", "5", "2", "3","4", "3","4", "3","4", "3","4", "3","4"};
@@ -54,6 +71,9 @@ public class GroupListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_list);
         signBt=(Button )findViewById(R.id.groupLIstSignInBt);
+        groupList=new ArrayList<GroupInList>();
+
+        getGroupsRequests();
         signBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +81,7 @@ public class GroupListActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        // Create the Group List Adapter
+        // Create the GroupInList List Adapter
         CustomGroupList adapter = new CustomGroupList(this,
                 title,
                 reviews,
@@ -99,5 +119,50 @@ public class GroupListActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent i= new Intent(GroupListActivity.this,ServicesActivity.class);
         startActivity(i);
+    }
+    public void getGroupsRequests(){
+        String url = "http://172.104.150.56/api/groups";
+
+
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+    //int _id, String title, String descritption, String image, String origin, String destination, String start_date, String end_date
+                    Log.i("groupsGet","kkkkkkkkkkkkk"+response+"");
+                    JSONArray groupsArray = response;
+                    for(int i=0;i<groupsArray.length();i++)
+                    {
+                        try {
+                            groupList.add(i, new GroupInList(Integer.parseInt(
+                                    groupsArray.getJSONObject(i).getString("id").toString()),// group ID
+                                    groupsArray.getJSONObject(i).getString("title").toString(),// Group Title
+                                    groupsArray.getJSONObject(i).getString("description").toString(), // Group description
+                                    groupsArray.getJSONObject(i).getString("image").toString(),// Group image
+                                    groupsArray.getJSONObject(i).getString("origin").toString(),// Group origin
+                                    groupsArray.getJSONObject(i).getString("destination").toString(),// Group destination
+                                    groupsArray.getJSONObject(i).getString("start_date").toString(),// Group start date
+                                    groupsArray.getJSONObject(i).getString("end_date").toString()));// Group end date
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    Log.i("Length",groupList.get(3).getOrigin().toString());
+
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("groupsGet",error.getMessage().toString()+" ");
+                    }
+
+                });
+
+        MySingleton.getInstance(GroupListActivity.this).addToRequestQueue(jsObjRequest);
+
     }
 }
