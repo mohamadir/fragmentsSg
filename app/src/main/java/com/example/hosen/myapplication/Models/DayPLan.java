@@ -1,6 +1,4 @@
-package Models;
-
-import android.util.Log;
+package com.example.hosen.myapplication.Models;
 
 /**
  * Created by snapgroup2 on 18/07/17.
