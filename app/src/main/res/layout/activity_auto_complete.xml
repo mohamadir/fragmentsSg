@@ -34,8 +34,6 @@
         android:id="@+id/textView74"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/autoCompleteTextView2"
-        android:layout_alignBottom="@+id/autoCompleteTextView2"
         android:layout_alignLeft="@+id/textView75"
         android:layout_alignStart="@+id/textView75"
         android:text="To" />

@@ -501,7 +501,6 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/linearLayout15"
-                android:layout_toStartOf="@+id/snapGroupTitle"
                 android:orientation="horizontal">
 
             </LinearLayout>

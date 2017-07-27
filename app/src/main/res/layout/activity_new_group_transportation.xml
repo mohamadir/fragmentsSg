@@ -267,13 +267,12 @@
             android:layout_weight="0.38" />
 
         <TextView
-            android:id="@+id/textView43"
+            android:id="@+id/textView432"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="0.41"
             android:text="(6 Days, 50 Members)"
-            android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/colorGreen"
             android:textSize="17dp"

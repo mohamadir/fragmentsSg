@@ -7,14 +7,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.hosen.myapplication.Adapters.CustomGroupList;
-import com.example.hosen.myapplication.Classes.DayPLan;
+import com.example.hosen.myapplication.Adapters.GroupLIstAdapter;
+import com.example.hosen.myapplication.Adapters.GroupLIstAdapter2;
 import com.example.hosen.myapplication.Classes.MySingleton;
 import com.example.hosen.myapplication.Models.GroupInList;
 import com.example.hosen.myapplication.R;
@@ -23,57 +22,22 @@ import com.twotoasters.jazzylistview.JazzyListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GroupListActivity extends AppCompatActivity {
     // Array of strings...
 
-    public List<GroupInList> groupList;
-
-    String[] title = {"Saint Zohar GroupInList", "West School", "University college of London", "Famillies and Children","Saint Zohar GroupInList", "Famillies and Children","Saint Zohar GroupInList","Saint Zohar GroupInList", "Famillies and Children","Saint Zohar GroupInList","Saint Zohar GroupInList", "Famillies and Children","Saint Zohar GroupInList"};
+    public ArrayList<GroupInList> groupList;
+    JazzyListView listView;
     Button signBt;
-    String[] reviews = { "78", "89","98", "89","98", "89","98", "89","98", "89","98", "89","98"};
-    String[] rating = {"4", "5", "2", "3","4", "3","4", "3","4", "3","4", "3","4"};
-    Integer[] imageId = {R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img, R.drawable.img};
-    String[] destination = {"London to Israel", "London to Israel", "London to Israel", "London to Israel","London to Israel", "London to Israel","London to Israel", "London to Israel","London to Israel", "London to Israel","London to Israel","London to Israel","London to Israel"};
-    String[] description = {"Visit the new land", "Visit the new land", "Visit the new land", "Visit the new land","Visit the new land", "Visit the new land","Visit the new land", "Visit the new land","Visit the new land", "Visit the new land","Visit the new land","Visit the new land","Visit the new land"};
-    String[] strating_date = {"02/09", "07/08", "02/10", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02", "06/02"};
-    String[] trip_duration = {"5", "6", "7", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10"};
-
-    String[] member_count = {"80", "70" ,"60", "95", "95", "95", "95", "95", "95", "95", "95", "95", "95"};
-
-    String[][] services = {{"true", "true", "true", "false", "false", "false"},
-                           {"true", "true", "true", "false", "false", "false"},
-            {"true", "true", "true", "fale", "false"},
-            {"true", "true", "true", "false", "false", "false"},
-            {"true", "true", "true", "fale", "false"},
-            {"true", "true", "true", "false", "false", "false"},
-            {"true", "true", "true", "fale", "false"},
-            {"true", "true", "true", "false", "false", "false"},
-            {"true", "true", "true", "fale", "false"},
-            {"true", "true", "true", "false", "false", "false"}};
-
-    String[] time_left = {"12 Days 08:14", "12 Days 08:14",
-                          "12 Days 08:14", "12 Days 08:14",
-            "12 Days 08:14", "12 Days 08:14",
-            "12 Days 08:14", "12 Days 08:14",
-            "12 Days 08:14", "12 Days 08:14",
-            "12 Days 08:14", "12 Days 08:14",
-            "12 Days 08:14"};
-
-    String[] price = {"500", "250", "190", "560", "560", "560", "560", "560", "560", "560", "560", "560", "560"};
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_list);
         signBt=(Button )findViewById(R.id.groupLIstSignInBt);
         groupList=new ArrayList<GroupInList>();
-
-        getGroupsRequests();
         signBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,22 +46,8 @@ public class GroupListActivity extends AppCompatActivity {
             }
         });
         // Create the GroupInList List Adapter
-        CustomGroupList adapter = new CustomGroupList(this,
-                title,
-                reviews,
-                rating,
-                imageId,
-                destination,
-                description,
-                strating_date,
-                trip_duration,
-                member_count,
-                services,
-                time_left,
-                price
-        );
-        // Get the List View form the layout
-        JazzyListView listView = (JazzyListView) findViewById(R.id.grouoLv);
+
+        listView = (JazzyListView) findViewById(R.id.grouoLv);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -105,12 +55,13 @@ public class GroupListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // Set the adapter to the list
-        listView.setAdapter(adapter);
-        /*listView.setTransitionEffect(JazzyHelper.TWIRL);
-        listView.setTranscriptMode(JazzyHelper.CARDS);*/
-        listView.setTransitionEffect(JazzyHelper.ZIPPER);
-        listView.setScrollBarFadeDuration(100);
+        getGroupsRequests();
+        Log.i("im here","11111"+groupList.size());
+        /*
+        *
+        * Copy here
+        *
+        * */
         //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
     }
@@ -150,7 +101,15 @@ public class GroupListActivity extends AppCompatActivity {
                         }
                     }
                     Log.i("Length",groupList.get(3).getOrigin().toString());
+                        GroupLIstAdapter2 glAdapter= new GroupLIstAdapter2(GroupListActivity.this,groupList);
+                        // Set the adapter to the list
+                        listView.setAdapter(glAdapter);
+        /*listView.setTransitionEffect(JazzyHelper.TWIRL);
+        listView.setTranscriptMode(JazzyHelper.CARDS);*/
+                     // a7la    listView.setTransitionEffect(JazzyHelper.ZIPPER);
+                     listView.setTransitionEffect(JazzyHelper.WAVE);
 
+                        listView.setScrollBarFadeDuration(100);
 
                     }
                 }, new Response.ErrorListener() {
