@@ -69,18 +69,6 @@ public class GroupLIstAdapter2 extends BaseAdapter {
 
         }
 
-         /*   try {
-                URL imageURl = new URL(grouplist.get(position).getImage());
-                Log.i("imageUrl",imageURl.toString()+"");
-                Bitmap groupImage = BitmapFactory.decodeStream(imageURl.openConnection().getInputStream());
-                viewHolder.groupIv.setImageBitmap(groupImage);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }*/
-
-
 
         Picasso.with(context).load(grouplist.get(position).getImage()).into(viewHolder.groupIv);
         viewHolder.durationTv.setText("20");

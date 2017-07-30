@@ -1,17 +1,27 @@
 package com.example.hosen.myapplication.Fragments;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.hosen.myapplication.Activities.MainActivity;
 import com.example.hosen.myapplication.R;
-import com.jjoe64.graphview.GraphView;
+/*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.LineGraphSeries;*/
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class DetailsFragment extends Fragment {
@@ -19,7 +29,7 @@ public class DetailsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    LineGraphSeries<DataPoint> series;
+   // LineGraphSeries<DataPoint> series;
 
 
     // TODO: Rename and change types of parameters
@@ -55,7 +65,26 @@ public class DetailsFragment extends Fragment {
 
         View view= inflater.inflate(R.layout.fragment_details_fragmetn, container, false);
 
+        SharedPreferences settings=getActivity().getSharedPreferences("SnapGroup",MODE_PRIVATE);
+        String image = settings.getString("gImage"," asdasdasd");
+        String from = settings.getString("gOrigin"," asdasdasd");
+        String to = settings.getString("gDestination"," asdasdasd");
+        String description = settings.getString("gDescription"," asdasdasd");
+        String title = settings.getString("gTitle"," asdasdasd");
 
+        Log.i("GROOPY",image);
+
+        ImageView groupImage= (ImageView) view.findViewById(R.id.details_groupIv);
+        TextView fromTv=(TextView)view.findViewById(R.id.details_fromTv);
+        TextView toTv=(TextView)view.findViewById(R.id.detilas_toTv);
+        TextView descTv=(TextView)view.findViewById(R.id.details_descriptionTv);
+        TextView titleTv=(TextView)view.findViewById(R.id.details_titleTv);
+        fromTv.setText(from);
+        toTv.setText(to);
+        descTv.setText(description);
+        titleTv.setText(title);
+        Picasso.with(getActivity()).load(image).into(groupImage);
+/*
         double x,y;
         x=-5.0;
         GraphView graphView = (GraphView)view.findViewById(R.id.graph3);
@@ -68,7 +97,7 @@ public class DetailsFragment extends Fragment {
 
         }
 
-        graphView.addSeries(series);
+        graphView.addSeries(series);*/
 
        /* flyBt=(Button)view.findViewById(R.id.flyBtt);
         flyBt.setOnClickListener(new View.OnClickListener() {

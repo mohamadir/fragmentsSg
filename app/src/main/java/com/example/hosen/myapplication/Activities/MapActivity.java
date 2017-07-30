@@ -12,6 +12,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.hosen.myapplication.Classes.DayPLan;
 import com.example.hosen.myapplication.Classes.MySingleton;
 import com.example.hosen.myapplication.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,7 +39,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.example.hosen.myapplication.Classes.DayPLan;
 
 public class MapActivity extends FragmentActivity implements OnMapReadyCallback {
      public  List<DayPLan> dayPlans=new ArrayList<DayPLan>();

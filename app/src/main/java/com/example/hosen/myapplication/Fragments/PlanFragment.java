@@ -1,16 +1,12 @@
 package com.example.hosen.myapplication.Fragments;
 
 import android.app.Activity;
-import android.app.Dialog;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

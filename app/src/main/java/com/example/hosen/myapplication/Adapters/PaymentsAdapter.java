@@ -9,11 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.hosen.myapplication.Classes.paymentItem;
 import com.example.hosen.myapplication.R;
 
 import java.util.ArrayList;
 
-import com.example.hosen.myapplication.Classes.paymentItem;
 
 /**
  * Created by snapgroup2 on 19/07/17.

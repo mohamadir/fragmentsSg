@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.hosen.myapplication.Adapters.CustomListAdapter;
+import com.example.hosen.myapplication.Models.Member;
 import com.example.hosen.myapplication.R;
+import com.example.hosen.myapplication.Requests.MemberRequsts;
+import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -30,12 +46,16 @@ public class MembersFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     ListView list;
+    ArrayList<String> images_api;
+    ArrayList<Member> members_info;
     GridView androidGridView;
+    ArrayList<Integer> anArray;
+    String[] first_names;
+    String[] last_names;
+    public static ArrayList <Member> members;
+
     // set the images on the gradview for the members
-    Integer[] randImg={R.drawable.person1,R.drawable.person2,R.drawable.person3,R.drawable.person4,R.drawable.person5};
-    Integer[] imageIDs=new Integer[31];
 
     //here what the kind of tthe memebrr
     String[] itemname ={
@@ -60,9 +80,6 @@ public class MembersFragment extends Fragment {
 
 
 
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,64 +92,108 @@ public class MembersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_members, container, false);
         androidGridView = (GridView) view.findViewById(R.id.gridt);// her i use gridview for pictures for members....
-        androidGridView.setAdapter(new ImageAdapterGridView(getActivity()));
-
-        androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent,
-                                    View v, int position, long id) { // to  knnow which member i chose.
-                Toast.makeText(getActivity(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
-            }
-        });
-        CustomListAdapter adapter=new CustomListAdapter(getActivity(), itemname,lastName, imgid);
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         list=(ListView)view.findViewById(R.id.list); // her i use list view for the gruop leader and grop assistant
-        list.setAdapter(adapter);
         imageButton = (ImageView) view.findViewById(R.id.imageButton);
-        imageButton.setClickable(true);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        members_info = new ArrayList<Member>();
+        String urlGetMmebrs = "http://172.104.150.56/api/members";
+        images_api = new ArrayList<String>();
 
-                getFragmentManager().beginTransaction().replace(R.id.fragment1,new UserTeamLeaderFragment()).commit();
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                urlGetMmebrs,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try{
+                            for(int z= 0;z < response.length();z++){
+                                Log.i("hiHe" , "hi");
+                                // Loop through the array elements
+                                // Get current json object
+
+                                JSONObject tees = response.getJSONObject(z);
+                                JSONObject ProfileObejct = tees.getJSONObject("profile");
+                                //finalMembers.add(new Member(ProfileObejct.getString(("first_name")),ProfileObejct.getString(("last_name")),ProfileObejct.getString(("profile_image"))));
+                                images_api.add(ProfileObejct.getString(("profile_image")));
+                                members_info.add(new Member(ProfileObejct.getString(("first_name")), ProfileObejct.getString(("last_name")), ProfileObejct.getString(("profile_image"))));
 
 
-                Fragment fr=new UserTeamLeaderFragment();
-                FragmentManager fm=getFragmentManager();
-                android.app.FragmentTransaction ft=fm.beginTransaction();
-                Bundle args = new Bundle();
-                args.putString("CID222", "im vlaue from fragment");
-                fr.setArguments(args);
-                ft.replace(R.id.fragment1, fr);
-                ft.commit();
+                            }
+                            Log.i("size_img" , String.valueOf(images_api.size()));
+                            Log.i("size_img" , String.valueOf(members_info.get(4).getFirst_name()) + " last name " + String.valueOf(members_info.get(4).getLast_name()));
+                           // Log.i("member_info" , String.valueOf(members_info.size()));
 
-            }
-        });
+                            androidGridView.setAdapter(new ImageAdapterGridView(getActivity()));
+                            Log.i("problem5", " aaa");
+                            anArray = new ArrayList<Integer>();
+                            androidGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                public void onItemClick(AdapterView<?> parent, View v, int position, long id) { // to  knnow which member i chose.
+                                    Toast.makeText(getActivity(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
+                                    anArray.add(position,position);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                }
+                            });
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                // TODO Auto-generated method stub
-                String Slecteditem= itemname[+position];
-                Toast.makeText(getActivity(), Slecteditem, Toast.LENGTH_SHORT).show();
+                            CustomListAdapter adapter=new CustomListAdapter(getActivity(), itemname,lastName, imgid);
 
-            }
-        });
-        Random r = new Random();
-        int Low = 0;
-        int High = 4;
+                            list.setAdapter(adapter);
+                            imageButton.setClickable(true);
+                            imageButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
 
-        for(int i=0;i<31;i++)
-        {
-            int Result = r.nextInt(High-Low) + Low;
-            imageIDs[i]=randImg[Result];
-        }
+                                    getFragmentManager().beginTransaction().replace(R.id.fragment1,new UserTeamLeaderFragment()).commit();
+
+                                    Fragment fr=new UserTeamLeaderFragment();
+                                    FragmentManager fm=getFragmentManager();
+                                    android.app.FragmentTransaction ft=fm.beginTransaction();
+                                    Bundle args = new Bundle();
+                                    args.putString("CID222", "im vlaue from fragment");
+                                    fr.setArguments(args);
+                                    ft.replace(R.id.fragment1, fr);
+                                    ft.commit();
+
+                                }
+                            });
+
+                            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view,
+                                                        int position, long id) {
+                                    // TODO Auto-generated method stub
+                                    String Slecteditem= itemname[+position];
+                                    Toast.makeText(getActivity(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+
+
+                        }
+                        catch (JSONException e){
+                            e.printStackTrace();
+                            Log.i("catch",e.getMessage().toString());
+                        }
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error){
+                        Log.i("listener",error.getMessage().toString());
+                        // Do something when error occurred
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
+        Log.i("image_api" , String.valueOf(images_api.size()));
+
         return view;
     }
-
 
     public class ImageAdapterGridView extends BaseAdapter {
         /// class for the members photo i use gridview the extands from BaseAdapter
@@ -143,7 +204,7 @@ public class MembersFragment extends Fragment {
         }
 
         public int getCount() {
-            return imageIDs.length;
+            return images_api.size();
         }
 
         public Object getItem(int position) {
@@ -161,52 +222,17 @@ public class MembersFragment extends Fragment {
                 mImageView = new ImageView(mContext);
                 mImageView.setLayoutParams(new GridView.LayoutParams(130, 130));
                 mImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-
-                mImageView.setPadding(5,5, 5, 5);
+                mImageView.setPadding(2,2,2,2);
             } else {
                 mImageView = (ImageView) convertView; // set the photo to the xml.
             }
-            mImageView.setImageResource(imageIDs[position]); // set in which postion to put the photo
+            Picasso.with(mContext).load(images_api.get(position)).into(mImageView);
+            //mImageView.setImageResource(); // set in which postion to put the photo
             return mImageView;
         }
     }
 
 
-    public class CustomListAdapter extends ArrayAdapter<String> {
-        // class for Assistant group i use customlidtadapter  that extandsa from the adapter for the liostview
-        //
-        private final Activity context; // the activity/
-        private final String[] itemname; // names of the Assistant group
-        private final Integer[] imgid;// image for every one
-        private final String[] lastName; // last name
 
-
-        // constructor
-        public CustomListAdapter(Activity context, String[] itemname, String[] lastName,Integer[] imgid) {
-            super(context, R.layout.listview_activity, itemname);
-            // TODO Auto-generated constructor stub
-
-            this.context=context;
-            this.itemname=itemname;
-            this.imgid=imgid;
-            this.lastName=lastName;
-        }
-
-        public View getView(int position,View view,ViewGroup parent) {
-            LayoutInflater inflater=context.getLayoutInflater();
-            View rowView=inflater.inflate(R.layout.listview_activity, null,true); // set the id in the xml to be for every list vview
-
-            TextView txtTitle = (TextView) rowView.findViewById(R.id.item);
-            ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-            TextView extratxt = (TextView) rowView.findViewById(R.id.textView1); // the data that i set///
-
-            txtTitle.setText(itemname[position]);
-            imageView.setImageResource(imgid[position]);
-            extratxt.setText(lastName[position]);
-            return rowView; // return view for everyitem//
-
-        };
-    }
 
 }

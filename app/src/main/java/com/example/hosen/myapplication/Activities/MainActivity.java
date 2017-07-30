@@ -1,6 +1,7 @@
 package com.example.hosen.myapplication.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import  android.app.Fragment;
@@ -18,7 +19,10 @@ import com.example.hosen.myapplication.Fragments.MembersFragment;
 import com.example.hosen.myapplication.Fragments.PaymentsCreditFragemnt;
 import com.example.hosen.myapplication.Fragments.PlanFragment;
 import com.example.hosen.myapplication.Fragments.VotesFragment;
+import com.example.hosen.myapplication.Models.GroupInList;
 import com.example.hosen.myapplication.R;
+import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
     Fragment frt;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
     Bundle bundle;
     Fragment blankFt;
+    GroupInList group;
     Button payBt,bt2,bt3,flyBt,mapp,docsBt,memberBt,votesBt,chatBt;
 
     @Override
@@ -35,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
         mapTv=(TextView)findViewById(R.id.mapTv);
         planTv=(TextView)findViewById(R.id.planTv);
         mapp =(Button)findViewById(R.id.mButton);
+        group= (GroupInList) getIntent().getSerializableExtra("group");
+
+
+
+
+
+
         getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragment()).addToBackStack(null).commit();
         payBt =(Button)findViewById(R.id.payBt);
         bt2 =(Button)findViewById(R.id.button15);

@@ -13,9 +13,9 @@ import android.widget.TextView;
 import com.example.hosen.myapplication.Adapters.PaymentsAdapter;
 import com.example.hosen.myapplication.R;
 import com.example.hosen.myapplication.Classes.paymentItem;
-import com.jjoe64.graphview.GraphView;
+/*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.LineGraphSeries;*/
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
@@ -30,7 +30,7 @@ public class BlankFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     JazzyListView paymentsLv;
     ArrayList<paymentItem> paymentArray = new ArrayList<paymentItem>();
-    LineGraphSeries<DataPoint> series;
+   // LineGraphSeries<DataPoint> series;
 
 
     TextView tv;
@@ -130,7 +130,7 @@ public class BlankFragment extends Fragment {
 
         paymentsLv.setAdapter(adapter);
         setupJazziness(JazzyHelper.WAVE);
-
+/*
         double x,y;
         x=-5.0;
         GraphView graphView = (GraphView)view.findViewById(R.id.graph);
@@ -143,7 +143,7 @@ public class BlankFragment extends Fragment {
 
         }
 
-        graphView.addSeries(series);
+        graphView.addSeries(series);*/
         return view;
     }
 
