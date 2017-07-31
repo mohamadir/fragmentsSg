@@ -40,6 +40,7 @@ public class GroupListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_list);
         signBt=(Button )findViewById(R.id.groupLIstSignInBt);
         groupList=new ArrayList<GroupInList>();
+
         signBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,15 +74,24 @@ public class GroupListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        getGroupsRequests();
+        String type=getIntent().getStringExtra("date");
+        String dateFrom=getIntent().getStringExtra("dateFrom");
+        String dateTo=getIntent().getStringExtra("dateTo");
 
-        Log.i("im here","11111"+groupList.size());
+        if(!(type==null || type.equals(""))) {
+            if(type.equals("ok"))
+                getGroupsByHotelsRequest(dateFrom,dateTo);
+            else
+                getGroupsRequests();
+        }
+
+
         /*
         *
         * Copy here
         *
         * */
-        //overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
 
     }
 
@@ -143,4 +153,59 @@ public class GroupListActivity extends AppCompatActivity {
         MySingleton.getInstance(GroupListActivity.this).addToRequestQueue(jsObjRequest);
 
     }
+    public void getGroupsByHotelsRequest(String dateFrom,String dateTo){
+
+        String url = "http://172.104.150.56/api/hotels"+"/"+dateFrom+"/"+dateTo;
+
+
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        //int _id, String title, String descritption, String image, String origin, String destination, String start_date, String end_date
+                        Log.i("groupsGet","kkkkkkkkkkkkk"+response+"");
+                        JSONArray groupsArray = response;
+                        for(int i=0;i<groupsArray.length();i++)
+                        {
+                            try {
+                                groupList.add(i, new GroupInList(Integer.parseInt(
+                                        groupsArray.getJSONObject(i).getString("id").toString()),// group ID
+                                        groupsArray.getJSONObject(i).getString("title").toString(),// Group Title
+                                        groupsArray.getJSONObject(i).getString("description").toString(), // Group description
+                                        groupsArray.getJSONObject(i).getString("image").toString(),// Group image
+                                        groupsArray.getJSONObject(i).getString("origin").toString(),// Group origin
+                                        groupsArray.getJSONObject(i).getString("destination").toString(),// Group destination
+                                        groupsArray.getJSONObject(i).getString("start_date").toString(),// Group start date
+                                        groupsArray.getJSONObject(i).getString("end_date").toString()));// Group end date
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+//                        Log.i("Length",groupList.get(3).getOrigin().toString());
+                        GroupLIstAdapter2 glAdapter= new GroupLIstAdapter2(GroupListActivity.this,groupList);
+                        // Set the adapter to the list
+                        listView.setAdapter(glAdapter);
+        /*listView.setTransitionEffect(JazzyHelper.TWIRL);
+        listView.setTranscriptMode(JazzyHelper.CARDS);*/
+                        // a7la    listView.setTransitionEffect(JazzyHelper.ZIPPER);
+                        listView.setTransitionEffect(JazzyHelper.WAVE);
+
+                        listView.setScrollBarFadeDuration(100);
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+
+                });
+
+        MySingleton.getInstance(GroupListActivity.this).addToRequestQueue(jsObjRequest);
+
+    }
+
+
 }

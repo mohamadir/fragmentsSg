@@ -169,7 +169,7 @@
         <LinearLayout
             android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/linearLayout6"
@@ -178,7 +178,7 @@
             <ImageView
                 android:id="@+id/details_groupIv"
                 android:layout_width="95dp"
-                android:layout_height="59dp"
+                android:layout_height="match_parent"
                 android:layout_alignLeft="@+id/textView24"
                 android:layout_alignStart="@+id/textView24"
                 android:layout_below="@+id/linearLayout6"
@@ -199,7 +199,7 @@
                     android:layout_alignLeft="@+id/textView7"
                     android:layout_alignRight="@+id/textView11"
                     android:layout_alignStart="@+id/textView7"
-                    android:layout_alignTop="@+id/button5"
+                    android:layout_alignTop="@+id/hotel_service_dpTo"
                     android:layout_marginLeft="5dp"
                     android:text="Saint Zohar Group"
                     android:textStyle="bold" />
@@ -664,7 +664,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button40"
+                    android:id="@+id/detailsFragment_joinBt"
                     android:layout_width="match_parent"
                     android:layout_height="34dp"
                     android:layout_marginLeft="5dp"

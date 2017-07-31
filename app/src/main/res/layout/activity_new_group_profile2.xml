@@ -102,7 +102,7 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/hotel_service_dpTo"
             android:layout_width="26dp"
             android:layout_height="20dp"
             android:background="@drawable/celndr"
@@ -140,7 +140,7 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/hotel_service_tvTo"
             android:layout_width="26dp"
             android:onClick="showDatePickerDialog"
             android:layout_height="20dp"

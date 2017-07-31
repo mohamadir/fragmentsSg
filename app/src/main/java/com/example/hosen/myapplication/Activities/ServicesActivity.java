@@ -1,8 +1,10 @@
 package com.example.hosen.myapplication.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -10,7 +12,7 @@ import android.widget.Button;
 import com.example.hosen.myapplication.R;
 
 public class ServicesActivity extends AppCompatActivity {
-    Button serviceFly,serviceTrans,serviceGuide,serviceHotels,servicePlaces,serviceRests,createNewGroupBt;
+    Button serviceFly,serviceTrans,serviceGuide,serviceHotels,servicePlaces,serviceRests,createNewGroupBt,signInBt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,25 @@ public class ServicesActivity extends AppCompatActivity {
         serviceGuide=(Button)findViewById(R.id.serviceGUideBt);
         serviceHotels=(Button)findViewById(R.id.serviceHotelsBt);
         servicePlaces=(Button)findViewById(R.id.servicePlacesBt);
+        signInBt=(Button)findViewById(R.id.ServicesActivity_SignInBt);
+        if(isSigned())
+            signInBt.setText("SIGN OUT");
+        else {
+            Log.i("signed","im here");
+            signInBt.setText("SIGN IN");
+
+        }
+        signInBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(signInBt.getText().equals("SIGN IN")) {
+                    Intent i = new Intent(ServicesActivity.this, SignInActivity.class);
+                    startActivity(i);
+                }
+                else
+                    signOut();
+            }
+        });
         serviceRests=(Button)findViewById(R.id.serviceRestaurantBt);
         createNewGroupBt=(Button)findViewById(R.id.createNewGroupBt);
         createNewGroupBt.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +77,7 @@ public class ServicesActivity extends AppCompatActivity {
         }); serviceHotels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goIntent(GroupListActivity.class);
+                goIntent(HotelServiceFilterActivity.class);
             }
         });
         serviceGuide.setOnClickListener(new View.OnClickListener() {
@@ -70,9 +91,42 @@ public class ServicesActivity extends AppCompatActivity {
 
     }
 
+    // method to intent transport
     public void goIntent(Class c)
     {
         Intent i=new Intent(ServicesActivity.this,c);
         startActivity(i);
+    }
+
+    // check from the sharedPreferences if someone is signed now
+    public boolean isSigned(){
+        SharedPreferences settings=this.getSharedPreferences("UserLog",MODE_PRIVATE);
+        String signed = settings.getString("isSigned","false");
+        if(signed.equals("false"))
+            return false;
+        else
+            return true;
+    }
+
+    // sign Out method ( changing the text of the button to sign in and update the sharedPreferences)
+    public void signOut(){
+        signInBt.setText("SIGN IN");
+        SharedPreferences.Editor editor=getSharedPreferences("UserLog",MODE_PRIVATE).edit();
+        editor.putString("isSigned","false");
+        editor.commit();
+    }
+
+    // ovveride the onResume method in order to refresh the data in SharedPreferences
+    @Override
+    protected void onResume() {
+        if(isSigned())
+            signInBt.setText("SIGN OUT");
+        else {
+            Log.i("signed","im here");
+            signInBt.setText("SIGN IN");
+
+        }
+        super.onResume();
+
     }
 }

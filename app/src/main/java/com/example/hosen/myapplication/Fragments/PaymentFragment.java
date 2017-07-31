@@ -1,6 +1,7 @@
 package com.example.hosen.myapplication.Fragments;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -96,10 +97,6 @@ public class PaymentFragment extends Fragment {
         graphView.addSeries(series);
         return view;
     }
-
-
-
-
 
 
 

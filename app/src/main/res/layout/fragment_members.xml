@@ -149,7 +149,7 @@
                     android:layout_weight="3"></ListView>
 
                 <Button
-                    android:id="@+id/button7"
+                    android:id="@+id/hotel_service_tvTo"
                     android:layout_width="100dp"
                     android:layout_height="1dp"
                     android:layout_alignParentLeft="true"

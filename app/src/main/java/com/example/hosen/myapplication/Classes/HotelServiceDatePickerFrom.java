@@ -1,4 +1,4 @@
-package com.example.hosen.myapplication.Fragments;
+package com.example.hosen.myapplication.Classes;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -10,11 +10,12 @@ import android.widget.TextView;
 import com.example.hosen.myapplication.R;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by jahid on 12/10/15.
  */
-public class DatePickerFragment extends DialogFragment
+public class HotelServiceDatePickerFrom extends DialogFragment
         implements DatePickerDialog.OnDateSetListener {
 
     @Override
@@ -25,24 +26,28 @@ public class DatePickerFragment extends DialogFragment
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
 
+
         // Create a new instance of DatePickerDialog and return it
         return new DatePickerDialog(getActivity(), this, year, month, day);
     }
-
-
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
-        TextView tv1= (TextView) getActivity().findViewById(R.id.textView23);
-        String d,m;
+        TextView tv1= (TextView) getActivity().findViewById(R.id.hotel_service_tvFrom);
+        String m,d;
+        int m2=view.getMonth()+1;
         if(view.getMonth()<10)
-            m="0"+view.getMonth();
+            m="0"+m2;
         else
-            m=""+view.getMonth();
+            m=""+m2;
         if(view.getDayOfMonth()<10)
             d="0"+view.getDayOfMonth();
         else
             d=""+view.getDayOfMonth();
-        tv1.setText(d + "/" +m+"/"+view.getYear());
+        tv1.setText(d + "-" +m+"-"+view.getYear());
+        Calendar c = Calendar.getInstance();      c.add(Calendar.DATE, 1);
+        Date newDate = c.getTime();
+
+        view.setMinDate(newDate.getTime()-(newDate.getTime()%(24*60*60*1000)));
 
     }
 

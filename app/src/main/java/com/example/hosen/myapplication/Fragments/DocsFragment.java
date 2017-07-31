@@ -204,7 +204,6 @@ public class DocsFragment extends Fragment {
                     .findViewById(R.id.lblListHeader); // take the data and put them into the header
             lblListHeader.setTypeface(null, Typeface.BOLD);
             lblListHeader.setText(headerTitle);
-
             return convertView;
         }
 
