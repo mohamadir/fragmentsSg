@@ -41,12 +41,6 @@ public class MainActivity extends AppCompatActivity {
         planTv=(TextView)findViewById(R.id.planTv);
         mapp =(Button)findViewById(R.id.mButton);
         group= (GroupInList) getIntent().getSerializableExtra("group");
-
-
-
-
-
-
         getFragmentManager().beginTransaction().replace(R.id.fragment1,new DetailsFragment()).addToBackStack(null).commit();
         payBt =(Button)findViewById(R.id.payBt);
         bt2 =(Button)findViewById(R.id.button15);

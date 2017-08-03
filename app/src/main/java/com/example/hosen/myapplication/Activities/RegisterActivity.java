@@ -1,5 +1,6 @@
 package com.example.hosen.myapplication.Activities;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -27,38 +28,46 @@ public class RegisterActivity extends AppCompatActivity {
     String username,firstName,lastName,password;
     EditText userNameEt,firstNameEt,lastNameEt,passwordEt;
     Button registerBt;
+    public ProgressDialog pd;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        initViews();
+        // get the texts from the edit texts
         registerBt=(Button)findViewById(R.id.signUpVolleyBt);
-
+        pd=new ProgressDialog(RegisterActivity.this);
         userNameEt=(EditText) findViewById(R.id.email_Et);
         firstNameEt=(EditText) findViewById(R.id.firstName_Et);
         lastNameEt=(EditText) findViewById(R.id.lastName_Et);
         passwordEt=(EditText) findViewById(R.id.password_Et);
-
-
-        // get the texts from the edit texts
-
         registerBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                pd.setMessage("Wait please.. ");
+                pd.show();
                 registerRequest(userNameEt.getText().toString(),passwordEt.getText().toString(),firstNameEt.getText().toString(),lastNameEt.getText().toString());
+
 
             }
         });
 
 
+    }
 
+    public void initViews(){
 
     }
+
+     // register post request with the relevant variables
 
     public void registerRequest(final String username, final String password, final String firstname, final String lastname){
         StringRequest sr = new StringRequest(Request.Method.POST, "http://172.104.150.56/api/register", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                pd.hide();
                 Log.i("responsy",response);
                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                 builder.setMessage("Register Successfully")
@@ -78,6 +87,19 @@ public class RegisterActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                pd.hide();
+                Log.i("responsy","error");
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                builder.setMessage("Register faild , it could be caused by wrong inputs \n\n" +
+                        "Or user already exist")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
                 Log.i("myError",error.getMessage()+" ");
             }
         }) {

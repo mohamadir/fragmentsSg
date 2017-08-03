@@ -20,22 +20,25 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="supportsRtl">
-        <activity android:name=".Activities.ServicesActivity">
+        <activity android:name=".Activities.ServicesActivity" android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.GroupListActivity" />
-        <activity android:name=".Activities.SignInActivity" />
-        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.MainActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.GroupListActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.SignInActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.RegisterActivity"  android:screenOrientation="portrait"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,17 +54,18 @@
         <activity
             android:name=".Activities.MapActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Activities.NewGroupSettingsPageAtivity" />
-        <activity android:name=".Activities.NewGroupProfile1Activity" />
-        <activity android:name=".Activities.NewGroupFlightServiceActivity" />
-        <activity android:name=".Activities.NewGroupHotelsServiceActivity" />
-        <activity android:name=".Activities.NewGroupTourGuideActivity" />
-        <activity android:name=".Activities.NewGroupProfile2Activity" />
-        <activity android:name=".Activities.NewGroupServicesActivity" />
-        <activity android:name=".Activities.NewGroupTransportationActivity" />
-        <activity android:name=".Activities.AutoCompleteActivity" />
-        <activity android:name=".Activities.UploadActivity" />
-        <activity android:name=".Activities.HotelServiceFilterActivity"></activity>
+        <activity android:name=".Activities.NewGroupSettingsPageAtivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupProfile1Activity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupFlightServiceActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupHotelsServiceActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupTourGuideActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupProfile2Activity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupServicesActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.NewGroupTransportationActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.AutoCompleteActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.UploadActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.HotelServiceFilterActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".Activities.ShakeTestActivity"  android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

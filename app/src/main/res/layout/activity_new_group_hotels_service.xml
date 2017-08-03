@@ -49,7 +49,7 @@
                 android:typeface="sans" />
 
             <TextView
-                android:id="@+id/textView41"
+                android:id="@+id/hotelsActivity_nextBt"
                 android:layout_width="193dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.37"

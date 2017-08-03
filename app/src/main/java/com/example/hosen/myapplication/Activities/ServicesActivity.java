@@ -2,6 +2,7 @@ package com.example.hosen.myapplication.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +18,7 @@ public class ServicesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
-
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         serviceFly=(Button)findViewById(R.id.serviceFlightBt);
         serviceTrans=(Button)findViewById(R.id.serviceTransportBt);
         serviceGuide=(Button)findViewById(R.id.serviceGUideBt);
@@ -124,9 +125,7 @@ public class ServicesActivity extends AppCompatActivity {
         else {
             Log.i("signed","im here");
             signInBt.setText("SIGN IN");
-
         }
         super.onResume();
-
     }
 }

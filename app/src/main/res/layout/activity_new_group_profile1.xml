@@ -108,15 +108,16 @@
                 android:paddingLeft="10dp"
                 android:gravity="center"
                 android:orientation="vertical"
-                >
+                android:weightSum="1">
 
                 <Button
-                    android:id="@+id/button41"
-                    android:layout_width="218dp"
+                    android:id="@+id/profile1Activity_firstImageBt"
+                    android:layout_width="204dp"
                     android:layout_height="198dp"
                     android:layout_margin="10dp"
-                    android:background="@drawable/button_image_background"
-                    android:layout_weight="0.21" />
+                    android:background="@drawable/service_button_border"
+                    android:text="+"
+                    android:layout_weight="0.09" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,23 +127,23 @@
                 android:gravity="center"
                 android:layout_weight="2"
                 android:orientation="vertical"
-                android:weightSum="0">
+                android:weightSum="1">
 
                 <Button
-                    android:id="@+id/button43"
+                    android:id="@+id/profile1Activity_thirdImageBt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_margin="10dp"
-                    android:layout_weight="0.30"
+                    android:layout_weight="0.35"
                     android:background="@drawable/service_button_border"
                     android:text="+" />
 
                 <Button
                     android:id="@+id/button42"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_margin="10dp"
-                    android:layout_weight="0.30"
+                    android:layout_weight="0.36"
                     android:background="@drawable/service_button_border"
                     android:text="+" />
             </LinearLayout>

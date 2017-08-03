@@ -85,7 +85,7 @@ public class PlanFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_plan, container, false);        // Inflate the layout for this fragment
         expListView = (ExpandableListView)view.findViewById(R.id.lvExp1);
         listDataHeader=new ArrayList<HeaderData>();
-        pd=new ProgressDialog(getActivity());
+
         /*mapBt=(Button)view.findViewById(R.id.showMapBT);
         mapBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +120,7 @@ public class PlanFragment extends Fragment {
         });*/
         //TODO
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        pd=new ProgressDialog(getActivity());
         pd.setMessage("Just A while ...auto ");
         pd.show();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(

@@ -18,7 +18,7 @@ public class NewGroupFlightServiceActivity extends AppCompatActivity {
         nextFlightBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(NewGroupFlightServiceActivity.this,NewGroupTourGuideActivity.class);
+                Intent i = new Intent(NewGroupFlightServiceActivity.this,NewGroupHotelsServiceActivity.class);
                 startActivity(i);
 
             }

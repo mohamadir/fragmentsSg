@@ -50,6 +50,7 @@ public class HotelServiceFilterActivity extends AppCompatActivity {
                     i.putExtra("date","Notok");
                     startActivity(i);
 
+
                     return;
                 }
                 Intent i  = new Intent(HotelServiceFilterActivity.this,GroupListActivity.class);
@@ -58,7 +59,6 @@ public class HotelServiceFilterActivity extends AppCompatActivity {
                 dateFrom=dateFromTv.getText().toString();
                 dateTo=dateToTv.getText().toString();
                 i.putExtra("date","ok");
-
                 String[] dateFromArray=dateFrom.split("-");
                 String temp=dateFromArray[0];
                 dateFromArray[0]=dateFromArray[2];

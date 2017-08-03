@@ -50,7 +50,7 @@ public class NewGroupServicesActivity extends AppCompatActivity {
         nextBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i   = new Intent(NewGroupServicesActivity.this,NewGroupTransportationActivity.class);
+                Intent i   = new Intent(NewGroupServicesActivity.this,NewGroupFlightServiceActivity.class);
                 startActivity(i);
             }
         });

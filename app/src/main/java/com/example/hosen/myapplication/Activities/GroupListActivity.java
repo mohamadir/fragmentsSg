@@ -78,9 +78,12 @@ public class GroupListActivity extends AppCompatActivity {
         String dateFrom=getIntent().getStringExtra("dateFrom");
         String dateTo=getIntent().getStringExtra("dateTo");
 
+       getGroupsByHotelsRequest(dateFrom,dateTo);
+        Log.i("stringy",type);
         if(!(type==null || type.equals(""))) {
-            if(type.equals("ok"))
-                getGroupsByHotelsRequest(dateFrom,dateTo);
+            if(type.equals("ok")) {
+                getGroupsByHotelsRequest(dateFrom, dateTo);
+            }
             else
                 getGroupsRequests();
         }
@@ -109,8 +112,6 @@ public class GroupListActivity extends AppCompatActivity {
 
                     @Override
                     public void onResponse(JSONArray response) {
-    //int _id, String title, String descritption, String image, String origin, String destination, String start_date, String end_date
-                    Log.i("groupsGet","kkkkkkkkkkkkk"+response+"");
                     JSONArray groupsArray = response;
                     for(int i=0;i<groupsArray.length();i++)
                     {
@@ -164,7 +165,6 @@ public class GroupListActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         //int _id, String title, String descritption, String image, String origin, String destination, String start_date, String end_date
-                        Log.i("groupsGet","kkkkkkkkkkkkk"+response+"");
                         JSONArray groupsArray = response;
                         for(int i=0;i<groupsArray.length();i++)
                         {

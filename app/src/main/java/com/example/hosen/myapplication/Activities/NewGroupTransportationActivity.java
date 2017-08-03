@@ -1,5 +1,6 @@
 package com.example.hosen.myapplication.Activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import com.example.hosen.myapplication.R;
 
 public class NewGroupTransportationActivity extends AppCompatActivity {
 
-    TextView vipairport,airCOndtion,wifiTv,accessDisabled,tvTv,onlyAthTv,driverTv;
+    TextView vipairport,airCOndtion,wifiTv,accessDisabled,tvTv,onlyAthTv,driverTv,nextBt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,14 @@ public class NewGroupTransportationActivity extends AppCompatActivity {
         accessDisabled = (TextView)findViewById(R.id.authCOmpanyTv);
         tvTv = (TextView)findViewById(R.id.tvTv);
         onlyAthTv = (TextView)findViewById(R.id.onlyAthTv);
+        nextBt = (TextView)findViewById(R.id.transportationActivity_nextBt);
+        nextBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(NewGroupTransportationActivity.this,NewGroupTourGuideActivity.class);
+                startActivity(i);
+            }
+        });
         driverTv = (TextView)findViewById(R.id.driverTV);
         vipairport.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {

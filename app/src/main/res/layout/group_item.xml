@@ -12,13 +12,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="5dp"
-        android:background="@drawable/layout_border">
+        android:background="@drawable/layout_border"
+        android:weightSum="1">
 
         <LinearLayout
             android:id="@+id/group_name_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_width="185dp"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/group_name"
@@ -42,13 +42,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Reviews"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:layout_weight="0.43" />
 
-        <ImageView
-            android:id="@+id/rating"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            app:srcCompat="@drawable/stars" />
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:rating="5"
+            android:id="@+id/go_rating"
+            android:progressTint="#F0FF33"
+            style="?attr/ratingBarStyleSmall"/>
 
     </LinearLayout>
 

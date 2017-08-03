@@ -35,7 +35,7 @@
                     android:id="@+id/imageButton"
                     android:layout_width="148dp"
                     android:layout_height="153dp"
-                    android:layout_alignBottom="@+id/textView18"
+                    android:layout_alignBottom="@+id/detailsFragment_newsTv"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginLeft="18dp"

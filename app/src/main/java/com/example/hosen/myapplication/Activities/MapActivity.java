@@ -65,9 +65,16 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         requestJsonArray();
         targets=dayPlans;
         mapFragment.getMapAsync(this);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
 
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
     }
 
@@ -131,7 +138,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
 
 
 
-
+//
     public void requestJsonArray(){
         String url = "http://www.mocky.io/v2/596ddd130f00000c032b7fa8/";
 

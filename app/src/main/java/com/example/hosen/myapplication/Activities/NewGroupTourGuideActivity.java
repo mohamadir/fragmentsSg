@@ -17,13 +17,13 @@ public class NewGroupTourGuideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_group_tour_guide);
         nextBT=(TextView)findViewById(R.id.tour_guide_next_tv);
-        nextBT.setOnClickListener(new View.OnClickListener() {
+        /*nextBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(NewGroupTourGuideActivity.this,NewGroupServicesActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
     }
 }

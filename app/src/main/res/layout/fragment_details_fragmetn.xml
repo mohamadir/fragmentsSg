@@ -156,10 +156,13 @@
             android:layout_alignStart="@+id/details_descriptionTv"
             android:layout_below="@+id/textView16"
             android:background="@drawable/linear_border"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/detailsFragment_newsTv"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_weight="1"

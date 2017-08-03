@@ -1,5 +1,6 @@
 package com.example.hosen.myapplication.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import com.example.hosen.myapplication.R;
 public class NewGroupProfile1Activity extends AppCompatActivity {
     ProgressBar pb;
     TextView profileNextBt;
+    public ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,7 @@ public class NewGroupProfile1Activity extends AppCompatActivity {
         profileNextBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(NewGroupProfile1Activity.this,NewGroupFlightServiceActivity.class);
+                Intent i = new Intent(NewGroupProfile1Activity.this,NewGroupProfile2Activity.class);
                 startActivity(i);
             }
         });

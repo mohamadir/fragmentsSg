@@ -1,5 +1,6 @@
 package com.example.hosen.myapplication.Activities;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +33,8 @@ public class SignInActivity extends AppCompatActivity {
     EditText usernameEt,passwordEt;
     String token;
     TextView signupTv;
+    public ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +42,15 @@ public class SignInActivity extends AppCompatActivity {
         signupTv=(TextView) findViewById(R.id.signupTv);
         usernameEt=(EditText)findViewById(R.id.signInUsernameEt);
         passwordEt=(EditText)findViewById(R.id.signInPasswordEt);
+        pd=new ProgressDialog(SignInActivity.this);
 
 
         signInVolleyBt=(Button) findViewById(R.id.signInVolleyBt);
         signInVolleyBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                pd.setMessage("Wait please.. ");
+                pd.show();
                 volleyRequest(usernameEt.getText().toString(),passwordEt.getText().toString());
             }
         });
@@ -63,6 +69,7 @@ public class SignInActivity extends AppCompatActivity {
         StringRequest sr = new StringRequest(Request.Method.POST, "http://172.104.150.56/api/login", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                pd.hide();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
                 builder.setMessage("Login Successfully")
                         .setCancelable(false)
@@ -84,8 +91,9 @@ public class SignInActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                pd.hide();
                 AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-                builder.setMessage("Login Faild ! :-(")
+                builder.setMessage("Login Faild ! \n\nPlease try again.. ")
                         .setCancelable(false)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -11,9 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,7 +32,11 @@ import com.example.hosen.myapplication.R;
 /*import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;*/
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 import com.squareup.picasso.Picasso;
+import com.squareup.seismic.ShakeDetector;
 
 import org.json.JSONObject;
 import org.w3c.dom.Text;
@@ -38,12 +46,12 @@ import java.util.HashMap;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class DetailsFragment extends Fragment {
+public class DetailsFragment extends Fragment  {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-   // LineGraphSeries<DataPoint> series;
+    LineGraphSeries<DataPoint> series;
     Button joinBt;
     public static String isJoind="";
     public static String groupID;
@@ -91,6 +99,38 @@ public class DetailsFragment extends Fragment {
         groupID=id;
         Log.i("GROOPY",id);
         joinBt=(Button)view.findViewById(R.id.detailsFragment_joinBt);
+        SensorManager sensorManager = (SensorManager) getActivity().getSystemService(getActivity().SENSOR_SERVICE);
+        ShakeDetector sd = new ShakeDetector(new ShakeDetector.Listener(){
+
+            @Override
+            public void hearShake() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Do you want to join this group?")
+                        .setCancelable(false)
+                        .setIcon(R.drawable.logo)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                SharedPreferences settings=getActivity().getSharedPreferences("UserLog",MODE_PRIVATE);
+                                String signed = settings.getString("isSigned","false");
+                                if(!signed.equals("false"))
+                                {
+                                    String email = settings.getString("email","false");
+                                    joinRequest(email);
+                                }
+                                else
+                                {
+                                }
+                            }
+                        }).setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+        sd.start(sensorManager);
         joinBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,11 +140,9 @@ public class DetailsFragment extends Fragment {
                 {
                     String email = settings.getString("email","false");
                     joinRequest(email);
-
                 }
                 else
                 {
-
                 }
             }
         });
@@ -113,13 +151,16 @@ public class DetailsFragment extends Fragment {
         TextView toTv=(TextView)view.findViewById(R.id.detilas_toTv);
         TextView descTv=(TextView)view.findViewById(R.id.details_descriptionTv);
         TextView titleTv=(TextView)view.findViewById(R.id.details_titleTv);
+        Animation translatebu= AnimationUtils.loadAnimation(getActivity(), R.anim.text_move);
+        TextView newsTv=(TextView)view.findViewById(R.id.detailsFragment_newsTv);
+        newsTv.startAnimation(translatebu);
         fromTv.setText(from);
         toTv.setText(to);
         descTv.setText(description);
         titleTv.setText(title);
         Picasso.with(getActivity()).load(image).into(groupImage);
 
-/*
+
         double x,y;
         x=-5.0;
         GraphView graphView = (GraphView)view.findViewById(R.id.graph3);
@@ -132,7 +173,7 @@ public class DetailsFragment extends Fragment {
 
         }
 
-        graphView.addSeries(series);*/
+        graphView.addSeries(series);
 
        /* flyBt=(Button)view.findViewById(R.id.flyBtt);
         flyBt.setOnClickListener(new View.OnClickListener() {

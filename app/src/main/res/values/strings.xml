@@ -10,8 +10,6 @@
         Create or join group
 with all the services
 needed"
-
-
     </string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -31,8 +29,6 @@ needed"
         <item>Virtual Agent</item>
         <item>Tourist Agency</item>
     </string-array>
-
-
     <string-array name="spiner_visabl">
         <item>Hidden</item>
         <item>Visible</item>
@@ -42,15 +38,12 @@ needed"
         <item>EveryOne</item>
         <item>Spesific perople</item>
     </string-array>
-
-
     <string-array name="multi">
         <item> Multi-origins </item>
         <item>London</item>
         <item>Berlin</item>
         <item>Rome</item>
     </string-array>
-
     <string-array name="phiscal">
         <item> Oldes </item>
         <item>Disabled</item>
@@ -70,8 +63,6 @@ needed"
         <item>English</item>
         <item>Franch</item>
     </string-array>
-
-
     <string-array name="sort_arrays">
         <item>Sort by</item>
         <item>Duration</item>
@@ -99,7 +90,6 @@ needed"
         <item>Japan</item>
         <item>Marroco</item>
     </string-array>
-
     <string-array name="countries">
         <item>London</item>
         <item>United State</item>

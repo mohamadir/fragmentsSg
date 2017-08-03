@@ -64,13 +64,13 @@
             android:textSize="15dp" />
 
         <TextView
-            android:id="@+id/textView6"
-            android:textStyle="bold"
+            android:id="@+id/profile2Activity_nextBt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Next"
-            android:textColor="@color/colorWhite" />
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout

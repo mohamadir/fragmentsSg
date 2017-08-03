@@ -1,6 +1,7 @@
 package com.example.hosen.myapplication.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -20,10 +22,13 @@ import com.example.hosen.myapplication.Fragments.DatePickeerFragment2;
 import com.example.hosen.myapplication.Fragments.DatePickerFragment;
 import com.example.hosen.myapplication.R;
 
+import org.w3c.dom.Text;
+
 
 public class NewGroupProfile2Activity extends AppCompatActivity {
 
     ListView list;
+    TextView btNext;
     String[] lastName ={
             "  Anglena basdhkjlk",
             "   David lasadasd"
@@ -42,6 +47,15 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
         AssistantsAdapter adapter=new AssistantsAdapter(this, lastName, imgid);
         list=(ListView)findViewById(R.id.listAssistants); // her i use list view for the gruop leader and grop assistant
         list.setAdapter(adapter);
+        btNext=(TextView)findViewById(R.id.profile2Activity_nextBt);
+        btNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(NewGroupProfile2Activity.this
+                ,NewGroupServicesActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
     public void showDatePickerDialog2(View v) {
