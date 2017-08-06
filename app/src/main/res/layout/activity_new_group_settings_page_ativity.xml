@@ -140,12 +140,13 @@
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spinner_visablty"
-                android:entries="@array/spiner_visabl"
+                android:id="@+id/NewGroupSettings_inAppPrivacySp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:entries="@array/spiner_visabl" />
+
 
         </LinearLayout>
 
@@ -189,12 +190,12 @@
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spiner"
+                android:id="@+id/NewGroupSettings_outSidePrivacySp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:entries="@array/spiner_visabl"
                 android:layout_marginTop="15dp"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:entries="@array/spiner_visabl" />
 
         </LinearLayout>
 
@@ -282,12 +283,15 @@
                     android:textSize="10sp" />
             </LinearLayout>
 
-            <Spinner
+            <com.thomashaertel.widget.MultiSpinner
                 android:id="@+id/spinner_language"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:hint="Select languages"
+                android:gravity="right"
                 android:layout_marginTop="15dp"
                 android:entries="@array/languag" />
+
 
         </LinearLayout>
 
@@ -303,7 +307,7 @@
 
             <LinearLayout
                 android:id="@+id/subjectsTv12"
-                android:layout_width="224dp"
+                android:layout_width="244dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="2">
@@ -333,12 +337,12 @@
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spiner_orign"
-                android:layout_width="wrap_content"
+                android:id="@+id/NewGroupSettings_memberOriginSp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
-                android:layout_weight="2"
-                android:entries="@array/multi" />
+                android:entries="@array/multi"
+                android:gravity="right" />
 
         </LinearLayout>
 
@@ -354,18 +358,16 @@
 
             <LinearLayout
                 android:id="@+id/sub45jectsTv"
-                android:layout_width="match_parent"
+                android:layout_width="244dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical"
                 android:weightSum="2">
 
                 <TextView
                     android:id="@+id/text455View53"
-                    android:layout_width="match_parent"
+                    android:layout_width="199dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
                     android:gravity="bottom"
                     android:text="Members Physical"
                     android:textSize="20sp"
@@ -374,23 +376,23 @@
 
                 <TextView
                     android:id="@+id/textV45iew44"
-                    android:layout_width="match_parent"
+                    android:layout_width="205dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_weight="1"
                     android:gravity="bottom"
                     android:text="Select members limitations"
 
                     android:textSize="10sp" />
             </LinearLayout>
 
-            <Spinner
+            <com.thomashaertel.widget.MultiSpinner
                 android:id="@+id/spinner_physical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp"
-                android:entries="@array/phiscal"
-                android:layout_weight="2" />
+                android:gravity="right"
+                android:entries="@array/languag"
+                android:hint="Select type" />
 
         </LinearLayout>
 
@@ -406,7 +408,7 @@
 
             <LinearLayout
                 android:id="@+id/subjectsTv"
-                android:layout_width="match_parent"
+                android:layout_width="244dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
@@ -414,7 +416,7 @@
 
                 <TextView
                     android:id="@+id/textView53"
-                    android:layout_width="match_parent"
+                    android:layout_width="244dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
@@ -426,7 +428,7 @@
 
                 <TextView
                     android:id="@+id/textView44"
-                    android:layout_width="match_parent"
+                    android:layout_width="244dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
@@ -436,13 +438,14 @@
                     android:textSize="10sp" />
             </LinearLayout>
 
-            <Spinner
-                android:id="@+id/spinner_nature"
-                android:layout_width="match_parent"
+            <com.thomashaertel.widget.MultiSpinner
+                android:id="@+id/spinner_pleasure"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:hint="Select Nature"
+                android:gravity="right"
                 android:layout_marginTop="15dp"
-                android:entries="@array/nature"
-                android:layout_weight="2" />
+                android:layout_weight="2.26" />
 
         </LinearLayout>
 

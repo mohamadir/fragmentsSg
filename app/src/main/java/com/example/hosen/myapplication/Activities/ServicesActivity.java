@@ -23,6 +23,8 @@ public class ServicesActivity extends AppCompatActivity {
         serviceTrans=(Button)findViewById(R.id.serviceTransportBt);
         serviceGuide=(Button)findViewById(R.id.serviceGUideBt);
         serviceHotels=(Button)findViewById(R.id.serviceHotelsBt);
+        SharedPreferences.Editor editor=getSharedPreferences("NewGroup",MODE_PRIVATE).edit();
+        editor.clear().commit();
         servicePlaces=(Button)findViewById(R.id.servicePlacesBt);
         signInBt=(Button)findViewById(R.id.ServicesActivity_SignInBt);
         if(isSigned())
@@ -75,10 +77,14 @@ public class ServicesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 goIntent(GroupListActivity.class);
             }
-        }); serviceHotels.setOnClickListener(new View.OnClickListener() {
+        });
+        serviceHotels.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                goIntent(HotelServiceFilterActivity.class);
+                Intent i=new Intent(ServicesActivity.this,HotelServiceFilterActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.slide_up,R.anim.slide_down);
+
             }
         });
         serviceGuide.setOnClickListener(new View.OnClickListener() {

@@ -2,6 +2,7 @@ package com.example.hosen.myapplication.Activities;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.hosen.myapplication.R;
+
+import java.util.Map;
 
 
 public class NewGroupServicesActivity extends AppCompatActivity {
@@ -42,6 +45,7 @@ public class NewGroupServicesActivity extends AppCompatActivity {
         selectAll=(TextView)findViewById(R.id.selectAllTv);
         resturant = (TextView)findViewById(R.id.restarurantsTextview);
         hotel = (TextView)findViewById(R.id.hotelTextView);
+        //printSharedPreferences();
         transport = (TextView)findViewById(R.id.transportTextView);
         tour_guide = (TextView)findViewById(R.id.tour_GuideTextView);
         site_places = (TextView)findViewById(R.id.sites_placesTextView);
@@ -52,6 +56,8 @@ public class NewGroupServicesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i   = new Intent(NewGroupServicesActivity.this,NewGroupFlightServiceActivity.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
             }
         });
         falseFunc(array);
@@ -205,5 +211,19 @@ public class NewGroupServicesActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
+    }
+    private void printSharedPreferences() {
+        SharedPreferences NewGroupSp=this.getSharedPreferences("NewGroup",MODE_PRIVATE);
+        Map<String, ?> allEntries = NewGroupSp.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            Log.i("MAPP", entry.getKey() + ": " + entry.getValue().toString());
+        }
     }
 }

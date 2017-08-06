@@ -73,11 +73,15 @@ public class GroupLIstAdapter2 extends BaseAdapter {
         Picasso.with(context).load(grouplist.get(position).getImage()).into(viewHolder.groupIv);
         viewHolder.durationTv.setText("20");
             viewHolder.startingAtTv.setText(grouplist.get(position).getStart_date().toString());
+        if(grouplist.get(position).getDescritption().length()>40) {
             String desc = getNwords(grouplist.get(position).getDescritption().toString());
             viewHolder.descriptionTv.setText(desc);
-            String origin = grouplist.get(position).getOrigin().toString();
-            String dest = grouplist.get(position).getDestination().toString();
-            viewHolder.destinationTv.setText(origin + " To " + dest);
+        }
+        else
+            viewHolder.descriptionTv.setText(grouplist.get(position).getDescritption().toString());
+        String origin = grouplist.get(position).getOrigin().toString();
+        String dest = grouplist.get(position).getDestination().toString();
+        viewHolder.destinationTv.setText(origin + " To " + dest);
 
 
         return convertView;

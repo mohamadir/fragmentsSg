@@ -28,6 +28,8 @@ public class NewGroupTransportationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(NewGroupTransportationActivity.this,NewGroupTourGuideActivity.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
             }
         });
         driverTv = (TextView)findViewById(R.id.driverTV);
@@ -105,6 +107,12 @@ public class NewGroupTransportationActivity extends AppCompatActivity {
         });
 
 
+
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
     }
 }

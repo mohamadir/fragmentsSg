@@ -8,7 +8,7 @@
     tools:context=".Activities.NewGroupProfile2Activity">
 
     <Spinner
-        android:id="@+id/spinner6"
+        android:id="@+id/flightServiceActivity_flyFromSp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView24"
@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:entries="@array/days"
-        android:layout_alignBaseline="@+id/spinner6"
+        android:layout_alignBaseline="@+id/flightServiceActivity_flyFromSp"
         android:verticalScrollbarPosition="left"
-        android:layout_alignBottom="@+id/spinner6"
+        android:layout_alignBottom="@+id/flightServiceActivity_flyFromSp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="19dp"
@@ -94,7 +94,7 @@
             />
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/profile2Activity_dateToTv"
             android:layout_width="43dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.89"
@@ -132,7 +132,7 @@
             android:layout_weight="0.55" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/profile2Activity_dateFromTv"
             android:layout_width="43dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.41"
@@ -167,7 +167,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner6"
+        android:layout_below="@+id/flightServiceActivity_flyFromSp"
         android:orientation="horizontal">
 
         <TextView
@@ -180,7 +180,7 @@
             android:text="Number Of Group members" />
 
         <Spinner
-            android:id="@+id/spinner8"
+            android:id="@+id/profile2Activity_maxMembersSp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -193,7 +193,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/spinner6"
+        android:layout_below="@+id/flightServiceActivity_flyFromSp"
         android:layout_marginTop="59dp"
         android:orientation="horizontal"
         android:id="@+id/linearLayout8">

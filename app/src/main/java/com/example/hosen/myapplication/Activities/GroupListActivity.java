@@ -41,7 +41,7 @@ public class GroupListActivity extends AppCompatActivity {
         signBt=(Button )findViewById(R.id.groupLIstSignInBt);
         groupList=new ArrayList<GroupInList>();
 
-        signBt.setOnClickListener(new View.OnClickListener() {
+       signBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i =new Intent (GroupListActivity.this,SignInActivity.class);
@@ -79,7 +79,6 @@ public class GroupListActivity extends AppCompatActivity {
         String dateTo=getIntent().getStringExtra("dateTo");
 
        getGroupsByHotelsRequest(dateFrom,dateTo);
-        Log.i("stringy",type);
         if(!(type==null || type.equals(""))) {
             if(type.equals("ok")) {
                 getGroupsByHotelsRequest(dateFrom, dateTo);

@@ -40,6 +40,7 @@ public class HotelServiceFilterActivity extends AppCompatActivity {
         dateFromTv=(TextView)findViewById(R.id.hotel_service_tvFrom);
         dateToTv=(TextView)findViewById(R.id.hotel_service_tvTo);
         checkButton=(Button)findViewById(R.id.checkBt);
+        overridePendingTransition(R.anim.slide_down,R.anim.slide_up);
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +122,13 @@ public class HotelServiceFilterActivity extends AppCompatActivity {
                 });
 
         MySingleton.getInstance(HotelServiceFilterActivity.this).addToRequestQueue(jsObjRequest);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //overridePendingTransition(R.anim.slide_down,0);
 
     }
 }

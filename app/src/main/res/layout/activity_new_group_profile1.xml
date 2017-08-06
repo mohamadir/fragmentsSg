@@ -69,7 +69,7 @@
             android:progressDrawable="@drawable/custom_progressbar"
             android:progress="20" />
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/NewGroupProfile1_nameEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -82,7 +82,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/NewGroupProfile1_descriptionEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

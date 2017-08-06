@@ -172,7 +172,7 @@
         <LinearLayout
             android:id="@+id/linearLayout11"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="95dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/linearLayout6"
@@ -181,7 +181,7 @@
             <ImageView
                 android:id="@+id/details_groupIv"
                 android:layout_width="95dp"
-                android:layout_height="match_parent"
+                android:layout_height="83dp"
                 android:layout_alignLeft="@+id/textView24"
                 android:layout_alignStart="@+id/textView24"
                 android:layout_below="@+id/linearLayout6"
@@ -473,6 +473,7 @@
             android:textColor="@color/green" />
 
         <LinearLayout
+            android:id="@+id/linearLayout13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -480,10 +481,9 @@
             android:layout_below="@+id/textView25"
             android:layout_marginLeft="10dp"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:id="@+id/linearLayout13">
+            android:weightSum="10">
 
-          <!--  <Button
+            <!--  <Button
                 android:id="@+id/button30"
                 android:layout_width="0dp"
                 android:layout_height="40dp"

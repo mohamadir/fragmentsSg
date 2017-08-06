@@ -2,6 +2,7 @@ package com.example.hosen.myapplication.Activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,11 +25,14 @@ import com.example.hosen.myapplication.R;
 
 import org.w3c.dom.Text;
 
+import java.util.Map;
+
 
 public class NewGroupProfile2Activity extends AppCompatActivity {
 
     ListView list;
-    TextView btNext;
+    Spinner maxMembersSp;
+    TextView btNext,dateFromTv,dateToTv;
     String[] lastName ={
             "  Anglena basdhkjlk",
             "   David lasadasd"
@@ -38,14 +42,25 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
             R.drawable.girl1,
             R.drawable.person3
     };
+    int maxMembers;
 
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_group_profile2);
-
+        //printSharedPreferences();
         AssistantsAdapter adapter=new AssistantsAdapter(this, lastName, imgid);
         list=(ListView)findViewById(R.id.listAssistants); // her i use list view for the gruop leader and grop assistant
+        dateFromTv=(TextView)findViewById(R.id.profile2Activity_dateFromTv);
+        dateToTv=(TextView)findViewById(R.id.profile2Activity_dateToTv);
+        maxMembersSp=(Spinner) findViewById(R.id.profile2Activity_maxMembersSp);
+        maxMembersSp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                maxMembers= Integer.parseInt(maxMembersSp.getSelectedItem().toString());
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
         list.setAdapter(adapter);
         btNext=(TextView)findViewById(R.id.profile2Activity_nextBt);
         btNext.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +68,30 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i=new Intent(NewGroupProfile2Activity.this
                 ,NewGroupServicesActivity.class);
+                updateSharedPreferences();
                 startActivity(i);
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             }
         });
 
     }
+
+    private void updateSharedPreferences() {
+        SharedPreferences.Editor editor=getSharedPreferences("NewGroup",MODE_PRIVATE).edit();
+        String dateFrom=dateFromTv.getText().toString();
+        String dateTo=dateToTv.getText().toString();
+        if(!dateFrom.equals(""))
+            editor.putString("start_date",dateFrom);
+        else
+            editor.putString("start_date","");
+        if(!dateTo.equals(""))
+            editor.putString("end_date",dateTo);
+        else
+            editor.putString("end_date","");
+        editor.putInt("max_members",maxMembers);
+        editor.commit();
+    }
+
     public void showDatePickerDialog2(View v) {
         DialogFragment newFragment = new DatePickeerFragment2();
         newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -97,5 +131,18 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
             return rowView; // return view for everyitem//
 
         };
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+
+    }
+    private void printSharedPreferences() {
+        SharedPreferences NewGroupSp=this.getSharedPreferences("NewGroup",MODE_PRIVATE);
+        Map<String, ?> allEntries = NewGroupSp.getAll();
+        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+            Log.i("MAPP", entry.getKey() + ": " + entry.getValue().toString());
+        }
     }
 }

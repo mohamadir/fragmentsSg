@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         docsBt=(Button)findViewById(R.id.docsBt);
         votesBt=(Button)findViewById(R.id.votesBt);
         chatBt=(Button)findViewById(R.id.chatBt);
-        overridePendingTransition(R.anim.fade_in,R.anim.fade_in);
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         intent = getIntent();
         mapp.setOnClickListener(new View.OnClickListener() {
             @Override
