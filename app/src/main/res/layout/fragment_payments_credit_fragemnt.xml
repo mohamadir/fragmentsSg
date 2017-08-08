@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
         android:layout_height="700dp"
-        tools:context="com.snapgroup.PaymentsPage2">
+        tools:context="com.com.snapgroup.PaymentsPage2">
 
         <Button
             android:id="@+id/button26"

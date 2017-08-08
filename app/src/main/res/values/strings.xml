@@ -83,6 +83,11 @@ needed"
         <item>Doctor</item>
     </string-array>
 
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+
     <!-- Flights Array -->
     <string-array name="aaa">
         <item>London</item>
@@ -114,7 +119,7 @@ needed"
         <item>4day</item>
     </string-array>
 
-
+    <string name="facebook_app_id">106945416683521</string>
     <string-array name="unlimted">
         <item>1</item>
         <item>2</item>

@@ -8,7 +8,7 @@
     android:orientation="vertical"
 
 
-    tools:context="com.example.hosen.myapplication.Activities.MainActivity"
+    tools:context="com.snapgroup.Activities.MainActivity"
     android:weightSum="7">
 
     <RelativeLayout
@@ -47,7 +47,7 @@
 
     <fragment
         android:id="@+id/fragment1"
-        android:name="com.example.hosen.myapplication.Fragments.BackgroundFragment"
+        android:name="com.snapgroup.Fragments.BackgroundFragment"
         android:layout_width="match_parent"
         android:layout_height="469dp"
         android:layout_alignParentLeft="true"

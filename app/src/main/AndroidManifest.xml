@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.hosen.myapplication">
+    package="com.snapgroup">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -27,8 +33,12 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="supportsRtl">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity
-            android:name=".Activities.ServicesActivity"
+            android:name="com.snapgroup.Activities.ServicesActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,16 +47,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.MainActivity"
+            android:name="com.snapgroup.Activities.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.GroupListActivity"
+            android:name="com.snapgroup.Activities.GroupListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.SignInActivity"
+            android:name="com.snapgroup.Activities.SignInActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.RegisterActivity"
+            android:name="com.snapgroup.Activities.RegisterActivity"
             android:screenOrientation="portrait" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -61,45 +71,51 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Activities.MapActivity"
+            android:name="com.snapgroup.Activities.MapActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Activities.NewGroupSettingsPageAtivity"
+            android:name="com.snapgroup.Activities.NewGroupSettingsPageAtivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupProfile1Activity"
+            android:name="com.snapgroup.Activities.NewGroupProfile1Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupFlightServiceActivity"
+            android:name="com.snapgroup.Activities.ProfileMemberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.snapgroup.Activities.NewGroupFlightServiceActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.NewGroupHotelsServiceActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupTourGuideActivity"
+            android:name="com.snapgroup.Activities.NewGroupTourGuideActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupProfile2Activity"
+            android:name="com.snapgroup.Activities.NewGroupProfile2Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupServicesActivity"
+            android:name="com.snapgroup.Activities.NewGroupServicesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupTransportationActivity"
+            android:name="com.snapgroup.Activities.NewGroupTransportationActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.AutoCompleteActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.UploadActivity"
+            android:name="com.snapgroup.Activities.UploadActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.HotelServiceFilterActivity"
+            android:name="com.snapgroup.Activities.HotelServiceFilterActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.ShakeTestActivity"
+            android:name="com.snapgroup.Activities.ShakeTestActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.NewGroupFinishActivity"></activity>
+        <activity android:name="com.snapgroup.Activities.NewGroupFinishActivity" />
+        <activity android:name="com.snapgroup.Activities.SmsTestActivity" />
+        <activity android:name=".Activities.FacebookLoginTestActivity" />
+        <activity android:name="com.snapgroup.Activities.NotificationTestActivity"></activity>
     </application>
 
 </manifest>

@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:tag="f2"
-    tools:context="com.example.hosen.myapplication.Fragments.BlankFragment">
+    tools:context="com.snapgroup.Fragments.BlankFragment">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.snapgroup.PaymentsActivity">
+        tools:context="com.com.snapgroup.PaymentsActivity">
 
         <Button
             android:id="@+id/button14"
