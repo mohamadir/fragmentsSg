@@ -62,8 +62,6 @@ public class ProfileMemberActivity extends AppCompatActivity {
         // Calling the RecyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
-
-
         profile_member_email = (TextView) findViewById(R.id.profile_member_email);
         profile_member_firstname = (TextView) findViewById(R.id.profile_member_firstname);
         profile_member_lastname = (TextView) findViewById(R.id.profile_member_lastname);
