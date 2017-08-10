@@ -36,10 +36,11 @@ import java.util.Map;
 
 public class ServicesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button serviceFly,serviceTrans,serviceGuide,serviceHotels,servicePlaces,serviceRests,createNewGroupBt,signInBt;
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
+
     Toolbar mToolBar;
     Button menuBt;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
     NavigationView navigationView;
     String token;
     @Override
@@ -57,9 +58,7 @@ public class ServicesActivity extends AppCompatActivity implements NavigationVie
         serviceTrans=(Button)findViewById(R.id.serviceTransportBt);
         serviceGuide=(Button)findViewById(R.id.serviceGUideBt);
         serviceHotels=(Button)findViewById(R.id.serviceHotelsBt);
-        mDrawerLayout=(DrawerLayout)findViewById(R.id.drawerLayout);
-        mToggle=new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToggle);
+
         menuBt=(Button)findViewById(R.id.menuBt);
         serviceTrans=(Button)findViewById(R.id.serviceTransportBt);
         servicePlaces=(Button)findViewById(R.id.servicePlacesBt);

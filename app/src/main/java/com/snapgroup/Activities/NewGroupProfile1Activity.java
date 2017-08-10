@@ -53,7 +53,7 @@ public class NewGroupProfile1Activity extends AppCompatActivity {
         else
             editor.putString("description","");
         editor.commit();
-        Intent i = new Intent(NewGroupProfile1Activity.this,NewGroupProfile2Activity.class);
+        Intent i = new Intent(NewGroupProfile1Activity.this,NewGroupSettingsPageAtivity.class);
         startActivity(i);
         overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }

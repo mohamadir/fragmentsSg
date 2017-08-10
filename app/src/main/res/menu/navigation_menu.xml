@@ -5,12 +5,13 @@
         android:title="My Profile"
         android:icon="@drawable/ic_settings_black_24dp"
         />
+    <item android:id="@+id/my_groups_drawer_item"
+        android:title="Create Group"
+        android:icon="@drawable/new_group"/>
     <item android:id="@+id/my_trips__drawer_item"
         android:title="My Trips"
         android:icon="@drawable/ic_flag_black_24dp"/>
-    <item android:id="@+id/my_groups_drawer_item"
-        android:title="My Groups"
-        android:icon="@drawable/ic_group_black_24dp"/>
+
     <item android:id="@+id/my_favorites_drawer_item"
         android:title="My Favorites"
         android:icon="@drawable/ic_favorite_black_24dp"/>

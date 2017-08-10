@@ -46,7 +46,7 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_new_group_profile2);
         //printSharedPreferences();
         AssistantsAdapter adapter=new AssistantsAdapter(this, lastName, imgid);
-        list=(ListView)findViewById(R.id.listAssistants); // her i use list view for the gruop leader and grop assistant
+        list=(ListView)findViewById(R.id.memberInviteLv); // her i use list view for the gruop leader and grop assistant
         dateFromTv=(TextView)findViewById(R.id.profile2Activity_dateFromTv);
         dateToTv=(TextView)findViewById(R.id.profile2Activity_dateToTv);
         maxMembersSp=(Spinner) findViewById(R.id.profile2Activity_maxMembersSp);

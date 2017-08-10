@@ -121,7 +121,7 @@ public class NewGroupSettingsPageAtivity extends AppCompatActivity {
         Log.i("physical",str+","+inPrivacyString+","+outPrivacyString);
 
         updateSharedPreferences();
-        Intent i=new Intent(NewGroupSettingsPageAtivity.this,NewGroupProfile1Activity.class);
+        Intent i=new Intent(NewGroupSettingsPageAtivity.this,NewGroupProfile2Activity.class);
         startActivity(i);
     }
 

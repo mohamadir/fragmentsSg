@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="accent_color">#FF5722</color>
+    <color name="colorAccent">#999900</color>
+    <color name="accent_color">#999900</color>
     <color name="green">#019a01</color>
     <color name="colorGreen">#019a01</color>
-    <color name="orange">#ff6600</color>
-    <color name="colorOrange">#fc8130
+    <color name="orange">#999900</color>
+    <color name="colorOrange">#999900
     </color>
     <color name="colorDark">#111111
     </color>

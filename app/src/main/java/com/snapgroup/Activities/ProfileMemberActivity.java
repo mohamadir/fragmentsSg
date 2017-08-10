@@ -67,8 +67,6 @@ public class ProfileMemberActivity extends AppCompatActivity {
         profile_member_lastname = (TextView) findViewById(R.id.profile_member_lastname);
         profile_image_member = (ImageView) findViewById(R.id.profile_image_member) ;
         profile_member_role = (TextView) findViewById(R.id.profile_member_role) ;
-
-
         SharedPreferences settings=getSharedPreferences("UserLog",MODE_PRIVATE);
         String image = settings.getString("profile_image","");
         profile_member_role.setText(settings.getString("role",""));

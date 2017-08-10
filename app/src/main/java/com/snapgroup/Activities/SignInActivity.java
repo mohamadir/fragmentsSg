@@ -22,6 +22,7 @@ import com.snapgroup.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.acl.Group;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,11 +39,18 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        SharedPreferences settings=this.getSharedPreferences("UserLog",MODE_PRIVATE);
+        String signed = settings.getString("isSigned","false");
+        if(signed.equals("true")) {
+            Intent i = new Intent(SignInActivity.this, GroupListActivity.class);
+            startActivity(i);
+        }
         signupTv=(TextView) findViewById(R.id.signupTv);
         usernameEt=(EditText)findViewById(R.id.signInUsernameEt);
         passwordEt=(EditText)findViewById(R.id.signInPasswordEt);
         pd=new ProgressDialog(SignInActivity.this);
         signInVolleyBt=(Button) findViewById(R.id.signInVolleyBt);
+
         setListeners();
 
     }
@@ -89,7 +97,6 @@ public class SignInActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.i("myToken",e.getMessage().toString());
-
                 }
                 SharedPreferences.Editor editor=getSharedPreferences("UserLog",MODE_PRIVATE).edit();
                 editor.putString("isSigned","true");
@@ -130,6 +137,12 @@ public class SignInActivity extends AppCompatActivity {
 
     }*/
     //  TO DO
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
     public void LogInPostRequest(String email, String password){
         String url = "http://172.104.150.56/api/login";
         Map<String, String> params = new HashMap();
@@ -148,7 +161,7 @@ public class SignInActivity extends AppCompatActivity {
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    Intent i=new Intent(SignInActivity.this,ServicesActivity.class);
+                                    Intent i=new Intent(SignInActivity.this,GroupListActivity.class);
                                     startActivity(i);
                                 }
                             });

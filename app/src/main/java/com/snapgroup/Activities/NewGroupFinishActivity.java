@@ -44,7 +44,8 @@ public class NewGroupFinishActivity extends AppCompatActivity {
         finishTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(NewGroupFinishActivity.this, ServicesActivity.class);
+                Intent i=new Intent(NewGroupFinishActivity.this, GroupListActivity.class);
+                i.putExtra("Intent","Finish");
                 startActivity(i);
             }
         });
