@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ import org.json.JSONObject;
 import java.security.acl.Group;
 import java.util.HashMap;
 import java.util.Map;
+import com.spark.submitbutton.SubmitButton;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -32,35 +34,53 @@ public class SignInActivity extends AppCompatActivity {
     Button signInBt,signInVolleyBt;
     EditText usernameEt,passwordEt;
     String token;
+    public static int STATUS=0;
     TextView signupTv;
     public ProgressDialog pd;
-
+    SubmitButton sb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         SharedPreferences settings=this.getSharedPreferences("UserLog",MODE_PRIVATE);
         String signed = settings.getString("isSigned","false");
+        /*Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null)
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
         if(signed.equals("true")) {
             Intent i = new Intent(SignInActivity.this, GroupListActivity.class);
             startActivity(i);
         }
+         sb = (SubmitButton) findViewById(R.id.btn3);
         signupTv=(TextView) findViewById(R.id.signupTv);
         usernameEt=(EditText)findViewById(R.id.signInUsernameEt);
         passwordEt=(EditText)findViewById(R.id.signInPasswordEt);
         pd=new ProgressDialog(SignInActivity.this);
-        signInVolleyBt=(Button) findViewById(R.id.signInVolleyBt);
+       // signInVolleyBt=(Button) findViewById(R.id.signInVolleyBt);
 
         setListeners();
 
     }
     public void setListeners(){
-        signInVolleyBt.setOnClickListener(new View.OnClickListener() {
+        sb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pd.setMessage("Wait please.. ");
-                pd.show();
-                LogInPostRequest(usernameEt.getText().toString(),passwordEt.getText().toString());
+              // pd.setMessage("Wait please.. ");
+           //     pd.show();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(3000);
+                            LogInPostRequest(usernameEt.getText().toString(),passwordEt.getText().toString());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
+
             }
         });
         signupTv.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +176,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 //TODO: handle success
                 try {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
+                   /* AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
                     builder.setMessage("Login Successfully")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -166,12 +186,15 @@ public class SignInActivity extends AppCompatActivity {
                                 }
                             });
                     AlertDialog alert = builder.create();
-                    alert.show();
+                    alert.show();*/
+
                     SharedPreferences.Editor editor=getSharedPreferences("UserLog",MODE_PRIVATE).edit();
                     editor.putString("isSigned","true");
                     editor.putString("token",response.getString("access_token").toString());
                     Log.i("tokeny",response.getString("access_token").toString());
                     editor.commit();
+                    Intent i=new Intent(SignInActivity.this,GroupListActivity.class);
+                    startActivity(i);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

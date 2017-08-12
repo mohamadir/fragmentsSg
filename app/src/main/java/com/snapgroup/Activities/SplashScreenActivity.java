@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.snapgroup.R;
+import com.snapgroup.Tests.CollapsToolBarActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -16,7 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(2000);
-                    Intent i=new Intent(SplashScreenActivity.this,SignInActivity.class);
+                    Intent i=new Intent(SplashScreenActivity.this,CollapsToolBarActivity.class);
                     i.putExtra("splash","splash");
                     startActivity(i);
 

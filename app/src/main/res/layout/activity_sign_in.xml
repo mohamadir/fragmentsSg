@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,176 +10,184 @@
 
     >
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="800dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="12"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
-
+            android:layout_height="800dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.5"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageSwitcher
-                    android:id="@+id/imageSwitcher"
-                    android:layout_width="220dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_height="100dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/logo2" />
-
-                <TextView
-                    android:id="@+id/logoTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageSwitcher"
-                    android:layout_centerHorizontal="true"
-                    android:text="Snapgroup"
-                    android:textSize="35sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView102"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:gravity="center"
-                    android:text="Login with Your favorite social network"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_weight="1"
-
-                android:layout_height="0dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:layout_alignEnd="@+id/textView98"
-                    android:layout_alignRight="@+id/textView98"
-                    android:layout_below="@+id/textView102"
-                    app:srcCompat="@drawable/facebook" />
-
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="120dp"
-                    android:layout_height="40dp"
-                    android:layout_alignLeft="@+id/textView98"
-                    android:layout_alignStart="@+id/textView98"
-                    android:layout_alignTop="@+id/imageView7"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginStart="13dp"
-                    app:srcCompat="@drawable/gmail" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="0dp"
+                android:layout_height="800dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_gravity="center"
-                android:weightSum="14"
-                android:layout_below="@+id/textView103"
-                android:layout_weight="6.3"
-                android:orientation="vertical">
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
+                android:weightSum="12">
 
 
-                <TextView
-                    android:id="@+id/textView103"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:layout_below="@+id/imageView7"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="18dp"
+                    android:layout_weight="3.5"
                     android:gravity="center"
-                    android:text="Or"
-                    android:textSize="18sp" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/signupTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_marginEnd="10dp"
-                    android:text="Create new Acount"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    <ImageSwitcher
+                        android:id="@+id/imageSwitcher"
+                        android:layout_width="220dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/logo2" />
 
-                <TextView
-                    android:id="@+id/textView105"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:layout_marginTop="5dp"
-                    android:text="Already Member ?! " />
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3">
-
-
-                    <EditText
-                        android:id="@+id/signInUsernameEt"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/logoTv"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/lock"
-                        android:drawableTint="#999900"
-                        android:hint=" User Name"
-                        android:inputType="textEmailAddress" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_weight="3"
-                    android:layout_height="0dp">
-
-                    <EditText
-                        android:id="@+id/signInPasswordEt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:drawableLeft="@drawable/lock"
-                        android:drawableTint="#999900"
-                        android:hint=" Password"
-                        android:inputType="textPassword"
-
-                        android:singleLine="true"
+                        android:layout_below="@+id/imageSwitcher"
+                        android:layout_centerHorizontal="true"
+                        android:text="Snapgroup"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
-                </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
 
-                <Button
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView102"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:text="Login with Your favorite social network"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:layout_alignEnd="@+id/textView98"
+                        android:layout_alignRight="@+id/textView98"
+                        android:layout_below="@+id/textView102"
+                        app:srcCompat="@drawable/facebook" />
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="120dp"
+                        android:layout_height="40dp"
+                        android:layout_alignLeft="@+id/textView98"
+                        android:layout_alignStart="@+id/textView98"
+                        android:layout_alignTop="@+id/imageView7"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginStart="13dp"
+                        app:srcCompat="@drawable/gmail" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="400dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView103"
+                    android:layout_gravity="center"
+                    android:layout_weight="9.41"
+                    android:orientation="vertical"
+                    android:weightSum="14">
+
+
+                    <TextView
+                        android:id="@+id/textView103"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_below="@+id/imageView7"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="18dp"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="Or"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/signupTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Create new Acount"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView105"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Already Member ?! " />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3">
+
+
+                        <EditText
+                            android:id="@+id/signInUsernameEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/lock"
+                            android:drawableTint="#999900"
+                            android:hint=" User Name"
+                            android:inputType="textEmailAddress" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="3">
+
+                        <EditText
+                            android:id="@+id/signInPasswordEt"
+                            android:layout_width="match_parent"
+                            android:layout_height="43dp"
+                            android:layout_marginTop="16dp"
+                            android:drawableLeft="@drawable/lock"
+                            android:drawableTint="#999900"
+                            android:hint=" Password"
+                            android:inputType="textPassword"
+
+                            android:singleLine="true"
+                            android:textStyle="bold" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <!--<Button
                     android:id="@+id/signInVolleyBt"
                     android:layout_width="150dp"
                     android:layout_height="0dp"
@@ -186,23 +195,39 @@
                     android:layout_weight="3"
                     android:background="@drawable/buttonsignshape"
                     android:text="Sign In"
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorWhite" />-->
 
-                <TextView
-                    android:id="@+id/forgetPass"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.5"
-                    android:paddingTop="5dp"
-                    android:text="Forgot Password?"
-                    android:textStyle="bold" />
+                    <com.spark.submitbutton.SubmitButton
+                        android:id="@+id/btn3"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:padding="0dp"
+                        android:text="Sign In"
+                        android:textColor="@color/gray"
+                        android:textSize="10sp"
+                        app:sub_btn_background="@color/white"
+                        app:sub_btn_duration="3000"
+                        app:sub_btn_line_color="@color/orange"
+                        app:sub_btn_ripple_color="@color/orange"
+                        app:sub_btn_tick_color="@color/yellow" />
 
+                    <TextView
+                        android:id="@+id/forgetPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.5"
+                        android:paddingTop="5dp"
+                        android:text="Forgot Password?"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-
-    </RelativeLayout>
-
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

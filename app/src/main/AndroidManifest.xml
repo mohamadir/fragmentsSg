@@ -118,7 +118,8 @@
         <activity android:name=".Activities.FacebookLoginTestActivity" />
         <activity android:name=".Activities.NotificationTestActivity" />
         <activity android:name=".Activities.SignInActivity" />
-        <activity android:name=".Activities.GroupListActivity"></activity>
+        <activity android:name=".Activities.GroupListActivity" />
+        <activity android:name=".Tests.CollapsToolBarActivity"></activity>
     </application>
 
 </manifest>
