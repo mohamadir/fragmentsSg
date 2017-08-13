@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    useLibrary 'org.apache.http.legacy'
+
     signingConfigs {
     }
     compileSdkVersion 26
@@ -64,9 +66,14 @@ dependencies {
     compile 'com.squareup:seismic:1.0.2'
     compile 'com.nbsp:library:1.09'
     compile 'com.victor:lib:1.0.4'
+    compile 'org.apache.httpcomponents:httpcore:4.4.1'
+    compile 'org.apache.httpcomponents:httpclient:4.5'
+    compile 'com.github.angads25:filepicker:1.1.1'
+    compile 'net.sf.opencsv:opencsv:2.3'
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
     compile 'com.google.firebase:firebase-messaging:11.0.4'
     testCompile 'junit:junit:4.12'
+    compile 'com.github.Hitomis:CircleMenu:v1.0.0'
 }
 apply plugin: 'com.google.gms.google-services'

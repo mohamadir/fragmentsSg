@@ -22,8 +22,9 @@ import com.snapgroup.R;
 
 public class ContactsActivity extends AppCompatActivity {
      ArrayAdapter<String> arrayAdapter;
-    Button loadBt;
     public ProgressDialog pd;
+
+    Button loadBt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,6 @@ public class ContactsActivity extends AppCompatActivity {
         pd.setMessage("Wait please.. ");
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS},1);
         arrayAdapter= new ArrayAdapter<String>(ContactsActivity.this, android.R.layout.select_dialog_singlechoice);
-        pd.show();
         getContacts();
         loadBt=(Button)findViewById(R.id.loadContactsBt);
         loadBt.setOnClickListener(new View.OnClickListener() {
