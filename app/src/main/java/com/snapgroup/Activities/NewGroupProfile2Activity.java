@@ -34,14 +34,21 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
+import com.snapgroup.Adapters.CustomListAdapter;
+import com.snapgroup.Adapters.GroupLIstAdapter2;
+import com.snapgroup.Adapters.MemberInviteListAdapter;
+import com.snapgroup.Classes.MemberInviteItem;
 import com.snapgroup.Classes.MySingleton;
 import com.snapgroup.Fragments.DatePickeerFragment2;
 import com.snapgroup.Fragments.DatePickerFragment;
+import com.snapgroup.Models.GroupInList;
 import com.snapgroup.R;
 import com.snapgroup.Tests.ContactsActivity;
+import com.twotoasters.jazzylistview.JazzyHelper;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -70,12 +77,15 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
 
     ListView list;
     Spinner maxMembersSp;
+    ListView inviteMembersLv;
     TextView btNext,dateFromTv,dateToTv;
     public static final int PICKFILE_REQUEST_CODE=221;
+    ArrayList<MemberInviteItem> membersArrayForAdapter;
     JSONArray jsonArray;
     Button chooseCsvBt,inviteBt,addNewMemberBt;
     ArrayAdapter<String> arrayAdapter;
     CircleMenu circleMenu;
+    ProgressDialog   contactsPd;
     public ProgressDialog pd;
     String[] lastName ={
             "  Anglena basdhkjlk",
@@ -97,6 +107,14 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS},1);
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_CONTACTS},1);
+        membersArrayForAdapter=new ArrayList<MemberInviteItem>();
+       /* inviteMembersLv=(ListView)findViewById(R.id.inviteMembersLv);
+        inviteMembersLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("memberInviteId",membersArrayForAdapter.get(i).id);
+            }
+        });*/
        /* circleMenu=(CircleMenu)findViewById(R.id.circle_menu);
         circleMenu.setVisibility(View.GONE);
         circleMenu.setMainMenu(Color.parseColor("#999900"),R.drawable.add_group,R.drawable.close);
@@ -111,8 +129,8 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
             }
         });*/
         AssistantsAdapter adapter=new AssistantsAdapter(this, lastName, imgid);
-        dateFromTv=(TextView)findViewById(R.id.profile2Activity_dateFromTv);
-        dateToTv=(TextView)findViewById(R.id.profile2Activity_dateToTv);
+        dateFromTv=(TextView)findViewById(R.id.settingsActiivty_dateFromTv);
+        dateToTv=(TextView)findViewById(R.id.settingsActiivty_dateToTv);
         chooseCsvBt=(Button)findViewById(R.id.profile2Activity_chooseCsvBt);
         addNewMemberBt=(Button)findViewById(R.id.add_single_member);
         pd=new ProgressDialog(NewGroupProfile2Activity.this);
@@ -127,14 +145,65 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
         inviteBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final View inviteOptionsView= LayoutInflater.from(NewGroupProfile2Activity.this).inflate(R.layout.invite_options_dialog,null);
+                Button contactsBt=(Button)inviteOptionsView.findViewById(R.id.invite_options_calendarBt);
+                Button membersBt=(Button)inviteOptionsView.findViewById(R.id.invite_options_MembersBt);
+                AlertDialog.Builder builder = new AlertDialog.Builder(NewGroupProfile2Activity.this);
+                builder.setView(inviteOptionsView);
+                builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Log.i("sfdgh","fghjk");
+                    }
+                });
+                final AlertDialog dialog = builder.create();
+                dialog.show();
+                contactsBt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        dialog.hide();
+                        arrayAdapter= new ArrayAdapter<String>(NewGroupProfile2Activity.this, android.R.layout.select_dialog_singlechoice);
+
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    // code runs in a thread
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            dialog.dismiss();
+                                            contactsPd=new ProgressDialog(NewGroupProfile2Activity.this);
+                                            contactsPd.setTitle("Wait Please..");
+                                            contactsPd.show();
+                                            getContacts();
+                                        }
+                                    });
+                                } catch (final Exception ex) {
+                                    Log.i("---","Exception in thread");
+                                }
+                            }
+                        }).start();
+
+                    }
+                });
+                membersBt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.hide();
+                        requestAllMembers();
+                    }
+                });
+
+                // requestAllMembers();
+                /*       Get Contacts
+
                 pd=new ProgressDialog(NewGroupProfile2Activity.this);
                 pd.setMessage("Wait please.. ");
                 pd.show();
                 pd.show();
                 arrayAdapter= new ArrayAdapter<String>(NewGroupProfile2Activity.this, android.R.layout.select_dialog_singlechoice);
-                getContacts();
-
-
+                getContacts();*/
 
 
             }
@@ -189,7 +258,75 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
         final AlertDialog dialog = builder.create();
         dialog.show();
     }
+    public void requestAllMembers(){
+        String url = "http://172.104.150.56/api/members";
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
 
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSONArray membersArray = response;
+                        for(int i=0;i<response.length();i++)
+                        {
+                            try {
+                                JSONObject profile=response.getJSONObject(i).getJSONObject("profile");
+                                if(profile.getString("profile_image")==null||profile.getString("profile_image").equals(""))
+                                    membersArrayForAdapter.add(i,new MemberInviteItem("http://www.wiki.sc4devotion.com/images/6/62/Wiki_no_image.png",profile.getString("first_name"),profile.getString("last_name"),profile.getString("id")));
+                                else
+                                    membersArrayForAdapter.add(i,new MemberInviteItem(profile.getString("profile_image"),profile.getString("first_name"),profile.getString("last_name"),profile.getString("id")));
+
+                               Log.i("memberI",membersArrayForAdapter.get(i).toString());
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+
+
+
+                        MemberInviteListAdapter adapter=new MemberInviteListAdapter(NewGroupProfile2Activity.this, membersArrayForAdapter);
+                      //  inviteMembersLv.setAdapter(adapter);
+                        View membersListView= LayoutInflater.from(NewGroupProfile2Activity.this).inflate(R.layout.member_list_dialog,null);
+                        final ListView membersLv = (ListView) membersListView.findViewById(R.id.members_lv_invite);
+                        membersLv.setAdapter(adapter);
+                        membersLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                ImageView checkIv=view.findViewById(R.id.checkIv);
+                                if(checkIv.getVisibility()==View.GONE)
+                                checkIv.setVisibility(View.VISIBLE);
+                                else
+                                    checkIv.setVisibility(View.GONE);
+
+                            }
+                        });
+                        AlertDialog.Builder builder = new AlertDialog.Builder(NewGroupProfile2Activity.this);
+                        builder.setView(membersListView);
+                        builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Log.i("sfdgh","fghjk");
+                            }
+                        });
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                           Log.i("memberI","error");
+                    }
+
+                });
+
+
+        MySingleton.getInstance(NewGroupProfile2Activity.this).addToRequestQueue(jsObjRequest);
+
+    }
     private void updateSharedPreferences() {
         SharedPreferences.Editor editor=getSharedPreferences("NewGroup",MODE_PRIVATE).edit();
         String dateFrom=dateFromTv.getText().toString();
@@ -210,7 +347,23 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
         DialogFragment newFragment = new DatePickeerFragment2();
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
+    private void validateCode(MemberInviteListAdapter adapter) {
 
+
+        View membersListView= LayoutInflater.from(NewGroupProfile2Activity.this).inflate(R.layout.member_list_dialog,null);
+        final ListView membersLv = (ListView) membersListView.findViewById(R.id.members_lv_invite);
+        membersLv.setAdapter(adapter);
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewGroupProfile2Activity.this);
+        builder.setMessage("Members To Invite");
+        builder.setView(membersListView);
+        builder.setPositiveButton("אישור", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
     public void showDatePickerDialog(View v) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -262,6 +415,7 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
 
     public void getContacts() {
 
+
         ContentResolver cr = getContentResolver();
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
@@ -289,7 +443,7 @@ public class NewGroupProfile2Activity extends AppCompatActivity {
                 }
             }
         }
-        pd.hide();
+        contactsPd.hide();
         loadDialog();
 
     }

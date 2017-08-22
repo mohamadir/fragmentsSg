@@ -9,8 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.snapgroup.Activities.ProfileMemberActivity;
 import com.snapgroup.Classes.MemberInviteItem;
 import com.snapgroup.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -55,7 +58,9 @@ public class MemberInviteListAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context_1).inflate(
                     R.layout.member_choose_item_layout, null);
             viewHolder = new MemberInviteListAdapter.ViewHolder();
-
+            viewHolder.name=(TextView)convertView.findViewById(R.id.chooseItemNameTv);
+            viewHolder.profileImage=(ImageView) convertView.findViewById(R.id.member_choose_iv);
+            viewHolder.checkIv=(ImageView) convertView.findViewById(R.id.checkIv);
 
             convertView.setTag(viewHolder);
         } else {
@@ -67,7 +72,14 @@ public class MemberInviteListAdapter extends BaseAdapter {
             viewHolder = (MemberInviteListAdapter.ViewHolder) convertView.getTag();
         }
         // set the text of all the views in the item to be the values from the newsArray
-        Log.i("payy","im here");
+        //
+        viewHolder.name.setText(membersArray.get(i).firstName+membersArray.get(i).lastName);
+        if(membersArray.get(i).image.equals("aaaaa"))
+        {
+            Picasso.with(context_1).load("http://www.wiki.sc4devotion.com/images/6/62/Wiki_no_image.png").into(viewHolder.profileImage);
+        }
+        else
+            Picasso.with(context_1).load(membersArray.get(i).image).into(viewHolder.profileImage);
 
         return convertView;
 
@@ -75,6 +87,6 @@ public class MemberInviteListAdapter extends BaseAdapter {
     }
     public class ViewHolder{
         public TextView name;
-        public ImageView profileImage;
+        public ImageView profileImage,checkIv;
     }
 }

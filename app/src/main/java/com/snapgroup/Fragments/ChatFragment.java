@@ -63,7 +63,7 @@ public class ChatFragment extends Fragment {
     private Handler mTypingHandler = new Handler();
     private String mUsername = "Abd";
     private Boolean isConnected = false;
-
+    public static  String groupId="";
     private Socket mSocket;
     {
         try {
@@ -75,14 +75,25 @@ public class ChatFragment extends Fragment {
 
     public ChatFragment() {
         super();
+
+
+
     }
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.i(TAG, "Chat Created...");
-
+       // Log.i(TAG, "Chat Created...");
+        SharedPreferences settings=getActivity().getSharedPreferences("SnapGroup",MODE_PRIVATE);
+        String image = settings.getString("gImage"," asdasdasd");
+        String from = settings.getString("gOrigin"," asdasdasd");
+        String to = settings.getString("gDestination"," asdasdasd");
+        String description = settings.getString("gDescription"," asdasdasd");
+        String title = settings.getString("gTitle"," asdasdasd");
+        String id = settings.getString("gId","-1");
+        groupId=id;
+        Log.i("ChatFragment"," onCreate(Bundle savedInstanceState)-"+groupId);
         mAdapter = new MessageAdapter(this.getActivity(), mMessages);
 
         // Connecting to socket server
@@ -90,16 +101,19 @@ public class ChatFragment extends Fragment {
         mSocket.on(Socket.EVENT_DISCONNECT,onDisconnect);
         mSocket.on(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.on(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
-        //mSocket.on("new message", onNewMessage);
-        mSocket.on("group-chat-1:App\\Events\\ChatMessage", onMessage);
-//        mSocket.on("typing", onTyping);
+
+        mSocket.emit("subscribe", "group-chat-"+groupId);
+        mSocket.on("group-chat-"+groupId+":chat-message", onMessage);
+        //mSocket.on("typing", onTyping);
 //        mSocket.on("stop typing", onStopTyping);
         mSocket.connect();
 
         //
         // perform the user login attempt.
         //mSocket.emit("add user", mUsername);
-        mSocket.emit("group-chat-1:App\\Events\\ChatMessage", mUsername);
+        mSocket.emit("group-chat-"+groupId+":chat-message", mUsername);
+        Log.i(TAG, "Chat Created..."+ groupId);
+
     }
 
     // When the chat is off
@@ -114,7 +128,8 @@ public class ChatFragment extends Fragment {
         mSocket.off(Socket.EVENT_CONNECT_ERROR, onConnectError);
         mSocket.off(Socket.EVENT_CONNECT_TIMEOUT, onConnectError);
         //mSocket.off("new message", onNewMessage);
-        mSocket.off("group-chat-1:App\\Events\\ChatMessage", onMessage);
+        mSocket.off("group-chat-"+groupId+":chat-message", onMessage);
+
 //        mSocket.off("typing", onTyping);
 //        mSocket.off("stop typing", onStopTyping);
     }
@@ -122,7 +137,18 @@ public class ChatFragment extends Fragment {
     // View Creating
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        View view= inflater.inflate(R.layout.fragment_chat, container, false);
+        SharedPreferences settings=getActivity().getSharedPreferences("SnapGroup",MODE_PRIVATE);
+        String image = settings.getString("gImage"," asdasdasd");
+        String from = settings.getString("gOrigin"," asdasdasd");
+        String to = settings.getString("gDestination"," asdasdasd");
+        String description = settings.getString("gDescription"," asdasdasd");
+        String title = settings.getString("gTitle"," asdasdasd");
+        String id = settings.getString("gId","-1");
+        groupId=id;
+
+
+        return view;
     }
 
     @Override
@@ -138,13 +164,14 @@ public class ChatFragment extends Fragment {
             @Override
             public boolean onEditorAction(TextView v, int id, KeyEvent event) {
                 if (id == R.id.send || id == EditorInfo.IME_NULL) {
+
                     attemptSend();
                     return true;
                 }
                 return false;
             }
         });
-
+/*
         mInputMessageView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -152,12 +179,12 @@ public class ChatFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (null == mUsername) return;
+
                 if (!mSocket.connected()) return;
 
                 if (!mTyping) {
                     mTyping = true;
-                    mSocket.emit("typing");
+                    mSocket.emit("typing", "Android-User");
                 }
 
                 mTypingHandler.removeCallbacks(onTypingTimeout);
@@ -168,14 +195,11 @@ public class ChatFragment extends Fragment {
             public void afterTextChanged(Editable s) {
             }
         });
-
+*/
         ImageButton sendButton = (ImageButton) view.findViewById(R.id.send_button);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor=getActivity().getSharedPreferences("Chat",MODE_PRIVATE).edit();
-                editor.putBoolean("send",true);
-                editor.commit();
                 attemptSend();
             }
         });
@@ -183,6 +207,9 @@ public class ChatFragment extends Fragment {
 
     // Before send an message
     private void attemptSend() {
+        SharedPreferences.Editor editor=getActivity().getSharedPreferences("ChatUser",MODE_PRIVATE).edit();
+        editor.putString("who","me");
+        editor.commit();
         Log.i(TAG, "Attempt to send a new message...");
         if (!mSocket.connected()) return;
 
@@ -204,9 +231,6 @@ public class ChatFragment extends Fragment {
     // Post request to laravel api server
     public void sendMessageRequest(String message){
         String url="http://172.104.150.56/api/sendmessage";
-        SharedPreferences.Editor editor=getActivity().getSharedPreferences("Chat",MODE_PRIVATE).edit();
-        editor.putBoolean("send",false);
-        editor.commit();
         final String msg=message;
         StringRequest sr = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -221,9 +245,17 @@ public class ChatFragment extends Fragment {
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                //UserLog
+                SharedPreferences settings=getActivity().getSharedPreferences("UserLog",MODE_PRIVATE);
+                String firstName=settings.getString("first_name","android");
+                String lastName=settings.getString("last_name","-user");
+               String id=settings.getString("id","wla eshi!!");
+
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("message", msg);
-
+                params.put("nickname", firstName+" "+lastName);
+                params.put("member_id", id);
+                params.put("group_id", groupId);
                 return params;
             }
         };
@@ -340,23 +372,34 @@ public class ChatFragment extends Fragment {
     private Emitter.Listener onMessage = new Emitter.Listener() {
         @Override
         public void call(final Object... args) {
+
             Log.i(TAG, "Message...");
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+
                     JSONObject data = (JSONObject) args[0];
-                    String username;
+                    String nickname;
                     String message;
+                    String messageClass;
                     try {
-                        username = data.getString("username");
                         message = data.getString("message");
+                        nickname = data.getString("nickname");
+                        messageClass = data.getString("messageClass");
+                        String id=messageClass.split(",")[3].split(":")[1];
+                        Log.i(TAG,messageClass);
+                        SharedPreferences.Editor editor=getActivity().getSharedPreferences("ChatUser",MODE_PRIVATE).edit();
+                        editor.putString("who",id);
+                        editor.putString("nick_name",messageClass.split(",")[5].split(":")[1].toString());
+                        editor.commit();
+                        Log.i("who-i-am", id);
                     } catch (JSONException e) {
                         Log.e(TAG, e.getMessage());
                         return;
                     }
 
                     //removeTyping(username);
-                    addMessage(username, message);
+                    addMessage(nickname, message);
                 }
             });
         }
@@ -370,14 +413,14 @@ public class ChatFragment extends Fragment {
                 @Override
                 public void run() {
                     JSONObject data = (JSONObject) args[0];
-                    String username;
+                    String nickname;
                     try {
-                        username = data.getString("username");
+                        nickname = data.getString("nickname");
                     } catch (JSONException e) {
                         Log.e(TAG, e.getMessage());
                         return;
                     }
-                    addTyping(username);
+                    addTyping(nickname);
                 }
             });
         }

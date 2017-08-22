@@ -20,6 +20,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:background="@null"
+        android:textSize="15sp"
         android:text="Sign in"
         android:textColor="@color/orange"
         android:textStyle="bold" />
@@ -130,6 +131,13 @@
         app:max_velocity="0"
         app:only_animate_fling="false"
         app:only_animate_new_items="false" />
+    <include
+        android:id="@+id/loadItemsLayout_recyclerView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/progress_layout"
+        android:visibility="gone" />
 
 </RelativeLayout>
     <android.support.design.widget.NavigationView

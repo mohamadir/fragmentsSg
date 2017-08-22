@@ -38,6 +38,9 @@ public class GroupLIstAdapter2 extends BaseAdapter {
     public GroupLIstAdapter2(Activity context2, ArrayList<GroupInList> grouplist){
         this.context=context2;
         this.grouplist=grouplist;
+        for(int i=0;i<grouplist.size();i++)
+            Log.i("IddAdapter",grouplist.get(i).get_id()+","+grouplist.get(i).getTitle());
+
     }
     @Override
     public int getCount() {
@@ -60,15 +63,11 @@ public class GroupLIstAdapter2 extends BaseAdapter {
         if (convertView == null) {
             convertView = LayoutInflater.from(this.context).inflate(R.layout.newgroupitemdetails, null);
             viewHolder = new ViewHolder();
-            //viewHolder.destinationTv = (TextView) convertView.findViewById(R.id.destination);
+            viewHolder.titleTv = (TextView) convertView.findViewById(R.id.group_list_item_titleTv);
+            viewHolder.roleIv = (ImageView) convertView.findViewById(R.id.group_role_iv);
             //viewHolder.descriptionTv= (TextView) convertView.findViewById(R.id.description);
           //  viewHolder.startingAtTv = (TextView) convertView.findViewById(R.id.starting_at);
            // viewHolder.durationTv = (TextView) convertView.findViewById(R.id.trip_duration);
-            viewHolder.groupIv=(ImageView) convertView.findViewById(R.id.imgParis);
-            viewHolder.groupLeaderIv=(ImageView)convertView.findViewById(R.id.groupLeaderIv) ;
-            Picasso.with(context).load(grouplist.get(position).getImage()).into(viewHolder.groupIv);
-            Picasso.with(context).load("http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg").transform(new CircleTransform()).into(viewHolder.groupLeaderIv);
-
             convertView.setTag(viewHolder);
         }
         else
@@ -76,10 +75,15 @@ public class GroupLIstAdapter2 extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
 
         }
+        viewHolder.groupIv=(ImageView) convertView.findViewById(R.id.imgParis);
+        viewHolder.groupLeaderIv=(ImageView)convertView.findViewById(R.id.groupLeaderIv) ;
+        Picasso.with(context).load(grouplist.get(position).getImage()).into(viewHolder.groupIv);
+        Picasso.with(context).load("http://www.american.edu/uploads/profiles/large/chris_palmer_profile_11.jpg").transform(new CircleTransform()).into(viewHolder.groupLeaderIv);
+        viewHolder.titleTv.setText(grouplist.get(position).getTitle()+"--"+grouplist.get(position).get_id());
 
 
 
-       // viewHolder.durationTv.setText("20");
+        // viewHolder.durationTv.setText("20");
         //viewHolder.startingAtTv.setText(grouplist.get(position).getStart_date().toString());
         if(grouplist.get(position).getDescritption().length()>40) {
             String desc = getNwords(grouplist.get(position).getDescritption().toString());
@@ -98,17 +102,19 @@ public class GroupLIstAdapter2 extends BaseAdapter {
     public class ViewHolder{
         public TextView destinationTv;
         public TextView descriptionTv;
+        public TextView titleTv;
        // public TextView startingAtTv;
         public TextView durationTv;
         public ImageView groupIv;
         public ImageView groupLeaderIv;
+        public ImageView roleIv;
     }
     public String getNwords(String str)
     {
         String [] arr = str.split(" ");
         int N=3;
         String nWords="";
-        for(int i=0; i<4; i++){
+        for(int i=0; i<arr.length; i++){
             nWords = nWords + " " + arr[i] ;
         }
         return nWords;

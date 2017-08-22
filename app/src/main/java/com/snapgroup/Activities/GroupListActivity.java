@@ -2,10 +2,6 @@ package com.snapgroup.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -19,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,14 +25,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.snapgroup.Adapters.GroupLIstAdapter;
 import com.snapgroup.Adapters.GroupLIstAdapter2;
 import com.snapgroup.Classes.MySingleton;
 import com.snapgroup.Models.GroupInList;
 import com.snapgroup.R;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 import com.twotoasters.jazzylistview.JazzyHelper;
 import com.twotoasters.jazzylistview.JazzyListView;
 
@@ -45,8 +39,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import tourguide.tourguide.Overlay;
+import tourguide.tourguide.Pointer;
+import tourguide.tourguide.ToolTip;
+import tourguide.tourguide.TourGuide;
 
 public class GroupListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     // Array of strings...
@@ -57,7 +55,11 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
     Button inviteBt;
     TextView groupListActivity_myGroupsTv,groupListActivity_invitesFilterTv;
     Toolbar mToolBar;
+    GroupLIstAdapter2 glAdapter;
     String token;
+    TourGuide mTourGuideHandler;
+    public static String userId="";
+    EditText expectedNumberEt;
     Button menuBt;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -81,16 +83,19 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
                scrollToBottom();
            }
        });
-       groupsButton.setVisibility(View.INVISIBLE);
+      // groupsButton.setVisibility(View.INVISIBLE);
        invitationsButton.setVisibility(View.INVISIBLE);
        signInBt=(Button)findViewById(R.id.GroupListActivity_SignInBt);
        if(isSigned()) {
            SharedPreferences userLogInfo=this.getSharedPreferences("UserLog",MODE_PRIVATE);
            token= userLogInfo.getString("token","");
            Log.i("signedIn","ok");
-           requsetidByToken();
+           userId=userLogInfo.getString("id","");
+           setNavigateViewSignIn();
+         //  requsetidByToken();
        }
        menuBt=(Button)findViewById(R.id.menuBt);
+       expectedNumberEt=(EditText)findViewById(R.id.expectedNumberEt);
        groupListActivity_myGroupsTv = (TextView)findViewById(R.id.groupListActivity_myGroupsTv);
        groupListActivity_invitesFilterTv = (TextView)findViewById(R.id.groupListActivity_invitesFilterTv);
        mDrawerLayout=(DrawerLayout)findViewById(R.id.drawerLayout);
@@ -99,18 +104,47 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
        mToggle.syncState();
        navigationView= (NavigationView) findViewById(R.id.nav_view);
        navigationView.setNavigationItemSelectedListener(this);
+      /*  mTourGuideHandler = TourGuide.init(this).with(TourGuide.Technique.Click)
+              .setPointer(new Pointer())
+               .setToolTip(new ToolTip().setTitle("My Groups").setDescription("Click here to see \nfor which groups you joinded!"))
+               .setOverlay(new Overlay())
+               .playOn(groupListActivity_invitesFilterTv);*/
        groupListActivity_myGroupsTv.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               if (mTourGuideHandler != null) {
+                   mTourGuideHandler.cleanUp();
+               }
                groupsButton.setVisibility(View.INVISIBLE);
                invitationsButton.setVisibility(View.VISIBLE);
+               groupList.clear();
+               glAdapter=new GroupLIstAdapter2(GroupListActivity.this,groupList);
+               glAdapter.notifyDataSetChanged();
+               getInvitedGroupsRequest();
+
+
            }
        });
+
        groupListActivity_invitesFilterTv.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               if (mTourGuideHandler != null) {
+                   mTourGuideHandler.cleanUp();
+               }
+               /*mTourGuideHandler = TourGuide.init(GroupListActivity.this).with(TourGuide.Technique.Click)
+                       .setPointer(new Pointer())
+                       .setToolTip(new ToolTip().setTitle("Invitatines").setDescription("Click here to see \nfor which groups you invited!"))
+                       .setOverlay(new Overlay())
+                       .playOn(groupListActivity_myGroupsTv);*/
                groupsButton.setVisibility(View.VISIBLE);
                invitationsButton.setVisibility(View.INVISIBLE);
+               groupList.clear();
+               glAdapter=new GroupLIstAdapter2(GroupListActivity.this,groupList);
+               glAdapter.notifyDataSetChanged();
+               getMyGroupsRequest();
+
+
            }
        });
        signInBt.setOnClickListener(new View.OnClickListener() {
@@ -165,6 +199,7 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
                mDrawerLayout.openDrawer(Gravity.LEFT);
            }
        });
+
       /* getGroupsByHotelsRequest(dateFrom,dateTo);
         if(!(type==null || type.equals(""))) {
             if(type.equals("ok")) {
@@ -173,7 +208,8 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
             else
 
         }*/
-       getGroupsRequests();
+       getMyGroupsRequest();
+
        listView.smoothScrollToPosition(5);
        if(getIntent()!=null)
            if((getIntent().getExtras()!=null) &&getIntent().getExtras().getString("Intent").equals("Finish"))
@@ -239,11 +275,15 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
 
 
 
-    public void getGroupsRequests(){
-        String url = "http://172.104.150.56/api/groups";
+    public void getMyGroupsRequest(){
+        SharedPreferences settings=this.getSharedPreferences("UserLog",MODE_PRIVATE);
+        String idUser=settings.getString("id","");
+        Log.i("requestUrl",idUser);
+
+        String url = "http://172.104.150.56/api/members/"+idUser+"/groups/member";
+        groupList.clear();
         JsonArrayRequest jsObjRequest = new JsonArrayRequest
                 (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
-
                     @Override
                     public void onResponse(JSONArray response) {
                     JSONArray groupsArray = response;
@@ -266,7 +306,7 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
                     }
 
 
-                        Log.i("Length",groupList.get(3).getOrigin().toString());
+//                        Log.i("Length",groupList.get(3).getOrigin().toString());
                         GroupLIstAdapter2 glAdapter= new GroupLIstAdapter2(GroupListActivity.this,groupList);
                         // Set the adapter to the list
                         listView.setAdapter(glAdapter);
@@ -274,6 +314,70 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
         listView.setTranscriptMode(JazzyHelper.CARDS);*/
                      // a7la    listView.setTransitionEffect(JazzyHelper.ZIPPER);
                      listView.setTransitionEffect(JazzyHelper.TILT);
+
+                        listView.setScrollBarFadeDuration(100);
+                        listView.smoothScrollToPosition(11);
+                    Log.i("MyGroups",groupList.size()+"");
+
+
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.i("groupsGet1","error ");
+                    }
+
+                });
+
+
+        MySingleton.getInstance(GroupListActivity.this).addToRequestQueue(jsObjRequest);
+
+    }
+    public void getInvitedGroupsRequest(){
+        SharedPreferences settings=this.getSharedPreferences("UserLog",MODE_PRIVATE);
+        String idUser=settings.getString("id","");
+        String url = "http://172.104.150.56/api/members/"+idUser+"/groups/observer";
+        Log.i("requestUrl",url);
+        groupList.clear();
+        JsonArrayRequest jsObjRequest = new JsonArrayRequest
+                (Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        JSONArray groupsArray = response;
+                        Log.i("GroupListStatus",groupList.size()+"");
+                        for(int i=0;i<groupsArray.length();i++)
+                        {
+                            try {
+                                groupList.add(i, new GroupInList(Integer.parseInt(
+                                        groupsArray.getJSONObject(i).getString("id").toString()),// group ID
+                                        groupsArray.getJSONObject(i).getString("title").toString(),// Group Title
+                                        groupsArray.getJSONObject(i).getString("description").toString(), // Group description
+                                        groupsArray.getJSONObject(i).getString("image").toString(),// Group image
+                                        groupsArray.getJSONObject(i).getString("origin").toString(),// Group origin
+                                        groupsArray.getJSONObject(i).getString("destination").toString(),// Group destination
+                                        groupsArray.getJSONObject(i).getString("start_date").toString(),// Group start date
+                                        groupsArray.getJSONObject(i).getString("end_date").toString()));// Group end date
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        Log.i("GroupListStatus",groupList.size()+"");
+                        for(int i=0;i<groupList.size();i++)
+                            Log.i("Idd",groupList.get(i).get_id()+","+groupList.get(i).getTitle());
+
+//                        Log.i("Length",groupList.get(3).getOrigin().toString());
+                        glAdapter= new GroupLIstAdapter2(GroupListActivity.this,groupList);
+                        glAdapter.notifyDataSetChanged();
+                        // Set the adapter to the list
+                        listView.setAdapter(glAdapter);
+        /*listView.setTransitionEffect(JazzyHelper.TWIRL);
+        listView.setTranscriptMode(JazzyHelper.CARDS);*/
+                        // a7la    listView.setTransitionEffect(JazzyHelper.ZIPPER);
+                        listView.setTransitionEffect(JazzyHelper.TILT);
 
                         listView.setScrollBarFadeDuration(100);
                         listView.smoothScrollToPosition(11);
@@ -285,7 +389,7 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                     //   Log.i("groupsGet",error.getMessage().toString()+" ");
+                           Log.i("groupsGet","error");
                     }
 
                 });
@@ -294,7 +398,6 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
         MySingleton.getInstance(GroupListActivity.this).addToRequestQueue(jsObjRequest);
 
     }
-
     public void getGroupsByHotelsRequest(String dateFrom,String dateTo){
 
         String url = "http://172.104.150.56/api/hotels"+"/"+dateFrom+"/"+dateTo;
@@ -325,7 +428,9 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
                             }
                         }
 //                        Log.i("Length",groupList.get(3).getOrigin().toString());
-                        GroupLIstAdapter2 glAdapter= new GroupLIstAdapter2(GroupListActivity.this,groupList);
+                         glAdapter= new GroupLIstAdapter2(GroupListActivity.this,groupList);
+                        glAdapter.notifyDataSetChanged();
+
                         // Set the adapter to the list
                         listView.setAdapter(glAdapter);
         /*listView.setTransitionEffect(JazzyHelper.TWIRL);
@@ -377,7 +482,7 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
         String tokenUrl = "http://172.104.150.56/api/get_current_member";
         SharedPreferences settings2 =this.getSharedPreferences("UserLog", MODE_PRIVATE);
         final String token2 = settings2.getString("token", "");
-        Log.i("requestByToken","hi");
+        Log.i("requestByToken",token2);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 tokenUrl,
@@ -385,17 +490,24 @@ public class GroupListActivity extends AppCompatActivity implements NavigationVi
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.i("exceptiony",response.toString());
+                        try {
+                            Log.i("exceptiony-profile",response.getJSONObject("profile").toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                         SharedPreferences.Editor editor=getSharedPreferences("UserLog",MODE_PRIVATE).edit();
                         try {
-                            JSONObject profile=response.getJSONObject("profile");
-                            editor.putString("id",response.getString("id").toString());
-                            editor.putString("email",response.getString("email"));
-                            editor.putString("first_name",profile.getString("first_name").toString());
-                            editor.putString("last_name",profile.getString("last_name"));
-                            editor.putString("profile_image",profile.getString("profile_image"));
+                            JSONObject profile=response;
+                            userId=response.getJSONObject("profile").getString("id").toString();
+                            editor.putString("id",response.getJSONObject("profile").getString("id").toString());
+                            editor.putString("email",profile.getJSONObject("profile").getString("email"));
+                            editor.putString("first_name",profile.getJSONObject("profile").getString("first_name").toString());
+                            editor.putString("last_name",profile.getJSONObject("profile").getString("last_name"));
+                            editor.putString("profile_image",profile.getJSONObject("profile").getString("profile_image"));
                             editor.commit();
+                            Log.i("userId","im after shared preferences");
+
                             setNavigateViewSignIn();
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -17,17 +17,28 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:weightSum="2"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView90"
-            android:layout_width="match_parent"
+            android:id="@+id/chooseItemNameTv"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingLeft="5dp"
             android:paddingTop="25dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="Adham Al Amory" />
+
+        <ImageView
+            android:id="@+id/checkIv"
+            android:layout_width="83dp"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:padding="20dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/check" />
+
+
 
     </LinearLayout>
 </LinearLayout>

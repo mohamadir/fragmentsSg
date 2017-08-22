@@ -1,21 +1,19 @@
 {
   "project_info": {
-    "project_number": "787977925988",
-    "firebase_url": "https://snap-group.firebaseio.com",
-    "project_id": "snap-group",
-    "storage_bucket": "snap-group.appspot.com"
+    "project_number": "622042331599",
+    "project_id": "snapgroup-176808"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:787977925988:android:0b57967309b0fa5b",
+        "mobilesdk_app_id": "1:622042331599:android:4de592bfa045f65e",
         "android_client_info": {
           "package_name": "com.snapgroup"
         }
       },
       "oauth_client": [
         {
-          "client_id": "787977925988-df2fjsv7jabt9pgkjnf3of8o4lfmkdoa.apps.googleusercontent.com",
+          "client_id": "622042331599-i8l0eegoi1kc903p90av00bauqvaj99i.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.snapgroup",
@@ -23,13 +21,13 @@
           }
         },
         {
-          "client_id": "787977925988-gkl668q8b08qcfqsvftuv621i6sgr945.apps.googleusercontent.com",
+          "client_id": "622042331599-esh9npmvb2j77sqqv73nj9nboihnoha4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBLd5AzaFjlsVAg2WHfkxe7Y4p6h6AiUFs"
+          "current_key": "AIzaSyDaIQ_AeMsk5AdwfKzRVYBxf9tPTWL-dBA"
         }
       ],
       "services": {
@@ -37,16 +35,11 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "787977925988-gkl668q8b08qcfqsvftuv621i6sgr945.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
-          "status": 2
+          "status": 1
         }
       }
     }

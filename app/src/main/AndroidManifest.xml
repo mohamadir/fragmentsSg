@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <!--
@@ -42,7 +41,8 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".Activities.SplashScreenActivity"
+            android:name=".Activities.NewGroupDetailsActitivty"
+            android:label=""
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,10 +51,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".Activities.GroupListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.ServicesActivity"
+            android:name=".Activities.NewGroupProfile1Activity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Tests.ContactsActivity"
@@ -78,16 +78,19 @@
             android:name=".Activities.MapActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".Activities.NewGroupSettingsPageAtivity"
+            android:name=".Activities.ServicesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupProfile1Activity"
+            android:name=".Activities.NewGroupSettingsPageAtivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.ProfileMemberActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.NewGroupFlightServiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.NewGroupChooseHotel"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.NewGroupHotelsServiceActivity"
@@ -99,7 +102,7 @@
             android:name=".Activities.NewGroupProfile2Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.NewGroupServicesActivity"
+            android:name=".Activities.SplashScreenActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.NewGroupTransportationActivity"
@@ -121,8 +124,12 @@
         <activity android:name=".Activities.FacebookLoginTestActivity" />
         <activity android:name=".Activities.NotificationTestActivity" />
         <activity android:name=".Activities.SignInActivity" />
-        <activity android:name=".Activities.GroupListActivity" />
-        <activity android:name=".FilePicker.CsvFilePIcker"></activity>
+        <activity android:name=".Activities.NewGroupServicesActivity" />
+        <activity android:name=".FilePicker.CsvFilePIcker" />
+        <activity android:name=".Tests.GoogleLoginActivity" />
+        <activity android:name=".Classes.GeofencesTestActivity" />
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.MapRadiusActivity"></activity>
     </application>
 
 </manifest>

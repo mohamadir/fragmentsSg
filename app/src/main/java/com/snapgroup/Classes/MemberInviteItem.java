@@ -5,11 +5,14 @@ package com.snapgroup.Classes;
  */
 
 public class MemberInviteItem {
-    String image,firstName,lastName;
-
-    public MemberInviteItem(String image, String firstName, String lastName) {
+   public  String image,firstName,lastName,id;
+    public MemberInviteItem(String image, String firstName, String lastName,String id) {
         this.image = image;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.id=id;
+    }
+    public String toString(){
+        return image+","+firstName+","+lastName+","+id;
     }
 }

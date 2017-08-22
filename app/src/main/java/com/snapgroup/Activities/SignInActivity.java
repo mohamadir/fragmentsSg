@@ -3,6 +3,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,14 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.snapgroup.Classes.MySingleton;
 import com.snapgroup.R;
 
@@ -26,15 +35,19 @@ import java.security.acl.Group;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignInActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
 
     Button signInBt,signInVolleyBt;
     EditText usernameEt,passwordEt;
     String token;
+    SignInButton signInGoogleBt;
+
     TextView signupTv;
     public ProgressDialog pd;
+    GoogleApiClient googleApiClient;
 
+    public static final int REQ_CODE=9001;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +58,52 @@ public class SignInActivity extends AppCompatActivity {
             Intent i = new Intent(SignInActivity.this, GroupListActivity.class);
             startActivity(i);
         }
+        signInGoogleBt=(SignInButton)findViewById(R.id.btLogin);
+        GoogleSignInOptions signInOptions=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        googleApiClient=new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(Auth.GOOGLE_SIGN_IN_API,signInOptions ).build();
         signupTv=(TextView) findViewById(R.id.signupTv);
         usernameEt=(EditText)findViewById(R.id.signInUsernameEt);
         passwordEt=(EditText)findViewById(R.id.signInPasswordEt);
         pd=new ProgressDialog(SignInActivity.this);
         signInVolleyBt=(Button) findViewById(R.id.signInVolleyBt);
-
+        signInGoogleBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+                startActivityForResult(i,REQ_CODE);
+            }
+        });
         setListeners();
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQ_CODE)
+        {
+            GoogleSignInResult result= Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+
+
+            Log.i("googleApi",result.toString());
+            handleRequest(result);
+        }
+        else
+            Log.i("googleApi",resultCode+"");
+
+    }
+    public void handleRequest(GoogleSignInResult result){
+        if(result.isSuccess())
+        {
+            GoogleSignInAccount account=result.getSignInAccount();
+            String name=account.getDisplayName().toString();
+            String email=account.getEmail().toString();
+            String imgUrl=account.getPhotoUrl().toString();
+            Log.i("Gdetails",name+","+email);
+        }
+
+    }
+
     public void setListeners(){
         signInVolleyBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,12 +198,21 @@ public class SignInActivity extends AppCompatActivity {
         Map<String, String> params = new HashMap();
         params.put("email", email);
         params.put("password",password );
+        Log.i("tokeny","Im in the LoginRequest");
 
         JSONObject parameters = new JSONObject(params);
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, url, parameters, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                try {
+                    JSONObject js=response.getJSONObject("token");
+                    Log.i("tokeny3",js.getString("access_token").toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 //TODO: handle success
                 try {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
@@ -169,21 +228,37 @@ public class SignInActivity extends AppCompatActivity {
                     alert.show();
                     SharedPreferences.Editor editor=getSharedPreferences("UserLog",MODE_PRIVATE).edit();
                     editor.putString("isSigned","true");
-                    editor.putString("token",response.getString("access_token").toString());
-                    Log.i("tokeny",response.getString("access_token").toString());
+                    editor.putString("token",response.getJSONObject("token").getString("access_token").toString());
+                    editor.putString("id",response.getJSONObject("member").getJSONObject("profile").getString("member_id").toString());
+                    editor.putString("email",response.getJSONObject("member").getString("email"));
+                    editor.putString("first_name",response.getJSONObject("member").getJSONObject("profile").getString("first_name").toString());
+                    editor.putString("last_name",response.getJSONObject("member").getJSONObject("profile").getString("last_name"));
+                    editor.putString("profile_image","https://organicthemes.com/demo/profile/files/2012/12/profile_img.png");
                     editor.commit();
+
+
+                    editor.commit();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.i("tokeny",e.getMessage().toString());
+
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
+                Log.i("tokeny","No No !! ");
                 //TODO: handle failure
             }
         });
         MySingleton.getInstance(SignInActivity.this).addToRequestQueue(jsonRequest);
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 }

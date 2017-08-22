@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/orange"
     android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center"
@@ -12,6 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="129dp">
 
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/logo2" />
+
         <TextView
             android:id="@+id/textView73"
             android:layout_width="fill_parent"
@@ -20,12 +28,13 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="Sign up SnapGroup"
-            android:textColor="@color/white_greyish"
+            android:textColor="@color/orange"
             android:textSize="25sp"
             android:textStyle="bold"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/imageSwitcher"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -45,34 +54,37 @@
             android:layout_width="305dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:background="@color/orange"
-            android:drawableLeft="@drawable/last_name"
+            android:drawableLeft="@drawable/first_name_icon"
             android:drawablePadding="8dp"
-            android:drawableTint="@color/colorWhite"
-            android:gravity="center_vertical"
-            android:hint="Last Name"
+            android:gravity="left"
+            android:hint="First Name"
             android:inputType="textCapWords"
-            android:padding="10dp"
             android:singleLine="true"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
+            android:background="@color/transparent"
             android:textSize="16sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/white_greyish" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/white_greyish" />
 
     <EditText
         android:id="@+id/lastName_Et"
         android:layout_width="305dp"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
         android:drawableLeft="@drawable/last_name"
         android:drawablePadding="8dp"
-        android:drawableTint="@color/colorWhite"
-        android:gravity="center_vertical"
-        android:hint="Last Name"
+        android:hint="  Last Name"
+        android:gravity="left"
+        android:background="@color/transparent"
         android:inputType="textCapWords"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
         android:textSize="16sp" />
 
     <View
@@ -81,22 +93,25 @@
         android:textColor="@color/white_greyish"
         />
 
-    <EditText
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/white_greyish" />
+
+
+        <EditText
         android:id="@+id/email_Et"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/orange"
         android:drawableLeft="@drawable/mail"
         android:drawablePadding="8dp"
-        android:drawableTint="@color/colorWhite"
-        android:gravity="center_vertical"
-        android:hint="Email"
+        android:gravity="left"
+        android:hint="  Email"
+        android:background="@color/transparent"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
         android:textSize="16sp" />
 
     <View
@@ -104,32 +119,21 @@
         android:layout_height="1px"
         android:background="@color/white_greyish" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@color/white_greyish" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@color/white_greyish" />
 
     <EditText
         android:id="@+id/password_Et"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:background="@color/orange"
         android:drawableLeft="@drawable/password"
         android:drawablePadding="8dp"
-        android:drawableTint="@color/colorWhite"
-        android:gravity="center_vertical"
-        android:hint="Password"
+        android:gravity="left"
+        android:hint="  Password"
+        android:background="@color/transparent"
         android:inputType="textPassword"
         android:padding="10dp"
         android:singleLine="true"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
         android:textSize="16sp" />
 </LinearLayout>
     <View
@@ -137,38 +141,38 @@
         android:layout_height="1px"
         android:background="@color/white_greyish" />
 
+
     <Button
         android:id="@+id/signUpVolleyBt"
-        android:layout_width="141dp"
-        android:layout_height="wrap_content"
+        android:layout_width="114dp"
+        android:layout_height="45dp"
         android:layout_marginTop="15dp"
-        android:background="@drawable/button_border_pay2"
+        android:background="@drawable/buttonsignshape"
         android:padding="3dp"
         android:text="Sign Up"
         android:textColor="@color/colorWhite"
         android:textSize="17sp"
         android:textStyle="bold" />
-
     <TextView
-        android:id="@+id/already_user"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView225"
+        android:layout_width="376dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
+        android:layout_weight="0.08"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="Already User ?"
-        android:textColor="@color/white_greyish"
-        android:textSize="15sp" />
-
+        android:text="Or"
+        android:textColor="@color/Abit_Black"
+        android:textSize="17dp"
+        android:textStyle="bold" />
     <TextView
         android:id="@+id/textView28"
         android:layout_width="376dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.06"
+        android:layout_weight="0.08"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Sign in Now  "
-        android:textColor="#fff"
+        android:textColor="@color/orange"
         android:textSize="17dp"
         android:textStyle="bold" />
 

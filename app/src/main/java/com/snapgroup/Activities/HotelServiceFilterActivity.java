@@ -66,7 +66,7 @@ public class HotelServiceFilterActivity extends AppCompatActivity {
                 dateTo=dateToArray[0]+"-"+dateToArray[1]+"-"+dateToArray[2];
                 i.putExtra("dateFrom",dateFrom);
                 i.putExtra("dateTo",dateTo);
-                //getGroupsRequests();
+                //getMyGroupsRequest();
                 startActivity(i);
             }
         });

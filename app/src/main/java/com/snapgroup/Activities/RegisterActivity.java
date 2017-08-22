@@ -186,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity {
                     params2.put("password", password);
                     params2.put("first_name", firstname);
                     params2.put("last_name", lastname);
-                    params2.put("profile_image", "http://devilsworkshop.org/files/2013/01/small-facebook-profile-picture.jpg");
+                  //  params2.put("profile_image", "http://devilsworkshop.org/files/2013/01/small-facebook-profile-picture.jpg");
                 }
                 return new JSONObject(params2).toString().getBytes();
             }

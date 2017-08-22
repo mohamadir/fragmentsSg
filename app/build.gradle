@@ -33,6 +33,15 @@ repositories {
     maven {
         url "http://dl.bintray.com/jlmd/maven"
     }
+    maven() {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+    maven() {
+        url "https://maven.google.com"
+    }
+
+    maven { url "https://jitpack.io" }
+
 
 
     mavenCentral()
@@ -47,7 +56,11 @@ dependencies {
     compile('io.socket:socket.io-client:0.8.3') {
         exclude group: 'org.json', module: 'json'
     }
+    compile('com.github.worker8:tourguide:1.0.17-SNAPSHOT@aar') {
+        transitive = true
+    }
     compile 'com.squareup.picasso:picasso:2.5.0'
+
     compile 'com.squareup.picasso:picasso:2.5.0'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -58,7 +71,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.android.support:design:26.+'
     compile 'com.twotoasters.jazzylistview:library:1.2.1'
-    compile 'com.google.android.gms:play-services-maps:11.0.4'
+    compile 'com.google.android.gms:play-services-auth:11.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'junit:junit:4.12'
     compile 'com.github.tibolte:elasticdownload:1.0.+'
     compile 'com.android.support:recyclerview-v7:26.+'
@@ -72,8 +86,12 @@ dependencies {
     compile 'net.sf.opencsv:opencsv:2.3'
     compile 'com.github.jlmd:AnimatedCircleLoadingView:1.1.5@aar'
     compile 'com.squareup.okhttp3:okhttp:3.3.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'com.google.firebase:firebase-messaging:11.0.4'
-    testCompile 'junit:junit:4.12'
     compile 'com.github.Hitomis:CircleMenu:v1.0.0'
+    compile 'com.google.android.gms:play-services-location:11.2.0'
+    compile 'com.google.android.gms:play-services-maps:11.2.0'
+    compile 'com.google.android.gms:play-services-wearable:11.2.0'
+    testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'

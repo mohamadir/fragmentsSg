@@ -8,7 +8,9 @@
     tools:context="com.snapgroup.Activities.SignInActivity"
 
     >
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -56,7 +58,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_marginTop="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="1">
 
                 <TextView
                     android:id="@+id/textView102"
@@ -66,15 +69,16 @@
                     android:gravity="center"
                     android:text="Login with Your favorite social network"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_weight="2.67" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:gravity="center"
                 android:layout_weight="1"
-
-                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -100,13 +104,14 @@
 
             <LinearLayout
                 android:layout_width="300dp"
-                android:layout_height="0dp"
+                android:layout_height="600dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:weightSum="14"
                 android:layout_below="@+id/textView103"
-                android:layout_weight="6.3"
+                android:layout_weight="3.70"
                 android:orientation="vertical">
 
 
@@ -145,7 +150,7 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="3">
+                    android:layout_weight="1.92">
 
 
                     <EditText
@@ -154,6 +159,7 @@
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/lock"
                         android:drawableTint="#999900"
+                        android:textSize="12sp"
                         android:hint=" User Name"
                         android:inputType="textEmailAddress" />
 
@@ -171,6 +177,7 @@
                         android:layout_marginTop="16dp"
                         android:drawableLeft="@drawable/lock"
                         android:drawableTint="#999900"
+                        android:textSize="12sp"
                         android:hint=" Password"
                         android:inputType="textPassword"
 
@@ -183,10 +190,18 @@
                     android:layout_width="150dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_weight="3"
+                    android:layout_weight="1"
                     android:background="@drawable/buttonsignshape"
                     android:text="Sign In"
                     android:textColor="@color/colorWhite" />
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/btLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="60dp" />
 
                 <TextView
                     android:id="@+id/forgetPass"
@@ -204,5 +219,5 @@
         </LinearLayout>
 
     </RelativeLayout>
-
+</ScrollView>
 </RelativeLayout>

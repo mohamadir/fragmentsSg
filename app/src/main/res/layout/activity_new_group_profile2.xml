@@ -221,28 +221,28 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="70dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/flightServiceActivity_flyFromSp"
         android:layout_marginTop="59dp"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout8">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/profile2Activity_chooseCsvBt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@color/orange"
-            android:text="Load Csv members" />
+            android:text="Load Csv members"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp" />
 
-       <!-- <com.hitomi.cmlibrary.CircleMenu
+        <!-- <com.hitomi.cmlibrary.CircleMenu
             android:id="@+id/circle_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -253,24 +253,25 @@
             android:id="@+id/profile2Activity_inviteMembers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@color/orange"
-            android:text="Invite Members" />
+            android:text="Invite Members"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp" />
+
         <Button
             android:id="@+id/add_single_member"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
             android:background="@color/orange"
-            android:text="add single member" />
+            android:text="add single member"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -316,5 +317,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/textView9"
         android:text="Select" />
+
+  <!--  <ListView
+        android:id="@+id/inviteMembersLv"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_alignLeft="@+id/spinner7"
+        android:layout_alignStart="@+id/spinner7"
+        android:layout_below="@+id/linearLayout10" />-->
 
 </RelativeLayout>
